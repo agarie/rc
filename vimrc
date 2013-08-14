@@ -30,8 +30,10 @@ set shiftwidth=2
 set expandtab
 
 " Python is better with 4 spaces.
-" autocmd FileType python set tabstop=4 | set softtabstop=4 | set shiftwidth=4
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+
+" Ruby path to speed up vim startup time.
+let g:ruby_path = "$HOME/.rvm/bin/rvm-auto-ruby"
 
 " Searching
 set hlsearch    " Highlight matches.
@@ -58,9 +60,3 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" Ruby path to speed up vim startup time.
-let g:ruby_path = "/Users/carlosagarie/.rvm/bin/rvm-auto-ruby"
-
-" Change all instances of ã, õ, é, í, á, ó and ç to its respective LaTeX
-" escape sequence.
-let @b=":%s/ã/\\~{a}/eg\<C-m>:%s/õ/\\~{o}/eg\<C-m>:%s/ç/\\c{c}/eg\<C-m>:%s/é/\\'{e}/eg\<C-m>:%s/á/\\'{a}/eg\<C-m>:%s/í/\\'{i}/eg\<C-m>:%s/ó/\\'{o}/eg\<C-m>:%s/ú/\\'{u}/eg\<C-m>:%s/Ú/\\'{U}/eg\<C-m>:%s/Á/\\'{A}/eg\<C-m>"

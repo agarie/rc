@@ -14,6 +14,11 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
+" Syntax highlighting.
+if &t_Co > 2
+  colorscheme hemisu
+endif
+
 " Highlight current line.
 set cul                                                              " highlight current line
 hi CursorLine term=none cterm=none ctermbg=red ctermfg=white         " adjust color
@@ -43,11 +48,6 @@ set smartcase   " ... except when they contain at least one capital letter.
 
 " Backspace can delete STUFF in insert mode.
 set backspace=indent,eol,start
-
-" Syntax highlighting.
-if &t_Co > 2
-  colorscheme hemisu
-endif
 
 " Splits
 " Use :sp for splits and :vsp for vertical ones.

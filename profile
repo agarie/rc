@@ -1,3 +1,16 @@
+# Carlos Agarie's profile
+# A collection of environment variables and settings for my shell.
+
+# Configure this file depending on the OS being used.
+if [[ $(uname) == "Darwin" ]]; then
+  # Do something in OSX.
+elif [[ $(uname) == "Linux" ]]; then
+  # Do something in Linux.
+else
+  echo "ERROR: Unrecognized operating system. (in .profile setup)"
+fi
+
+
 export PATH=/usr/local/bin:/usr/local/lib:/usr/sbin:/sbin:$PATH
 
 # Adding npm binaries to PATH.
@@ -17,7 +30,7 @@ export CLICOLOR=1
 export TERM=xterm-256color
 
 # Default EDITOR for stuff: vim rules!
-#export EDITOR=/usr/local/bin/mate
+# export EDITOR=/usr/local/bin/mate
 
 # Change `ll` behavior to use -h flag.
 alias ll='ls -lh'

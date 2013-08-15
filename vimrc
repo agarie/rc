@@ -1,3 +1,11 @@
+" Carlos Agarie's vimrc
+"
+" Highly inspired (read: copied some parts) by these guys:
+"   eevee - https://github.com/eevee/rc/blob/master/.vimrc
+
+" Preferred mode.
+set nocompatible
+
 " Start Pathogen.
 execute pathogen#infect()
 syntax on
@@ -10,8 +18,7 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 set clipboard=unnamedplus
 
 " No cluttering working directory.
-set backup
-set backupdir=~/.vim/backup
+set nobackup " These backups aren't very useful.
 set directory=~/.vim/tmp
 
 " Syntax highlighting.
@@ -48,6 +55,10 @@ set smartcase   " ... except when they contain at least one capital letter.
 
 " Backspace can delete STUFF in insert mode.
 set backspace=indent,eol,start
+
+" - / = to navigate between tabs.
+noremap - :tabprevious<CR>
+noremap = :tabnext<CR>
 
 " Splits
 " Use :sp for splits and :vsp for vertical ones.

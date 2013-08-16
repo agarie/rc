@@ -1,0 +1,13 @@
+[user]
+	name = Carlos Agarie
+	email = carlos.agarie@gmail.com
+
+[color]
+	ui = true
+
+[core]
+	excludesfile = /Users/carlosagarie/.gitignore_global
+	editor = /usr/local/bin/vim
+
+[push]
+	default = matching

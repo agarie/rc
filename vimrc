@@ -17,6 +17,10 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " Enable system clipboard.
 set clipboard=unnamedplus
 
+" Leader
+let mapleader = ","
+let g:mapleader = ","
+
 " No cluttering working directory.
 set nobackup " These backups aren't very useful.
 set directory=~/.vim/tmp

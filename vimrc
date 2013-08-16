@@ -75,3 +75,6 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" Plugin configuration.
+
+let g:vim_markdown_folding_disabled=1

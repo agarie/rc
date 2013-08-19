@@ -75,7 +75,9 @@ let g:ruby_path = "$HOME/.rvm/bin/rvm-auto-ruby"
 " Start Pathogen.
 execute pathogen#infect()
 
-let g:vim_markdown_folding_disabled=1
+" Who thought it would be a good idea to enable code folding?!
+let g:vim_markdown_folding_disabled = 1
+let g:pymode_folding = 0
 
 " Syntax highlighting.
 set background=dark

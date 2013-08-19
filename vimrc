@@ -77,7 +77,9 @@ execute pathogen#infect()
 
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
+
 let g:pymode_folding = 0
+let g:pymode_lint_checker = "pyflakes"
 
 " Syntax highlighting.
 set background=dark

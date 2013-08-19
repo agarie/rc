@@ -6,10 +6,15 @@ if [[ $(uname) == "Darwin" ]]; then
   # Do something in OSX.
 elif [[ $(uname) == "Linux" ]]; then
   # Do something in Linux.
+
+  # Set Caps Lock key to act as Control.
+  /usr/bin/setxkbmap -option 'ctrl:nocaps'
+
+  # Allow pasting with ^v on terminal.
+  gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
 else
   echo "ERROR: Unrecognized operating system. (in .profile setup)"
 fi
-
 
 export PATH=/usr/local/bin:/usr/local/lib:/usr/sbin:/sbin:$PATH
 

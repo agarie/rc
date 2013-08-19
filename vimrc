@@ -6,6 +6,10 @@
 " Preferred mode.
 set nocompatible
 
+filetype plugin indent on
+syntax on
+syntax enable
+
 " Backspace can delete STUFF in insert mode.
 set backspace=indent,eol,start
 
@@ -29,6 +33,7 @@ set numberwidth=4
 set ruler
 set relativenumber " Line numbers spread from 0.
 set cursorline " highlight current line
+set cul
 
 " Soft tabs with 2 spaces.
 set tabstop=2
@@ -69,13 +74,14 @@ let g:ruby_path = "$HOME/.rvm/bin/rvm-auto-ruby"
 
 " Start Pathogen.
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 let g:vim_markdown_folding_disabled=1
 
 " Syntax highlighting.
+set background=dark
 if &t_Co > 2
-  colorscheme hemisu
+  colorscheme solarized
+else
+  colorscheme elflord
 endif
 

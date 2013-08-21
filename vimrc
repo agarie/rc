@@ -2,6 +2,7 @@
 " Highly inspired (read: copied some parts) by these guys:
 "   eevee - https://github.com/eevee/rc/blob/master/.vimrc
 "   ryanb - https://github.com/ryanb/dotfiles/blob/master/vimrc
+"   jacob - http://www.stanford.edu/~jacobm/vim.html
 
 " Preferred mode.
 set nocompatible
@@ -88,4 +89,8 @@ if &t_Co > 2
 else
   colorscheme elflord
 endif
+
+" Remaps.
+nnoremap <space> i_<esc>r
+nnoremap <Leader>k i<cr><esc>k$
 

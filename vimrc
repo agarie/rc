@@ -28,13 +28,16 @@ let g:mapleader = ","
 set nobackup " These backups aren't very useful.
 set directory=~/.vim/tmp
 
+" Fix vim slowdowns.
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+
 " Line and columns numbers.
 set number
 set numberwidth=4
 set ruler
 set relativenumber " Line numbers spread from 0.
-set cursorline " highlight current line
-set cul
 
 " Soft tabs with 2 spaces.
 set tabstop=2

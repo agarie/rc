@@ -74,6 +74,15 @@ autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 " Ruby path to speed up vim startup time.
 let g:ruby_path = "$HOME/.rvm/bin/rvm-auto-ruby"
 
+" Syntax highlighting.
+set background=dark
+se t_Co=16
+if &t_Co > 2
+  colorscheme solarized
+else
+  colorscheme elflord
+endif
+
 " Plugin configuration.
 
 " Start Pathogen.
@@ -85,15 +94,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:pymode_folding = 0
 let g:pymode_lint_checker = "pyflakes"
 
-" Syntax highlighting.
-set background=dark
-if &t_Co > 2
-  colorscheme solarized
-else
-  colorscheme elflord
-endif
-
 " Remaps.
-nnoremap <space> i_<esc>r
 nnoremap <Leader>k i<cr><esc>k$
 

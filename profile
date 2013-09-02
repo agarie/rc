@@ -12,6 +12,9 @@ elif [[ $(uname) == "Linux" ]]; then
 
   # Allow pasting with ^v on terminal.
   gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
+
+  # Virtualenvwrapper loading.
+  source /usr/local/bin/virtualenvwrapper.sh
 else
   echo "ERROR: Unrecognized operating system. (in .profile setup)"
 fi

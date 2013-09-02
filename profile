@@ -4,6 +4,18 @@
 # Configure this file depending on the OS being used.
 if [[ $(uname) == "Darwin" ]]; then
   # Do something in OSX.
+    # Virtualenvwrapper.
+    source /usr/local/share/python/virtualenvwrapper.sh
+
+  # Geekie project's home directory. Just a shortcut.
+  export GEEKIE=/Users/carlosagarie/Dropbox/projects/geekie
+
+  # Enter the virtualenv & go to project's directory.
+  alias geekie_init="workon geekie && cd $GEEKIE"
+  alias trilo_init="workon trilobita && cd $GEEKIE/trilobite"
+
+  # Various scripts used to deal with data inside Geekie.
+  export PATH="$HOME/Projects/geekie-scripts:$PATH"
 elif [[ $(uname) == "Linux" ]]; then
   # Do something in Linux.
 
@@ -54,18 +66,6 @@ alias rake='noglob rake'
 # Colors: http://unix.stackexchange.com/a/174/34544
 # export PS1="\e[0;31m[\u] \e[33;1m\W/ \e[0;31m$ \e[0m"
 
-# Virtualenvwrapper.
-source /usr/local/share/python/virtualenvwrapper.sh
-
-# Geekie project's home directory. Just a shortcut.
-export GEEKIE=/Users/carlosagarie/Dropbox/projects/geekie
-
-# Enter the virtualenv & go to project's directory.
-alias geekie_init="workon geekie && cd $GEEKIE"
-alias trilo_init="workon trilobita && cd $GEEKIE/trilobite"
-
-# Various scripts used to deal with data inside Geekie.
-export PATH="$HOME/Projects/geekie-scripts:$PATH"
 
 # Directory to put L4D2 extra stuff.
 # export L4D2="~/Library/Application Support/Steam/SteamApps/common/left 4 dead 2/left4dead2/"

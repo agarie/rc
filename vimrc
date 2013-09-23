@@ -29,8 +29,9 @@ set nobackup " These backups aren't very useful.
 set directory=~/.vim/tmp
 
 " Fix vim slowdowns.
-set nocursorcolumn
-set nocursorline
+set nocursorcolumn " Remove cursor in column
+set nocursorline   " Line cursors aren't necessary with relativenumber set.
+set synmaxcol=80  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 
 " Line and columns numbers.

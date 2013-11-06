@@ -67,6 +67,10 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" Show information in status line.
+set statusline+=%f  " Display path relative to current dir in statusline.
+set laststatus=2    " Show statusline in last window as well.
+
 " Language configuration.
 
 " Python is better with 4 spaces.

@@ -67,9 +67,12 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" Show information in status line.
-set statusline+=%f  " Display path relative to current dir in statusline.
-set laststatus=2    " Show statusline in last window as well.
+" Show statusline in last window as well.
+set laststatus=2
+
+" Display path relative to current dir in statusline. Taken from:
+" http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
+set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
 " Language configuration.
 

@@ -31,7 +31,7 @@ set directory=~/.vim/tmp
 " Fix vim slowdowns.
 set nocursorcolumn " Remove cursor in column
 set nocursorline   " Line cursors aren't necessary with relativenumber set.
-set synmaxcol=80  " Only use syntax highlighting in small lines.
+set synmaxcol=100  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 
 " Line and columns numbers.
@@ -67,12 +67,18 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" Highlight all characters past 80 columns.
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
+
 " Show statusline in last window as well.
 set laststatus=2
 
 " Display path relative to current dir in statusline. Taken from:
 " http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
-set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
 " Language configuration.
 
@@ -80,7 +86,7 @@ set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%h%m%r%y%=%c,%l/%L\ %
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 
 " Ruby path to speed up vim startup time.
-let g:ruby_path = "$HOME/.rvm/bin/rvm-auto-ruby"
+let g:ruby_path = "$HOME/.rvm/rubies/default/bin/ruby"
 
 " Syntax highlighting.
 set background=dark

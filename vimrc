@@ -34,6 +34,9 @@ set nocursorline   " Line cursors aren't necessary with relativenumber set.
 set synmaxcol=100  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 
+" Code folding is ugly.
+set nofoldenable
+
 " Line and columns numbers.
 set number
 set numberwidth=4

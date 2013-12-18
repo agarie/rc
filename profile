@@ -6,6 +6,9 @@ if [[ $(uname) == "Darwin" ]]; then
   # Virtualenvwrapper loading.
   export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
   source /usr/local/bin/virtualenvwrapper.sh
+
+  # Used by NMatrix to select the correct version of libstdc++.
+  export DYLD_LIBRARY_PATH="/usr/local/Cellar/gcc48/4.8.2/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2"
 elif [[ $(uname) == "Linux" ]]; then
   # Set Caps Lock key to act as Control.
   /usr/bin/setxkbmap -option 'ctrl:nocaps'
@@ -60,5 +63,3 @@ alias pgrestart='pg_ctl -D /usr/local/var/postgres restart'
 
 # Connect via SSH to be able to use rmate.
 alias ssh-mate='ssh -R 52698:localhost:52698'
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"

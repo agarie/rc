@@ -9,6 +9,8 @@ if [[ $(uname) == "Darwin" ]]; then
 
   # Used by NMatrix to select the correct version of libstdc++.
   export DYLD_LIBRARY_PATH="/usr/local/Cellar/gcc48/4.8.2/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2"
+
+  alias reboot_virtualbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
 elif [[ $(uname) == "Linux" ]]; then
   # Set Caps Lock key to act as Control.
   /usr/bin/setxkbmap -option 'ctrl:nocaps'

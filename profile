@@ -35,15 +35,15 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Change the default umask.
 umask 033
 
-# Remember to turn Ruby warnings on when testing some lib!
-export RUBYOPT=""
-
 # Patch to let iTerm use colors.
 export CLICOLOR=1
 export TERM=xterm-256color
 
 # Change `ll` behavior to use -h flag.
 alias ll='ls -lh'
+
+# Remember to turn Ruby warnings on when testing some lib!
+export RUBYOPT=""
 
 # Solve the problem with rake arguments.
 # http://www.scottw.com/zsh-rake-parameters
@@ -65,3 +65,6 @@ alias pgrestart='pg_ctl -D /usr/local/var/postgres restart'
 
 # Connect via SSH to be able to use rmate.
 alias ssh-mate='ssh -R 52698:localhost:52698'
+
+# Needed to allow RVM to work as a function.
+source $HOME/.rvm/scripts/rvm

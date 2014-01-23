@@ -7,10 +7,11 @@ if [[ $(uname) == "Darwin" ]]; then
   export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
   source /usr/local/bin/virtualenvwrapper.sh
 
-  # Used by NMatrix to select the correct version of libstdc++.
-  export DYLD_LIBRARY_PATH="/usr/local/Cellar/gcc48/4.8.2/lib/gcc/x86_64-apple-darwin13.0.0/4.8.2"
-
   alias reboot_virtualbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
+
+  # Homebrew's PHP 5.5.
+  export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
+
 elif [[ $(uname) == "Linux" ]]; then
   # Set Caps Lock key to act as Control.
   /usr/bin/setxkbmap -option 'ctrl:nocaps'

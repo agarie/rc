@@ -69,3 +69,5 @@ alias ssh-mate='ssh -R 52698:localhost:52698'
 
 # Needed to allow RVM to work as a function.
 source $HOME/.rvm/scripts/rvm
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

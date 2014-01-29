@@ -33,4 +33,7 @@
 	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/vim2hs"]
 	path = vim/bundle/vim2hs
-	url = git@github.com:dag/vim2hs.git
+	url = https://github.com/dag/vim2hs.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git

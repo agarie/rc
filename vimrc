@@ -55,6 +55,9 @@ set incsearch   " Incremental search.
 set ignorecase  " Ignore case.
 set smartcase   " ... except when they contain at least one capital letter.
 
+" Use ' to reindent lines.
+noremap ' =
+
 " - / = to navigate between tabs.
 noremap - :tabprevious<CR>
 noremap = :tabnext<CR>
@@ -124,7 +127,7 @@ nnoremap <Leader>k i<cr><esc>k$
 
 highlight TechWordsToAvoid ctermbg=red ctermfg=white
 match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy/
-autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd BufWinLeave * call clearmatches()
+autocmd BufWinEnter *.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+autocmd InsertEnter *.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+autocmd InsertLeave *.md match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+autocmd BufWinLeave *.md call clearmatches()

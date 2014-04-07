@@ -8,9 +8,7 @@ if [[ $(uname) == "Darwin" ]]; then
   source /usr/local/bin/virtualenvwrapper.sh
 
   alias reboot_virtualbox='sudo /Library/StartupItems/VirtualBox/VirtualBox restart'
-
-  # Homebrew's PHP 5.5.
-  export PATH="$(brew --prefix josegonzalez/php/php55)/bin:$PATH"
+  alias ruby_webserver='ruby -rwebrick -e "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
 
 elif [[ $(uname) == "Linux" ]]; then
   # Set Caps Lock key to act as Control.

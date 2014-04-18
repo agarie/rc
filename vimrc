@@ -30,7 +30,7 @@ set directory=~/.vim/tmp
 
 " Fix vim slowdowns.
 set nocursorcolumn " Remove cursor in column
-set nocursorline   " Line cursors aren't necessary with relativenumber set.
+set cursorline   " Line cursors aren't necessary with relativenumber set.
 set synmaxcol=100  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 

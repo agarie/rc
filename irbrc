@@ -18,18 +18,19 @@ def fix_encoding(fn)
   File.open(fn, 'w') { |f| f << q.encode("UTF-8", "ISO-8859-1") }
 end
 
+# Not using this currently because there should be a better way. :|
 # Pry everywhere.
-begin
-  require 'pry'
-
-  # Configuration similar to the `--simple-prompt` flag.
-  Pry.config.prompt = [
-    Proc.new { ">> " },
-    Proc.new { " | " }
-  ]
-
-  Pry.start
-  exit
-rescue LoadError
-  p "Can't load Pry!"
-end
+# begin
+#   require 'pry'
+#
+#   # Configuration similar to the `--simple-prompt` flag.
+#   Pry.config.prompt = [
+#     Proc.new { ">> " },
+#     Proc.new { " | " }
+#   ]
+#
+#   Pry.start
+#   exit
+# rescue LoadError
+#   p "Can't load Pry!"
+# end

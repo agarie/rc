@@ -48,6 +48,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set smartindent
 
 " Searching
 set hlsearch    " Highlight matches.
@@ -88,8 +89,10 @@ set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,
 
 " Language configuration.
 
-" Python is better with 4 spaces.
-autocmd Filetype python setlocal tabstop=4 shiftwidth=4
+" Python, Java and Scala are better with 4 spaces.
+autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
 " Ruby path to speed up vim startup time.
 let g:ruby_path = "$HOME/.rvm/rubies/default/bin/ruby"

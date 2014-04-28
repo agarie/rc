@@ -54,6 +54,10 @@ alias rake='noglob rake'
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
 
+# Solve a minor problem in Scala.
+# Source: http://softwareinabottle.wordpress.com/2012/10/21/scala-fixing-the-pesky-java-lang-outofmemoryerror-permgen-space-with-sbt/
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
+
 # Set default Markdown engine.
 export MARKDOWN_LIB=redcarpet
 

@@ -25,12 +25,6 @@ fi
 
 export PATH=/usr/local/bin:/usr/local/lib:/usr/sbin:/sbin:$PATH
 
-# Adding npm binaries to PATH.
-export PATH="/usr/local/share/npm/bin:$PATH"
-
-# Added by the Heroku Toolbelt.
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # Change the default umask.
 umask 033
 
@@ -69,7 +63,8 @@ alias pgrestart='pg_ctl -D /usr/local/var/postgres restart'
 # Connect via SSH to be able to use rmate.
 alias ssh-mate='ssh -R 52698:localhost:52698'
 
-# Needed to allow RVM to work as a function.
-source $HOME/.rvm/scripts/rvm
+# Adding npm binaries to PATH.
+export PATH="/usr/local/share/npm/bin:$PATH"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Added by the Heroku Toolbelt.
+export PATH="/usr/local/heroku/bin:$PATH"

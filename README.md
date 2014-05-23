@@ -4,6 +4,6 @@ This repository has two purposes: to have all my dotfiles in one place, simplify
 
 For the moment, a small todo list is:
 
-- Reorganize and clean `.profile`
-- Include .zshrc and whatever else is necessary, zshell-related
+- Include .zshrc and whatever else is necessary, zshell-related.
+- Provide a simple .bashrc when using a simple machine (e.g. remote server).
 - Provide a simple shell script to "install" these files.

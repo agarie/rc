@@ -94,6 +94,10 @@ autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
+" See Ruby autocompletion help with :help ft-ruby-omni
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+
 " Ruby path to speed up vim startup time.
 let g:ruby_path = "$HOME/.rvm/rubies/default/bin/ruby"
 

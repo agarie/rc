@@ -42,9 +42,6 @@ export RUBYOPT=""
 # http://www.scottw.com/zsh-rake-parameters
 alias rake='noglob rake'
 
-# Directory to put L4D2 extra stuff.
-# export L4D2="~/Library/Application Support/Steam/SteamApps/common/left 4 dead 2/left4dead2/addons"
-
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
 

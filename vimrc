@@ -1,15 +1,11 @@
 " Carlos Agarie's vimrc
-" Highly inspired (read: copied some parts) by these guys:
+" Highly inspired (read: copied some parts) by these folks:
 "   eevee - https://github.com/eevee/rc/blob/master/.vimrc
 "   ryanb - https://github.com/ryanb/dotfiles/blob/master/vimrc
 "   jacob - http://www.stanford.edu/~jacobm/vim.html
 
 " Preferred mode.
 set nocompatible
-
-filetype plugin indent on
-syntax on
-syntax enable
 
 " Backspace can delete STUFF in insert mode.
 set backspace=indent,eol,start
@@ -58,12 +54,9 @@ set smartcase   " ... except when they contain at least one capital letter.
 " Use ' to reindent lines.
 noremap ' =
 
-" - / = to navigate between tabs.
-noremap - :tabprevious<CR>
-noremap = :tabnext<CR>
-
 " Splits & tabs.
 " Use :sp for splits and :vsp for vertical ones.
+" This allows you to use ^J, ^K, ^L and ^H to navigate between them.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -73,11 +66,9 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" Highlight all characters past 80 columns.
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%80v.*/
-augroup END
+" - and = to navigate between tabs.
+noremap - :tabprevious<CR>
+noremap = :tabnext<CR>
 
 " Show statusline in last window as well.
 set laststatus=2
@@ -87,6 +78,10 @@ set laststatus=2
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
 " Language configuration.
+
+filetype plugin indent on
+syntax on
+syntax enable
 
 " Python, Java and Scala are better with 4 spaces.
 autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -102,12 +97,9 @@ let g:ruby_path = "$HOME/.rvm/rubies/default/bin/ruby"
 
 " Syntax highlighting.
 set background=dark
-se t_Co=16
-if &t_Co > 2
-  colorscheme solarized
-else
-  colorscheme elflord
-endif
+set t_Co=256
+" colorscheme solarized
+colorscheme lavalamp
 
 " Plugin configuration.
 
@@ -122,18 +114,3 @@ let g:pymode_lint_checker = "pyflakes"
 
 " Remaps.
 nnoremap <Leader>k i<cr><esc>k$
-
-" Highlight words to avoid in tech writing
-" =======================================
-"
-"   obviously, basically, simply, of course, clearly,
-"   just, everyone knows, However, So, easy
-"
-"   http://css-tricks.com/words-avoid-educational-writing/
-
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy/
-autocmd BufWinEnter *.md match TechWordsToAvoid /\cobviously\|obvious\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertEnter *.md match TechWordsToAvoid /\cobviously\|obvious\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertLeave *.md match TechWordsToAvoid /\cobviously\|obvious\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd BufWinLeave *.md call clearmatches()

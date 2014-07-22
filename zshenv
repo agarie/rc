@@ -9,8 +9,6 @@ export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize
 # Default Markdown engine.
 export MARKDOWN_LIB=redcarpet
 
-export PATH=/usr/local/bin:/usr/local/lib:/usr/sbin:/sbin:$PATH
-
 # Adding npm binaries to PATH.
 export PATH="/usr/local/share/npm/bin:$PATH"
 

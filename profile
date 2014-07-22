@@ -2,35 +2,35 @@
 # A collection of environment variables and settings for my shell.
 
 # Configure this file depending on the OS being used.
-if [[ $(uname) == "Darwin" ]]; then
-  # Patch to let iTerm use colors.
-  export CLICOLOR=1
-  export TERM=xterm-256color
+case $(uname -s) in
+    Darwin)
+        # Patch to let iTerm use colors.
+        export CLICOLOR=1
+        export TERM=xterm-256color
 
-  # Virtualenvwrapper loading.
-  export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-  source /usr/local/bin/virtualenvwrapper.sh
+        # Virtualenvwrapper loading.
+        export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+        source /usr/local/bin/virtualenvwrapper.sh
 
-  alias ruby_webserver='ruby -rwebrick -e "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
+        alias ruby_webserver='ruby -rwebrick -e "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
+        ;;
+    Linux)
+        # Set Caps Lock key to act as Control.
+        /usr/bin/setxkbmap -option 'ctrl:nocaps'
 
-elif [[ $(uname) == "Linux" ]]; then
-  # Set Caps Lock key to act as Control.
-  /usr/bin/setxkbmap -option 'ctrl:nocaps'
+        # Allow pasting with ^v on terminal.
+        gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
 
-  # Allow pasting with ^v on terminal.
-  gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
-
-  # Virtualenvwrapper loading.
-  source /usr/local/bin/virtualenvwrapper.sh
-else
-  echo "ERROR: Unrecognized operating system. (in .profile setup)"
-fi
+        # Virtualenvwrapper loading.
+        source /usr/local/bin/virtualenvwrapper.sh
+        ;;
+esac
 
 # Change the default umask.
 umask 033
 
 # Change `ll` behavior to use -h flag.
-alias ll='ls -lh'
+alias ll='ls -AFhlv'
 
 # Solve the problem with rake arguments.
 # http://www.scottw.com/zsh-rake-parameters

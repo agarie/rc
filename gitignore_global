@@ -47,6 +47,10 @@ Thumbs.db
 *.gem
 .rvmrc
 
+# R #
+#####
+.Rhistory
+
 # Data and documentation
 ########################
 database.yml

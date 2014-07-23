@@ -9,10 +9,10 @@ export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize
 # Default Markdown engine.
 export MARKDOWN_LIB=redcarpet
 
-# Adding npm binaries to PATH.
-export PATH="/usr/local/share/npm/bin:$PATH"
+# NPM binaries.
+export PATH="$PATH:/usr/local/share/npm/bin"
 
-# Added by the Heroku Toolbelt.
-export PATH="/usr/local/heroku/bin:$PATH"
+# Heroku Toolbelt.
+export PATH="$PATH:/usr/local/heroku/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

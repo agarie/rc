@@ -30,7 +30,7 @@ esac
 umask 033
 
 # Change `ll` behavior to use -h flag.
-alias ll='ls -AFhlv'
+alias ll='ls -Ahlv'
 
 # Solve the problem with rake arguments.
 # http://www.scottw.com/zsh-rake-parameters

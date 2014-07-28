@@ -16,30 +16,21 @@ case $(uname -s) in
         ;;
     Linux)
         # Set Caps Lock key to act as Control.
-        /usr/bin/setxkbmap -option 'ctrl:nocaps'
+        # /usr/bin/setxkbmap -option 'ctrl:nocaps'
 
         # Allow pasting with ^v on terminal.
-        gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
+        # gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
 
         # Virtualenvwrapper loading.
-        source /usr/local/bin/virtualenvwrapper.sh
+        # source /usr/local/bin/virtualenvwrapper.sh
         ;;
 esac
-
-# Change the default umask.
-umask 033
 
 # Change `ll` behavior to use -h flag.
 alias ll='ls -Ahlv'
 
 # Solve the problem with rake arguments.
-# http://www.scottw.com/zsh-rake-parameters
 alias rake='noglob rake'
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
-
-# PostgreSQL.
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop'
-alias pgrestart='pg_ctl -D /usr/local/var/postgres restart'

@@ -6,3 +6,5 @@ DOTFILES=(ackrc gemrc irbrc pryrc rvmrc vim vimrc zshenv zshrc gitconfig gitigno
 for rc in $DOTFILES; do
   ln -s $HOME/rc/$rc $HOME/.$rc
 done
+
+mkdir $HOME/.vim/tmp

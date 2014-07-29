@@ -110,4 +110,3 @@ bindkey "\e[A" up-line-or-local-history
 bindkey "\eOA" up-line-or-local-history
 bindkey "\e[B" down-line-or-local-history
 bindkey "\eOB" down-line-or-local-history
-

@@ -10,14 +10,6 @@ case $(uname -s) in
         source /usr/local/bin/virtualenvwrapper.sh
         ;;
     Linux)
-        # Set Caps Lock key to act as Control.
-        # /usr/bin/setxkbmap -option 'ctrl:nocaps'
-
-        # Allow pasting with ^v on terminal.
-        # gconftool --type string --set /apps/gnome-terminal/keybindings/paste '<Ctrl>v'
-
-        # Virtualenvwrapper loading.
-        # source /usr/local/bin/virtualenvwrapper.sh
         ;;
 esac
 

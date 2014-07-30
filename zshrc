@@ -14,7 +14,8 @@ case $(uname -s) in
 esac
 
 ### Aliases.
-
+alias ..='cd ..'
+alias ...='cd ../..'
 alias ll='ls -Ahlv'
 
 alias ruby_webserver='ruby -rwebrick -e \

@@ -63,6 +63,11 @@ add-zsh-hook precmd  theme_precmd
 
 ### Git aliases
 alias gst='git status -sb'
+alias ga='git add'
+alias gc='git commit'
+alias ggpush='git push origin $(current_branch)'
+alias gp='git push'
+alias gd='git diff'
 
 ### Keybindings
 

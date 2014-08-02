@@ -91,7 +91,7 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 alias gst='git status -sb'
 alias ga='git add'
 alias gc='git commit'
-alias ggpush='git push origin $(current_branch)'
+alias ggpush='git push origin
 alias gp='git push'
 alias gd='git diff'
 

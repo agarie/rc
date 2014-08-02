@@ -13,6 +13,25 @@ case $(uname -s) in
         ;;
 esac
 
+# Always use menu completion, and make the colors pretty!
+zstyle ':completion:*' menu select yes
+zstyle ':completion:*:default' list-colors ''
+
+# Completers to use: rehash, general completion, then various magic stuff and
+# spell-checking.  Only allow two errors when correcting
+zstyle ':completion:*' completer _force_rehash _complete _ignored _match _correct _approximate _prefix
+zstyle ':completion:*' max-errors 2
+
+# When looking for matches, first try exact matches, then case-insensiive, then
+# partial word completion
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
+#
+# Always do mid-word tab completion
+setopt complete_in_word
+
+autoload -Uz compinit
+compinit
+
 ### Aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -53,6 +72,20 @@ RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd  theme_precmd
+
+### History
+setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+
+### Some..  options
+setopt autocd beep extendedglob nomatch rc_quotes
+unsetopt notify
+
+# Don't count common path separators as word characters
+WORDCHARS=${WORDCHARS//[&.;\/]}
 
 ### Git aliases
 alias gst='git status -sb'

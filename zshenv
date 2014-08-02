@@ -15,4 +15,7 @@ export PATH="$PATH:/usr/local/share/npm/bin"
 # Heroku Toolbelt.
 export PATH="$PATH:/usr/local/heroku/bin"
 
+# Haskell binaries.
+export PATH="$PATH:$HOME/.cabal/bin"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

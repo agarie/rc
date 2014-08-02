@@ -1,5 +1,7 @@
 # Carlos Agarie's profile
 # A collection of environment variables and settings for my shell.
+#
+# LOTS of things here were copied from eevee's zshrc (github.com/eevee/rc).
 
 # Configure this file depending on the OS being used.
 case $(uname -s) in
@@ -12,6 +14,13 @@ case $(uname -s) in
     Linux)
         ;;
 esac
+
+# Force a reload of completion system if nothing matched; this fixes installing
+# a program and then trying to tab-complete its name
+_force_rehash() {
+    (( CURRENT == 1 )) && rehash
+    return 1    # Because we didn't really complete anything
+}
 
 # Always use menu completion, and make the colors pretty!
 zstyle ':completion:*' menu select yes

@@ -13,6 +13,13 @@ case $(uname -s) in
         ;;
 esac
 
+# Force a reload of completion system if nothing matched; this fixes installing
+# a program and then trying to tab-complete its name
+_force_rehash() {
+    (( CURRENT == 1 )) && rehash
+    return 1    # Because we didn't really complete anything
+}
+
 # Always use menu completion, and make the colors pretty!
 zstyle ':completion:*' menu select yes
 zstyle ':completion:*:default' list-colors ''
@@ -94,6 +101,7 @@ alias gc='git commit'
 alias ggpush='git push origin
 alias gp='git push'
 alias gd='git diff'
+alias gb='git branch'
 
 ### Keybindings
 

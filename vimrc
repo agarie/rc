@@ -112,5 +112,8 @@ let g:vim_markdown_folding_disabled = 1
 let g:pymode_folding = 0
 let g:pymode_lint_checker = "pyflakes"
 
+" ctrlp should not worry about compiled files.
+let g:ctrl_custom_ignore = '\.pyc$'
+
 " Remaps.
 nnoremap <Leader>k i<cr><esc>k$

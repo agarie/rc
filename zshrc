@@ -103,6 +103,7 @@ alias gc='git commit'
 alias ggpush='git push origin
 alias gp='git push'
 alias gd='git diff'
+alias gb='git branch'
 
 ### Keybindings
 

@@ -97,13 +97,20 @@ unsetopt notify
 WORDCHARS=${WORDCHARS//[&.;\/]}
 
 ### Git aliases
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
 alias gst='git status -sb'
 alias ga='git add'
 alias gc='git commit'
-alias ggpush='git push origin
+alias ggpush='git push origin $(current_branch)'
 alias gp='git push'
 alias gd='git diff'
 alias gb='git branch'
+alias gco='git checkout'
 
 ### Keybindings
 

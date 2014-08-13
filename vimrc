@@ -87,6 +87,7 @@ syntax enable
 autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
 " See Ruby autocompletion help with :help ft-ruby-omni
 let g:rubycomplete_buffer_loading = 1

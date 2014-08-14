@@ -1,7 +1,6 @@
-# Carlos Agarie's profile
-# A collection of environment variables and settings for my shell.
+# Carlos Agarie's zshrc.
 #
-# LOTS of things here were copied from eevee's zshrc (github.com/eevee/rc).
+# Lots of things were copied from github.com/eevee/rc and oh-my-zsh libraries.
 
 # Configure this file depending on the OS being used.
 case $(uname -s) in
@@ -10,8 +9,18 @@ case $(uname -s) in
         export WORKON_HOME="$HOME/.virtualenvs"
         export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
         source /usr/local/bin/virtualenvwrapper.sh
+
+        # Setup configuration variables for opam.
+        eval `opam config env`
+
+        # Increase available memory for Scala.
+        export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
+
+        # Heroku toolbelt.
+        export PATH="$PATH:/usr/local/heroku/bin"
         ;;
     Linux)
+        # Nothing to do here!
         ;;
 esac
 

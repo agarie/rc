@@ -15,9 +15,6 @@ case $(uname -s) in
 
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
-
-        # Heroku toolbelt.
-        export PATH="$PATH:/usr/local/heroku/bin"
         ;;
     Linux)
         # Nothing to do here!

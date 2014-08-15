@@ -35,12 +35,12 @@ zstyle ':completion:*:default' list-colors ''
 # Completers to use: rehash, general completion, then various magic stuff and
 # spell-checking.  Only allow two errors when correcting
 zstyle ':completion:*' completer _force_rehash _complete _ignored _match _correct _approximate _prefix
-zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' max-errors 5
 
 # When looking for matches, first try exact matches, then case-insensiive, then
 # partial word completion
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
-#
+
 # Always do mid-word tab completion
 setopt complete_in_word
 
@@ -167,3 +167,10 @@ bindkey "\e[A" up-line-or-local-history
 bindkey "\eOA" up-line-or-local-history
 bindkey "\e[B" down-line-or-local-history
 bindkey "\eOB" down-line-or-local-history
+
+if [[ "${terminfo[kcuu1]}" != "" ]]; then
+  bindkey "${terminfo[kcuu1]}" up-line-or-search      # start typing + [Up-Arrow] - fuzzy find history forward
+fi
+if [[ "${terminfo[kcud1]}" != "" ]]; then
+  bindkey "${terminfo[kcud1]}" down-line-or-search    # start typing + [Down-Arrow] - fuzzy find history backward
+fi

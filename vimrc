@@ -7,6 +7,9 @@
 " Preferred mode.
 set nocompatible
 
+" z0mg magic
+set magic
+
 " Backspace can delete STUFF in insert mode.
 set backspace=indent,eol,start
 

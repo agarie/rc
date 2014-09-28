@@ -17,7 +17,9 @@ case $(uname -s) in
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
         ;;
     Linux)
-        # Nothing to do here!
+        eval `ssh-agent`
+        ssh-add
+
         ;;
 esac
 
@@ -82,7 +84,7 @@ theme_precmd () {
 }
 
 setopt prompt_subst
-PROMPT='%B%F{magenta}%c%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %{$reset_color%}λ '
+PROMPT='%B%F{magenta}%c%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %{$reset_color%}'
 RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 autoload -U add-zsh-hook

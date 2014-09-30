@@ -91,7 +91,7 @@ autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype html setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype jinja setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
-autocmd BufNewFile,BufRead *.jinja* set ft=jinja
+autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
 
 " See Ruby autocompletion help with :help ft-ruby-omni
 let g:rubycomplete_buffer_loading = 1

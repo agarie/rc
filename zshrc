@@ -17,8 +17,9 @@ case $(uname -s) in
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
         ;;
     Linux)
-        eval `ssh-agent`
-        ssh-add
+        eval `keychain --eval id_rsa`
+
+        alias xclip='xclip -selection c'
 
         ;;
 esac

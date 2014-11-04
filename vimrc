@@ -91,6 +91,10 @@ autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype html setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype jinja setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
+autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
 
 " See Ruby autocompletion help with :help ft-ruby-omni
 let g:rubycomplete_buffer_loading = 1
@@ -114,7 +118,7 @@ execute pathogen#infect()
 let g:vim_markdown_folding_disabled = 1
 
 let g:pymode_folding = 0
-let g:pymode_lint_checker = "pyflakes"
+" let g:pymode_lint_checker = "pyflakes"
 
 " ctrlp should not worry about compiled files.
 let g:ctrl_custom_ignore = '\.pyc$'

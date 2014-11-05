@@ -46,7 +46,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
 
 # Always do mid-word tab completion
 setopt complete_in_word
-
 autoload -Uz compinit
 compinit
 
@@ -66,7 +65,6 @@ export LC_ALL="en_US.UTF-8"
 
 ### Prompts.
 autoload -U colors && colors
-
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' stagedstr '%F{green}x'
@@ -89,7 +87,7 @@ PROMPT='%B%F{magenta}%c%B%F{green}${vcs_info_msg_0_}%B%F{magenta} %{$reset_color
 RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 autoload -U add-zsh-hook
-add-zsh-hook precmd  theme_precmd
+add-zsh-hook precmd theme_precmd
 
 ### History
 setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
@@ -98,7 +96,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 
-### Some..  options
+### Some...  options
 setopt autocd beep extendedglob nomatch rc_quotes
 unsetopt notify
 
@@ -172,8 +170,8 @@ bindkey "\e[B" down-line-or-local-history
 bindkey "\eOB" down-line-or-local-history
 
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
-  bindkey "${terminfo[kcuu1]}" up-line-or-search      # start typing + [Up-Arrow] - fuzzy find history forward
+  bindkey "${terminfo[kcuu1]}" up-line-or-search # start typing + [Up-Arrow] - fuzzy find history forward
 fi
 if [[ "${terminfo[kcud1]}" != "" ]]; then
-  bindkey "${terminfo[kcud1]}" down-line-or-search    # start typing + [Down-Arrow] - fuzzy find history backward
+  bindkey "${terminfo[kcud1]}" down-line-or-search # start typing + [Down-Arrow] - fuzzy find history backward
 fi

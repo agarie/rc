@@ -19,9 +19,19 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " Enable system clipboard.
 set clipboard=unnamedplus
 
-" Leader
-let mapleader = ","
-let g:mapleader = ","
+" Plugin configuration.
+
+" Start Pathogen.
+execute pathogen#infect()
+
+" Who thought it would be a good idea to enable code folding?!
+let g:vim_markdown_folding_disabled = 1
+
+let g:pymode_folding = 0
+let g:pymode_lint_checker = "pyflakes"
+
+" ctrlp should not worry about compiled files.
+let g:ctrl_custom_ignore = '\.pyc$'
 
 " No cluttering working directory.
 set nobackup " These backups aren't very useful.
@@ -54,6 +64,17 @@ set incsearch   " Incremental search.
 set ignorecase  " Ignore case.
 set smartcase   " ... except when they contain at least one capital letter.
 
+" Open new split panes to right and bottom.
+set splitbelow
+set splitright
+
+" Leader
+let mapleader = ","
+let g:mapleader = ","
+
+" Remaps.
+nnoremap <Leader>k i<cr><esc>k$
+
 " Use ' to reindent lines.
 noremap ' =
 
@@ -64,10 +85,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" Open new split panes to right and bottom.
-set splitbelow
-set splitright
 
 " - and = to navigate between tabs.
 noremap - :tabprevious<CR>
@@ -108,20 +125,3 @@ set background=dark
 set t_Co=256
 " colorscheme solarized
 colorscheme lavalamp
-
-" Plugin configuration.
-
-" Start Pathogen.
-execute pathogen#infect()
-
-" Who thought it would be a good idea to enable code folding?!
-let g:vim_markdown_folding_disabled = 1
-
-let g:pymode_folding = 0
-" let g:pymode_lint_checker = "pyflakes"
-
-" ctrlp should not worry about compiled files.
-let g:ctrl_custom_ignore = '\.pyc$'
-
-" Remaps.
-nnoremap <Leader>k i<cr><esc>k$

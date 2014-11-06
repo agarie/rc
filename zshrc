@@ -15,12 +15,14 @@ case $(uname -s) in
 
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
+
+        alias ll='ls -AGhlv'
         ;;
     Linux)
         eval `keychain --eval id_rsa`
 
         alias xclip='xclip -selection c'
-
+        alias ll='ls -Ahlv --color=auto'
         ;;
 esac
 
@@ -49,10 +51,9 @@ setopt complete_in_word
 autoload -Uz compinit
 compinit
 
-### Aliases.
+# General aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ll='ls -Ahlv'
 
 alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
@@ -63,7 +64,7 @@ alias rake='noglob rake'
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
 
-### Prompts.
+# Prompts.
 autoload -U colors && colors
 autoload -Uz vcs_info
 
@@ -89,21 +90,21 @@ RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
 
-### History
+# History
 setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
 export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 
-### Some...  options
+# Some...  options
 setopt autocd beep extendedglob nomatch rc_quotes
 unsetopt notify
 
 # Don't count common path separators as word characters
 WORDCHARS=${WORDCHARS//[&.;\/]}
 
-### Git aliases
+# Git aliases
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(git rev-parse --short HEAD 2> /dev/null) || return
@@ -119,7 +120,7 @@ alias gd='git diff'
 alias gb='git branch'
 alias gco='git checkout'
 
-### Keybindings
+# Keybindings
 
 bindkey -e
 

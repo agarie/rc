@@ -40,3 +40,9 @@
 [submodule "vim/bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic

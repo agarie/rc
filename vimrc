@@ -23,6 +23,7 @@ set clipboard=unnamedplus
 
 " Start Pathogen.
 execute pathogen#infect()
+execute pathogen#helptags()
 
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1

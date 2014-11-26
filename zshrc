@@ -19,6 +19,9 @@ case $(uname -s) in
         alias ll='ls -AGhlv'
         ;;
     Linux)
+        # I have no idea why zshenv isn't being sourced...
+        source $HOME/.zshenv
+
         eval `keychain --eval id_rsa`
 
         alias xclip='xclip -selection c'

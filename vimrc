@@ -25,6 +25,10 @@ set clipboard=unnamedplus
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" `pylint` is too slow for development.
+let g:syntastic_python_checkers = ['flake8', 'pyflake']
+let g:syntastic_python_flake8_args = '--ignore=E501'
+
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
 

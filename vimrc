@@ -28,8 +28,6 @@ execute pathogen#helptags()
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
 
-let g:pymode_folding = 0
-
 " ctrlp should not worry about compiled files.
 let g:ctrl_custom_ignore = '\.pyc$'
 

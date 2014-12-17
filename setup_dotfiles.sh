@@ -8,3 +8,5 @@ for rc in $DOTFILES; do
 done
 
 mkdir $HOME/.vim/tmp
+
+ln -s $HOME/rc/bin $HOME/bin

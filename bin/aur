@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+#
+# Copied from:
+#   https://github.com/pbrisbin/dotfiles/blob/master/tag-scripts/local/bin/aur
+
+packages='https://aur.archlinux.org/packages'
+package_url=$(printf "$1" | sed "s%^\(..\).*%$packages/\1/&/&.tar.gz%")
+
+curl -# "$package_url" | tar fxz - && (cd "./$1" && makepkg -i -r -s) && rm -rf "./$1"

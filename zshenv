@@ -11,5 +11,3 @@ export PATH="$HOME/.cabal/bin:$PATH"
 
 # My Litle Scripts.
 export PATH="$HOME/rc/bin:$PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

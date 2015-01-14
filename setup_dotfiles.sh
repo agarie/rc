@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 DOTFILES=(ackrc gemrc irbrc pryrc rvmrc vimrc zshenv zshrc gitconfig gitignore_global Rprofile)
 
@@ -8,3 +8,12 @@ for rc in $DOTFILES; do
 done
 
 mkdir $HOME/.vim/tmp
+
+case $(uname -s) in
+  Darwin)
+    ;;
+  Linux)
+    ;;
+esac
+
+# Adicionar os arquivos de configuracao do xmonad, X11 e afins.

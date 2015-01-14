@@ -4,22 +4,29 @@
 "   ryanb - https://github.com/ryanb/dotfiles/blob/master/vimrc
 "   jacob - http://www.stanford.edu/~jacobm/vim.html
 
-" Preferred mode.
 set nocompatible
+set magic " z0mg magic
+set backspace=indent,eol,start " Backspace can delete STUFF in insert mode.
+set clipboard=unnamedplus " Enable system clipboard.
+set nofoldenable " Code folding is ugly.
+set nocursorcolumn " Remove cursor in column
+set cursorline   " Line cursors aren't necessary with relativenumber set.
+set synmaxcol=100  " Only use syntax highlighting in small lines.
+syntax sync minlines=256
 
-" z0mg magic
-set magic
+" No cluttering working directory.
+set nobackup " These backups aren't very useful.
+set directory=~/.vim/tmp
 
-" Backspace can delete STUFF in insert mode.
-set backspace=indent,eol,start
+" Line and columns numbers.
+set number
+set numberwidth=4
+set ruler
+set relativenumber " Line numbers spread from 0.
+
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-
-" Enable system clipboard.
-set clipboard=unnamedplus
-
-" Plugin configuration.
 
 " Start Pathogen.
 execute pathogen#infect()
@@ -34,25 +41,6 @@ let g:vim_markdown_folding_disabled = 1
 
 " ctrlp should not worry about compiled files.
 let g:ctrl_custom_ignore = '\.pyc$'
-
-" No cluttering working directory.
-set nobackup " These backups aren't very useful.
-set directory=~/.vim/tmp
-
-" Fix vim slowdowns.
-set nocursorcolumn " Remove cursor in column
-set cursorline   " Line cursors aren't necessary with relativenumber set.
-set synmaxcol=100  " Only use syntax highlighting in small lines.
-syntax sync minlines=256
-
-" Code folding is ugly.
-set nofoldenable
-
-" Line and columns numbers.
-set number
-set numberwidth=4
-set ruler
-set relativenumber " Line numbers spread from 0.
 
 " Soft tabs with 2 spaces.
 set tabstop=2

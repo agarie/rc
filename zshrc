@@ -80,7 +80,7 @@ theme_precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats ' [%b%c%u%B%F{green}]'
     } else {
-        zstyle ':vcs_info:*' formats ' [%b%c%u%B%F{red}●F{green}]'
+        zstyle ':vcs_info:*' formats ' [%b%c%u%B%F{red}●%F{green}]'
     }
 
     vcs_info

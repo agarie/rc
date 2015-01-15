@@ -152,22 +152,9 @@ bindkey "\eOd" emacs-backward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 
-# for non RH/Debian xterm, can't hurt for RH/Debian xterm
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
-
-# Tab completion
-bindkey '^i' complete-word # tab to do menu
-bindkey "\e[Z" reverse-menu-complete # shift-tab to reverse menu
+bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
-
-if [[ "${terminfo[kcuu1]}" != "" ]]; then
-  bindkey "${terminfo[kcuu1]}" up-line-or-search # start typing + [Up-Arrow] - fuzzy find history forward
-fi
-if [[ "${terminfo[kcud1]}" != "" ]]; then
-  bindkey "${terminfo[kcud1]}" down-line-or-search # start typing + [Down-Arrow] - fuzzy find history backward
-fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

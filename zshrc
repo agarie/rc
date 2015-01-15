@@ -56,9 +56,6 @@ alias ruby_webserver='ruby -rwebrick -e \
 # Solve the problem with rake arguments.
 alias rake='noglob rake'
 
-# There are some programs that set -o vi depending on the value of $EDITOR.
-set -o emacs
-
 function geekie() {
     cd ~/Projects/geekie
     pwd
@@ -133,6 +130,9 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 
 # Keybindings
 
+# There are some programs that set -o vi depending on the value of $EDITOR.
+set -o emacs
+
 bindkey -e
 
 # General movement
@@ -160,26 +160,8 @@ bindkey "\eOF" end-of-line
 bindkey '^i' complete-word # tab to do menu
 bindkey "\e[Z" reverse-menu-complete # shift-tab to reverse menu
 
-# Up/down arrow.
-# I want shared history for ^R, but I don't want another shell's activity to
-# mess with up/down. This does that.
-down-line-or-local-history() {
-    zle set-local-history 1
-    zle down-line-or-history
-    zle set-local-history 0
-}
-zle -N down-line-or-local-history
-up-line-or-local-history() {
-    zle set-local-history 1
-    zle up-line-or-history
-    zle set-local-history 0
-}
-zle -N up-line-or-local-history
-
-bindkey "\e[A" up-line-or-local-history
-bindkey "\eOA" up-line-or-local-history
-bindkey "\e[B" down-line-or-local-history
-bindkey "\eOB" down-line-or-local-history
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   bindkey "${terminfo[kcuu1]}" up-line-or-search # start typing + [Up-Arrow] - fuzzy find history forward

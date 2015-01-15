@@ -13,10 +13,8 @@ set nocursorcolumn " Remove cursor in column
 set cursorline   " Line cursors aren't necessary with relativenumber set.
 set synmaxcol=100  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
-
-" No cluttering working directory.
-set nobackup " These backups aren't very useful.
-set directory=~/.vim/tmp
+set nobackup " LOL BACKUPS
+set noswapfile
 
 " Line and columns numbers.
 set number
@@ -38,9 +36,6 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
-
-" ctrlp should not worry about compiled files.
-let g:ctrl_custom_ignore = '\.pyc$'
 
 " Soft tabs with 2 spaces.
 set tabstop=2
@@ -98,8 +93,6 @@ autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype jinja setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
 
@@ -113,5 +106,4 @@ let g:ruby_path = "$HOME/.rvm/rubies/default/bin/ruby"
 " Syntax highlighting.
 set background=dark
 set t_Co=256
-" colorscheme solarized
 colorscheme lavalamp

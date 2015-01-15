@@ -35,6 +35,14 @@ case $(uname -s) in
         ;;
 esac
 
+# There are some programs that set -o vi depending on the value of $EDITOR.
+set -o emacs
+
+function geekie() {
+    cd ~/Projects/geekie
+    pwd
+}
+
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name
 _force_rehash() {
@@ -73,7 +81,7 @@ alias rake='noglob rake'
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
 
-# Prompts.
+# Prompts. Mostly copied from Oh My ZShell.
 autoload -U colors && colors
 autoload -Uz vcs_info
 
@@ -104,7 +112,6 @@ setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hi
 export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
-
 
 # Some...  options
 setopt autocd beep extendedglob nomatch rc_quotes

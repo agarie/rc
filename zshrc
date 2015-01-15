@@ -13,10 +13,16 @@ case $(uname -s) in
         # Setup configuration variables for opam.
         eval `opam config env`
 
+        # OPAM configuration
+        . /Users/carlosagarie/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
         alias ll='ls -AGhlv'
+
+        # Some stuff I use at work.
+        source $HOME/.constants
         ;;
     Linux)
         # I have no idea why zshenv isn't being sourced...

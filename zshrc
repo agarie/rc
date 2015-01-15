@@ -2,7 +2,7 @@
 #
 # Lots of things were copied from github.com/eevee/rc and oh-my-zsh libraries.
 
-# Configure this file depending on the OS being used.
+# Configuration dependant on the OS being used.
 case $(uname -s) in
     Darwin)
         # Virtualenvwrapper.
@@ -12,9 +12,7 @@ case $(uname -s) in
 
         # Setup configuration variables for opam.
         eval `opam config env`
-
-        # OPAM configuration
-        . /Users/carlosagarie/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+        . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
@@ -25,15 +23,38 @@ case $(uname -s) in
         source $HOME/.constants
         ;;
     Linux)
-        # I have no idea why zshenv isn't being sourced...
-        source $HOME/.zshenv
-
         eval `keychain --eval id_rsa`
 
         alias xclip='xclip -selection c'
         alias ll='ls -Ahlv --color=auto'
         ;;
 esac
+
+# Git aliases.
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+alias gst='git status -sb'
+alias ga='git add'
+alias gc='git commit'
+alias ggpush='git push origin $(current_branch)'
+alias gp='git push'
+alias gd='git diff'
+alias gb='git branch'
+alias gco='git checkout'
+
+# General aliases.
+alias ..='cd ..'
+alias ...='cd ../..'
+
+alias ruby_webserver='ruby -rwebrick -e \
+  "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
+
+# Solve the problem with rake arguments.
+alias rake='noglob rake'
 
 # There are some programs that set -o vi depending on the value of $EDITOR.
 set -o emacs
@@ -67,16 +88,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
 setopt complete_in_word
 autoload -Uz compinit
 compinit
-
-# General aliases.
-alias ..='cd ..'
-alias ...='cd ../..'
-
-alias ruby_webserver='ruby -rwebrick -e \
-  "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
-
-# Solve the problem with rake arguments.
-alias rake='noglob rake'
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
@@ -113,28 +124,12 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# Some...  options
-setopt autocd beep extendedglob nomatch rc_quotes
+# Some...  options.
+setopt autocd beep extendedglob nomatch rcquotes
 unsetopt notify
 
 # Don't count common path separators as word characters
 WORDCHARS=${WORDCHARS//[&.;\/]}
-
-# Git aliases
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
-}
-
-alias gst='git status -sb'
-alias ga='git add'
-alias gc='git commit'
-alias ggpush='git push origin $(current_branch)'
-alias gp='git push'
-alias gd='git diff'
-alias gb='git branch'
-alias gco='git checkout'
 
 # Keybindings
 

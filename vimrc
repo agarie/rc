@@ -5,6 +5,7 @@
 "   jacob - http://www.stanford.edu/~jacobm/vim.html
 
 set nocompatible
+set hidden
 set magic " z0mg magic
 set backspace=indent,eol,start " Backspace can delete STUFF in insert mode.
 set clipboard=unnamedplus " Enable system clipboard.
@@ -15,6 +16,7 @@ set synmaxcol=100  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 set nobackup " LOL BACKUPS
 set noswapfile
+set laststatus=2 " Show statusline in last window as well.
 
 " Soft tabs with 2 spaces.
 set tabstop=2
@@ -32,19 +34,24 @@ set smartcase   " ... except when they contain at least one capital letter.
 set splitbelow
 set splitright
 
-" Show statusline in last window as well.
-set laststatus=2
-
 " Display path relative to current dir in statusline. Taken from:
 " http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" Color scheme.
+set background=dark
+set t_Co=256
+colorscheme lavalamp
 
-" Start Pathogen.
+" Pathogen and bundles.
+"""""""""""""""""""""""
+
 execute pathogen#infect()
 execute pathogen#helptags()
+
+" See Ruby autocompletion help with :help ft-ruby-omni
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
 
 " `pylint` is too slow for development.
 let g:syntastic_python_checkers = ['flake8', 'pyflake']
@@ -53,47 +60,38 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
 
-" Leader
+" Remaps.
+"""""""""
+
+" Use comma as the leader key.
 let mapleader = ","
 let g:mapleader = ","
 
-" Remaps.
+" Use ,k to break into a new line.
 nnoremap <Leader>k i<cr><esc>k$
 
-" Use ' to reindent lines.
-noremap ' =
-
-" Splits & tabs.
-" Use :sp for splits and :vsp for vertical ones.
-" This allows you to use ^J, ^K, ^L and ^H to navigate between them.
+" Use ^J, ^K, ^L and ^H to navigate between splits.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" - and = to navigate between tabs.
-noremap - :tabprevious<CR>
-noremap = :tabnext<CR>
+" Use ,- and ,= to navigate between tabs.
+noremap <Leader>- :tabprevious<CR>
+noremap <Leader>= :tabnext<CR>
 
 " Language configuration.
+"""""""""""""""""""""""""
 
 filetype plugin indent on
 syntax on
 syntax enable
 
-" Python, Java and Scala are better with 4 spaces.
-autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype java setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype scala setlocal tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype javascript setlocal tabstop=4 softtabstop=4 shiftwidth=4
-
+" Indentation for various languages.
+autocmd Filetype python,java,scala,javascript set sw=4 sts=4 et
+autocmd FileType ruby,haml,eruby,yaml,html,jinja,sass,cucumber set sw=2 sts=2 et
 autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
 
-" See Ruby autocompletion help with :help ft-ruby-omni
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-" Syntax highlighting.
-set background=dark
-set t_Co=256
-colorscheme lavalamp

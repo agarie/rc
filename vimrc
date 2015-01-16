@@ -70,6 +70,10 @@ let g:mapleader = ","
 " Use ,k to break into a new line.
 nnoremap <Leader>k i<cr><esc>k$
 
+" Use ,e to edit files in the current directory.
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <Leader>e :edit %%<cr>
+
 " Use ^J, ^K, ^L and ^H to navigate between splits.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

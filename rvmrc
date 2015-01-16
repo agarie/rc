@@ -1,2 +1,0 @@
-# Compile with 2 jobs, one for each core.
-rvm_make_flags="-j 2"

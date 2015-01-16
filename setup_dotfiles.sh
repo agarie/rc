@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
-DOTFILES=(ackrc gemrc irbrc pryrc rvmrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile)
+DOTFILES=(ackrc gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile)
 
 # Make symlinks for all the files in the `rc` repository.
 for rc in $DOTFILES; do
+  rm $HOME/.$rc
   ln -s $HOME/rc/$rc $HOME/.$rc
 done
 

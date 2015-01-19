@@ -4,11 +4,11 @@ DOTFILES=(ackrc gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignor
 
 # Make symlinks for all the files in the `rc` repository.
 for rc in $DOTFILES; do
-  rm $HOME/.$rc
-  ln -s $HOME/rc/$rc $HOME/.$rc
+  rm ~/.$rc
+  ln -s ~/rc/$rc ~/.$rc
 done
 
-mkdir $HOME/.vim/tmp
+ln -s ~/rc/vim ~/.vim
 
 case $(uname -s) in
   Darwin)

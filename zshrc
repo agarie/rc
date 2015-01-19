@@ -6,21 +6,26 @@
 case $(uname -s) in
     Darwin)
         # Virtualenvwrapper.
-        export WORKON_HOME="$HOME/.virtualenvs"
-        export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
-        source /usr/local/bin/virtualenvwrapper.sh
+        if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+            export WORKON_HOME="$HOME/.virtualenvs"
+            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+            source /usr/local/bin/virtualenvwrapper.sh
+        fi
 
         # Setup configuration variables for opam.
-        eval `opam config env`
-        . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+        if [ -x opam ]; then
+            eval `opam config env`
+            . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+        fi
 
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
         alias ll='ls -AGhlv'
 
-        # Some stuff I use at work.
-        source $HOME/.constants
+        # Setup chruby and Ruby 2.1.
+        source /usr/local/share/chruby/chruby.sh
+        chruby ruby-2.1
         ;;
     Linux)
         eval `keychain --eval id_rsa`
@@ -157,5 +162,3 @@ bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM.

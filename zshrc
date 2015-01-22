@@ -64,7 +64,6 @@ alias rake='noglob rake'
 function geekie() {
     cd ~/Projects/geekie
     pwd
-    workon common
 }
 
 # Force a reload of completion system if nothing matched; this fixes installing

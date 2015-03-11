@@ -8,7 +8,7 @@ case $(uname -s) in
         # Virtualenvwrapper.
         if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
             export WORKON_HOME="$HOME/.virtualenvs"
-            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python"
+            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
             source /usr/local/bin/virtualenvwrapper.sh
         fi
 
@@ -61,8 +61,9 @@ alias ruby_webserver='ruby -rwebrick -e \
 # Solve the problem with rake arguments.
 alias rake='noglob rake'
 
-function geekie() {
-    cd ~/Projects/geekie
+function tapps() {
+    cd ~/Projects/TappsData
+    workon datasci
     pwd
 }
 

@@ -7,6 +7,5 @@ def timestamp2date(t)
 end
 
 while line = STDIN.gets
-  puts line
   puts timestamp2date(line.strip)
 end

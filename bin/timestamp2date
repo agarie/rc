@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# Given a UNIX timestamp, e.g. 1421884800, return a UTC DateTime.
+
+def timestamp2date(t)
+  Time.at(t.to_i).utc
+end
+
+while line = STDIN.gets
+  puts line
+  puts timestamp2date(line.strip)
+end

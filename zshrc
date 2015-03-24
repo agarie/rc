@@ -22,10 +22,6 @@ case $(uname -s) in
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
         alias ll='ls -AGhlv'
-
-        # Setup chruby and Ruby 2.1.
-        source /usr/local/share/chruby/chruby.sh
-        chruby ruby-2.1
         ;;
     Linux)
         eval `keychain --eval id_rsa`
@@ -34,6 +30,10 @@ case $(uname -s) in
         alias ll='ls -Ahlv --color=auto'
         ;;
 esac
+
+# Setup chruby and Ruby 2.1.
+source /usr/local/share/chruby/chruby.sh
+chruby ruby 2.1.5
 
 # Git aliases.
 function current_branch() {

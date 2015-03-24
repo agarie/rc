@@ -22,6 +22,9 @@ case $(uname -s) in
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
         alias ll='ls -AGhlv'
+
+        # hi R
+        export R_HOME=/Library/Frameworks/R.framework/Resources
         ;;
     Linux)
         eval `keychain --eval id_rsa`

@@ -27,8 +27,6 @@ case $(uname -s) in
         export R_HOME=/Library/Frameworks/R.framework/Resources
         ;;
     Linux)
-        eval `keychain --eval id_rsa`
-
         alias xclip='xclip -selection c'
         alias ll='ls -Ahlv --color=auto'
         ;;

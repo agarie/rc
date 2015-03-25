@@ -9,12 +9,3 @@ for rc in $DOTFILES; do
 done
 
 ln -s ~/rc/vim ~/.vim
-
-case $(uname -s) in
-  Darwin)
-    ;;
-  Linux)
-    ;;
-esac
-
-# Adicionar os arquivos de configuracao do xmonad, X11 e afins.

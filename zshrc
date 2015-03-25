@@ -21,10 +21,11 @@ case $(uname -s) in
         # Increase available memory for Scala.
         export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
-        alias ll='ls -AGhlv'
-
         # hi R
         export R_HOME=/Library/Frameworks/R.framework/Resources
+
+        alias julia='/Applications/Julia-0.3.6.app/Contents/Resources/julia/bin/julia'
+        alias ll='ls -AGhlv'
         ;;
     Linux)
         alias xclip='xclip -selection c'

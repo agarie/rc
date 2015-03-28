@@ -4,34 +4,38 @@
 
 # Configuration dependant on the OS being used.
 case $(uname -s) in
-    Darwin)
-        # Virtualenvwrapper.
-        if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-            export WORKON_HOME="$HOME/.virtualenvs"
-            export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
-            source /usr/local/bin/virtualenvwrapper.sh
-        fi
+  Darwin)
+    # Homebrew installs binaries in /usr/local/bin.
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-        # Setup configuration variables for opam.
-        if [ -x opam ]; then
-            eval `opam config env`
-            . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-        fi
+    # Setup configuration variables for opam.
+    if [ -x opam ]; then
+      eval `opam config env`
+      . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+    fi
 
-        # Increase available memory for Scala.
-        export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
+    # Increase available memory for Scala.
+    export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
-        # hi R
-        export R_HOME=/Library/Frameworks/R.framework/Resources
+    alias ll='ls -AGhlv'
 
-        alias julia='/Applications/Julia-0.3.6.app/Contents/Resources/julia/bin/julia'
-        alias ll='ls -AGhlv'
-        ;;
-    Linux)
-        alias xclip='xclip -selection c'
-        alias ll='ls -Ahlv --color=auto'
-        ;;
+    # hi R
+    export R_HOME=/Library/Frameworks/R.framework/Resources
+
+    alias julia='/Applications/Julia-0.3.6.app/Contents/Resources/julia/bin/julia'
+    ;;
+  Linux)
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
+    alias xclip='xclip -selection c'
+    alias ll='ls -Ahlv --color=auto'
+    ;;
 esac
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+  export WORKON_HOME=$HOME/.virtualenvs
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # Setup chruby and Ruby 2.1.
 source /usr/local/share/chruby/chruby.sh

@@ -8,12 +8,6 @@ case $(uname -s) in
     # Homebrew installs binaries in /usr/local/bin.
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-    # Setup configuration variables for opam.
-    if [ -x opam ]; then
-      eval `opam config env`
-      . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-    fi
-
     # Increase available memory for Scala.
     export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 

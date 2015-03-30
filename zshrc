@@ -50,6 +50,7 @@ alias gp='git push'
 alias gd='git diff'
 alias gb='git branch'
 alias gco='git checkout'
+alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
 
 # General aliases.
 alias ..='cd ..'

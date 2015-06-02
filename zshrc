@@ -16,7 +16,7 @@ case $(uname -s) in
     # hi R
     export R_HOME=/Library/Frameworks/R.framework/Resources
 
-    alias julia='/Applications/Julia-0.3.6.app/Contents/Resources/julia/bin/julia'
+    alias julia='/Applications/Julia-0.3.8.app/Contents/Resources/julia/bin/julia'
     ;;
   Linux)
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

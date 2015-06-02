@@ -13,9 +13,6 @@ case $(uname -s) in
 
     alias ll='ls -AGhlv'
 
-    # hi R
-    export R_HOME=/Library/Frameworks/R.framework/Resources
-
     alias julia='/Applications/Julia-0.3.8.app/Contents/Resources/julia/bin/julia'
     ;;
   Linux)

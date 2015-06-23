@@ -53,6 +53,7 @@ alias gpall='git push origin $(current_branch) && git push upstream $(current_br
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias be='bundle exec'
 alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
 

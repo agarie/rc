@@ -161,8 +161,11 @@ bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 
 autoload -U history-search-end
 
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
+# From: https://bbs.archlinux.org/viewtopic.php?id=149977
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
 
-bindkey "\e[A" history-beginning-search-backward-end
-bindkey "\e[B" history-beginning-search-forward-end
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search

@@ -60,12 +60,6 @@ alias ruby_webserver='ruby -rwebrick -e \
 # Solve the problem with rake arguments.
 alias rake='noglob rake'
 
-function tapps() {
-    cd ~/Projects/TappsData
-    workon datasci
-    pwd
-}
-
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name
 _force_rehash() {

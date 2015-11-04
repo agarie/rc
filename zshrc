@@ -131,29 +131,9 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 
 # There are some programs that set -o vi depending on the value of $EDITOR.
 set -o emacs
-
 bindkey -e
 
-# General movement
-# Taken from http://wiki.archlinux.org/index.php/Zsh and Ubuntu's inputrc
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" quoted-insert
-bindkey "\e[1;5C" forward-word
-bindkey "\e[1;5D" backward-word
-bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
-bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
-bindkey "\e\e[C" forward-word
-bindkey "\e\e[D" backward-word
-
 bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
-
-autoload -U history-search-end
 
 # Bind up and down arrows to history search.
 autoload -Uz up-line-or-beginning-search

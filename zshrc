@@ -139,5 +139,10 @@ bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 
+# Mac OS X.
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# Ubuntu.
+bindkey "^[OA" history-beginning-search-backward
+bindkey "^[OB" history-beginning-search-forward

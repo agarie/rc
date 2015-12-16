@@ -14,23 +14,7 @@ end
 
 # A small function to fix the encoding of Windows-originated files.
 def fix_encoding(fn)
-  q = File.read(fn)
-  File.open(fn, 'w') { |f| f << q.encode("UTF-8", "ISO-8859-1") }
+  File.open(fn) do |q|
+    File.open(fn, 'w') { |f| f << q.read.encode("UTF-8", "ISO-8859-1") }
+  end
 end
-
-# Not using this currently because there should be a better way. :|
-# Pry everywhere.
-# begin
-#   require 'pry'
-#
-#   # Configuration similar to the `--simple-prompt` flag.
-#   Pry.config.prompt = [
-#     Proc.new { ">> " },
-#     Proc.new { " | " }
-#   ]
-#
-#   Pry.start
-#   exit
-# rescue LoadError
-#   p "Can't load Pry!"
-# end

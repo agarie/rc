@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-APP_ID=$1
-RESULT=$2
-
-tar zcf $APP_ID.tar.gz $APP_ID/
-mv $APP_ID.tar.gz $RESULT
-rm -r $APP_ID/

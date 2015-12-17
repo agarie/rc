@@ -146,3 +146,8 @@ bindkey "^[[B" history-beginning-search-forward
 # Ubuntu.
 bindkey "^[OA" history-beginning-search-backward
 bindkey "^[OB" history-beginning-search-forward
+
+## Machine-specific configuration.
+## 
+
+source ~/.zlocal

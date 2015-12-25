@@ -133,6 +133,23 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 set -o emacs
 bindkey -e
 
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "\e[8~" end-of-line
+bindkey "\e[7~" beginning-of-line
+
 bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 
 # Bind up and down arrows to history search.
@@ -148,6 +165,6 @@ bindkey "^[OA" history-beginning-search-backward
 bindkey "^[OB" history-beginning-search-forward
 
 ## Machine-specific configuration.
-## 
+##
 
 source ~/.zlocal

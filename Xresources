@@ -1,3 +1,5 @@
+! Ver: https://gist.github.com/yevgenko/1167205
+
 ! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
 ! URxvt*depth: bitdepth
 
@@ -16,7 +18,7 @@
 ! Use the specified colour for the colour value n, where 0-7 corresponds to low-intensity (normal) colours and 8-15 corresponds to high-
 ! URxvt*colorn: colour
 
-! 
+!
 ! URxvt*colorBD: colour
 
 ! Use the specified colour to display bold or italic characters when the foreground colour is the default. If font styles are not available
@@ -72,7 +74,7 @@
 
 ! URxvt*boldFont: fontlist
 
-! 
+!
 ! URxvt*italicFont: fontlist
 
 ! The font list to use for displaying bold, italic or bold italic characters, respectively.
@@ -192,7 +194,7 @@
 ! The characters used as delimiters for double-click word selection (whitespace delimiting is added automatically if resource is given).
 ! URxvt*cutchars: string
 
-! 
+!
 ! URxvt*{|}
 
 ! OverTheSpot, OffTheSpot, Root; option -pt.

@@ -1,3 +1,4 @@
+mkdir ~/Downloads
 cd ~/Downloads
 
 wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz

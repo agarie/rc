@@ -30,7 +30,7 @@ fi
 
 # Setup chruby and Ruby 2.1.
 source /usr/local/share/chruby/chruby.sh
-chruby 2.2
+chruby 2.3
 
 # Git aliases.
 function current_branch() {

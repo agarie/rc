@@ -4,13 +4,18 @@
 COMMON=(ackrb gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile)
 LINUX=(i3status.conf Xdefaults)
 
+# Clean existing dotfile, then create a symlink and fix permission.
+function link_dotfile {
+  rm -f ~/.$1
+  ln -s $1 ~/.$1
+}
+
 # There are some vim bundles added as submodules.
 git submodule update --init
 
 # Symlinks for all operating systems.
 for f in $COMMON; do
-  rm -f ~/.$f
-  ln -s $f ~/.$f
+  link_dotfile $f
 done
 
 case $(uname -s) in
@@ -25,8 +30,7 @@ case $(uname -s) in
   # Should change depending on Ubuntu or Arch Linux...
   Linux)
     for f in $LINUX; do
-      rm -f ~/.$f
-      ln -s $f ~/.$f
+      link_dotfile $f
     done
 
   ;;

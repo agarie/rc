@@ -7,7 +7,7 @@ LINUX=(i3status.conf Xdefaults)
 # Clean existing dotfile, then create a symlink and fix permission.
 function link_dotfile {
   rm -f ~/.$1
-  ln -s $1 ~/.$1
+  ln -s $PWD/$1 ~/.$1
 }
 
 # There are some vim bundles added as submodules.

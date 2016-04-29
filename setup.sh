@@ -2,7 +2,7 @@
 
 # Dotfiles per operating system.
 COMMON=(ackrb gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile)
-LINUX=(i3status.conf Xresources)
+LINUX=(i3status.conf Xdefaults)
 
 # There are some vim bundles added as submodules.
 git submodule update --init

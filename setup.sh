@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Dotfiles per operating system.
-COMMON=(ackrb gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile)
+COMMON=(ackrb gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile tmux.conf)
 LINUX=(i3status.conf Xdefaults)
 
 # Clean existing dotfile, then create a symlink and fix permission.
@@ -12,6 +12,10 @@ function link_dotfile {
 
 # There are some vim bundles added as submodules.
 git submodule update --init
+
+# Vim configuration.
+rm -f ~/.vim
+ln -s ~/rc/vim ~/.vim
 
 # Symlinks for all operating systems.
 for f in $COMMON; do
@@ -33,16 +37,12 @@ case $(uname -s) in
       link_dotfile $f
     done
 
+    # i3wm configuration.
+    mkdir -p ~/.config/i3
+    ln -s ~/rc/i3_config ~/.config/i3/config
+
   ;;
 esac
-
-# Vim configuration.
-rm -f ~/.vim
-ln -s ~/rc/vim ~/.vim
-
-# i3wm configuration.
-mkdir -p ~/.config/i3
-ln -s ~/rc/i3_config ~/.config/i3/config
 
 #
 # Software installation.

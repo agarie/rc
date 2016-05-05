@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Dotfiles per operating system.
-COMMON=(ackrb gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile tmux.conf)
+COMMON=(ackrc gemrc irbrc pryrc vimrc zshenv zprofile zshrc gitconfig gitignore_global Rprofile tmux.conf)
 LINUX=(i3status.conf Xdefaults)
 
 # Clean existing dotfile, then create a symlink and fix permission.
@@ -48,18 +48,23 @@ esac
 # Software installation.
 #
 
-# BLAS and LAPACK.
-# - install openblas/atlas.
-
 # Ruby.
-# - install ruby-install, chruby
-# - install latest ruby
-# - for each ruby, install: pry, bundler, smarter_csv, nokogiri, iruby
-# - eventually NMatrix, statsample, statsample-{glm,timeseries}, distribution, integration,
-#   minimization, plotrb, nyaplot
 
+# ruby-install is a tool to install various versions of Ruby easily.
 sudo ./install/ruby-install.sh
+
+# chruby is a tool to choose which Ruby version to use.
 sudo ./install/chruby.sh
+
+# Update Ruby versions list.
+ruby-install
+
+# Install latest version of MRI and enable it.
+ruby-install ruby 2.3
+chruby 2.3
+
+# I expect bundler and pry to be installed for each Ruby.
+gem install bundler pry
 
 # Python.
 
@@ -69,11 +74,13 @@ sudo ./install/chruby.sh
 #   csvkit, pep8, jedi
 # - create a virtualenv "datasci" with --use-site-packages
 
+# Haskell.
+
 # C/C++.
 
-# - install gcc-4.9/g++-4.9
+# - install latest gcc/clang.
 # - C:
-# - C++: libboost (latest stable)
+# - C++: libboost
 
 # Julia.
 

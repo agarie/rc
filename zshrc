@@ -28,7 +28,7 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-# Setup chruby and Ruby 2.1.
+# Setup chruby and Ruby.
 source /usr/local/share/chruby/chruby.sh
 chruby 2.3
 
@@ -49,16 +49,15 @@ alias gb='git branch'
 alias gco='git checkout'
 alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
 
-# General aliases.
-alias ..='cd ..'
-alias ...='cd ../..'
-
+# Ruby aliases.
 alias be='bundle exec'
 alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
+alias rake='noglob rake' # Solve the problem with rake arguments.
 
-# Solve the problem with rake arguments.
-alias rake='noglob rake'
+# General aliases.
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name

@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Dotfiles per operating system.
-COMMON=(ackrc gemrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global Rprofile tmux.conf)
+COMMON=(ackrc irbrc pryrc vimrc zprofile zshenv zshrc gitconfig gitignore_global tmux.conf)
 LINUX=(i3status.conf Xdefaults)
 
 # Clean existing dotfile, then create a symlink and fix permission.

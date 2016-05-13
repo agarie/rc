@@ -41,7 +41,7 @@ function current_branch() {
 
 alias gst='git status -sb'
 alias ga='git add'
-alias gc='git commit'
+alias gc='git commit --verbose'
 alias ggpush='git push origin $(current_branch)'
 alias gp='git push'
 alias gd='git diff'

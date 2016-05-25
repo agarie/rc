@@ -3,7 +3,7 @@
   email = carlos.agarie@gmail.com
 
 [color]
-	ui = true
+  ui = true
   branch = auto
   diff = auto
   status = auto
@@ -28,7 +28,7 @@
   conflictstyle = diff3
 
 [core]
-	editor = /usr/bin/env vim
+  editor = /usr/bin/env vim
 
 [push]
-	default = matching
+  default = matching

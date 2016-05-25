@@ -1,6 +1,6 @@
 [user]
-	name = Carlos Agarie
-	email = carlos.agarie@gmail.com
+  name = Carlos Agarie
+  email = carlos.agarie@gmail.com
 
 [color]
 	ui = true
@@ -28,7 +28,6 @@
   conflictstyle = diff3
 
 [core]
-	excludesfile = /Users/carlosagarie/.gitignore_global
 	editor = /usr/bin/env vim
 
 [push]

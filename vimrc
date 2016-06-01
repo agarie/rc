@@ -10,7 +10,6 @@ set hidden
 set magic " z0mg magic
 set backspace=indent,eol,start " Backspace can delete STUFF in insert mode.
 set clipboard=unnamedplus " Enable system clipboard.
-set nofoldenable " Code folding is ugly.
 set number " Line numbers.
 set cursorline   " Line cursors aren't necessary with relativenumber set.
 set synmaxcol=100  " Only use syntax highlighting in small lines.

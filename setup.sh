@@ -2,7 +2,7 @@
 
 # Dotfiles per operating system.
 COMMON=(ackrc gitconfig gitignore_global irbrc pryrc vim vimrc zprofile zshenv zshrc)
-LINUX=(i3status.conf Xdefaults tmux.conf)
+LINUX=(i3status.conf XCompose Xdefaults tmux.conf)
 RC=$(dirname $0:A)
 
 # Backup existing dotfile, then create a symlink.
@@ -27,19 +27,8 @@ done
 
 case $(uname -s) in
   Darwin)
-    # Install Homebrew.
-    if whence brew > /dev/null; then
-      "Installing Homebrew..."
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    else
-      "Homebrew detected. Updating packages..."
-      brew update
-    fi
-
-    brew install ruby-install chruby haskell-platform python python3
-    cabal update
-    pip install virtualenv virtualenvwrapper
   ;;
+
   # TODO: Should change depending on Ubuntu or Arch Linux...
   Linux)
     for f in $LINUX; do

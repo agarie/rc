@@ -12,7 +12,7 @@ set backspace=indent,eol,start " Backspace can delete STUFF in insert mode.
 set clipboard=unnamedplus " Enable system clipboard.
 set number " Line numbers.
 set cursorline   " Line cursors aren't necessary with relativenumber set.
-set synmaxcol=150  " Only use syntax highlighting in small lines.
+set synmaxcol=200  " Only use syntax highlighting in small lines.
 syntax sync minlines=256
 set nobackup " LOL BACKUPS
 set noswapfile

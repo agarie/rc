@@ -7,28 +7,30 @@
 
 set nocompatible
 set hidden
-set magic " z0mg magic
-set backspace=indent,eol,start " Backspace can delete STUFF in insert mode.
-set clipboard=unnamedplus " Enable system clipboard.
-set number " Line numbers.
-set cursorline   " Line cursors aren't necessary with relativenumber set.
-set synmaxcol=200  " Only use syntax highlighting in small lines.
+set magic                         " z0mg magic
+set backspace=indent,eol,start    " Backspace can delete stuff in insert mode.
+set clipboard=unnamedplus         " Enable system clipboard.
+set number                        " Show line numbers.
+set cursorline                    " Line cursors aren't necessary with relativenumber set.
+set synmaxcol=200                 " Only use syntax highlighting in small lines.
 syntax sync minlines=256
-set nobackup " LOL BACKUPS
+set nobackup                      " LOL BACKUPS
 set noswapfile
-set laststatus=2 " Show statusline in last window as well.
+set laststatus=2                  " Show statusline in last window as well.
 
 " Soft tabs with 2 spaces.
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+set autoindent                    " Copies the current line indentation when CRing or CTRL-o / CTRL-O.
+set tabstop=8                     " Hard tabs (eww) are equivalent to 8 spaces.
+set softtabstop=2                 " Tab key, 1 tab = 2 spaces.
+set shiftwidth=2                  " Autoindent, 1 tab = 2 spaces.
+set shiftround                    " Indentation is set to multiples of shiftwidth.
+set expandtab                     " Never use hard tabs. To insert one, use CTRL-V <Tab>.
 
 " Searching
-set hlsearch    " Highlight matches.
-set incsearch   " Incremental search.
-set ignorecase  " Ignore case.
-set smartcase   " ... except when they contain at least one capital letter.
+set hlsearch                      " Highlight matches.
+set incsearch                     " Incremental search.
+set ignorecase                    " Ignore case...
+set smartcase                     " ... except when they contain at least one capital letter.
 
 " Open new split panes to right and bottom.
 set splitbelow

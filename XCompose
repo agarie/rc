@@ -60,6 +60,9 @@ include "%L"
 <Multi_key> <underscore> <parenleft>   	: "₍"   U208D # SUBSCRIPT LEFT PARENTHESIS
 <Multi_key> <underscore> <parenright> 	: "₎"   U208E # SUBSCRIPT RIGHT PARENTHESIS
 <dead_circumflex> <0>                  	: "⁰"   U2070 # SUPERSCRIPT ZERO
+<dead_circumflex> <1>                  	: "¹"   U00B9 # SUPERSCRIPT ONE
+<dead_circumflex> <2>                  	: "²"   U00B3 # SUPERSCRIPT TWO
+<dead_circumflex> <3>                  	: "³"   U00B2 # SUPERSCRIPT THREE
 <dead_circumflex> <4>                  	: "⁴"   U2074 # SUPERSCRIPT FOUR
 <dead_circumflex> <5>                  	: "⁵"   U2075 # SUPERSCRIPT FIVE
 <dead_circumflex> <6>                  	: "⁶"   U2076 # SUPERSCRIPT SIX

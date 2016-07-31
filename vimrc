@@ -62,6 +62,9 @@ let g:rubycomplete_classes_in_global = 1
 let g:syntastic_python_checkers = ['flake8', 'pyflake']
 let g:syntastic_python_flake8_args = '--ignore=E501'
 
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 " Who thought it would be a good idea to enable code folding?!
 let g:vim_markdown_folding_disabled = 1
 

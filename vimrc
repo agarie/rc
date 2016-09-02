@@ -100,7 +100,7 @@ syntax on
 syntax enable
 
 " Indentation for various languages.
-autocmd Filetype python,java,scala,javascript,php set sw=4 sts=4 et
+autocmd Filetype python,java,scala,javascript,php,c,c++ set sw=4 sts=4 et
 autocmd FileType ruby,haml,eruby,yaml,html,jinja,sass,cucumber set sw=2 sts=2 et
 autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
 

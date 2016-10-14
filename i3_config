@@ -163,3 +163,6 @@ bar {
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioPlay exec amixer -q set Master 0% unmute
+
+# I don't use Scroll Lock for anything, really.
+bindsym Scroll_Lock exec i3lock

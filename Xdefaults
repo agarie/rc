@@ -69,3 +69,4 @@ URxvt*cursorUnderline: true
 URxvt.iso14755 : false
 
 URxvt.keysym.Control-Shift-Insert: perl:clipboard:copy
+URxvt.keysim.M-v: perl:clipboard:paste

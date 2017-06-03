@@ -166,4 +166,4 @@ bindsym XF86AudioPlay exec amixer -q set Master 0% unmute
 
 # I don't use Scroll Lock for anything, really.
 bindsym Scroll_Lock exec i3lock
-bindsym Print exec maim -s ~/Documents/Screenshots/$(date +%s).png
+bindsym Print exec maim -s ~/Screenshots/$(date +%s).png

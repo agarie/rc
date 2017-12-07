@@ -11,7 +11,7 @@ case $(uname -s) in
     # Increase available memory for Scala.
     export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
-    alias ll='ls -AGhlv'
+    alias ll='ls -Ahlv'
 
     alias julia='/Applications/Julia-0.3.8.app/Contents/Resources/julia/bin/julia'
     ;;

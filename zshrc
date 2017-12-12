@@ -12,8 +12,6 @@ case $(uname -s) in
     export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
     alias ll='ls -Ahlv'
-
-    alias julia='/Applications/Julia-0.3.8.app/Contents/Resources/julia/bin/julia'
     ;;
   Linux)
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3

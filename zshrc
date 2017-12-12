@@ -8,16 +8,13 @@ case $(uname -s) in
     # Homebrew installs binaries in /usr/local/bin.
     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
-    # Increase available memory for Scala.
-    export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
-
     alias ll='ls -Ahlv'
     ;;
   Linux)
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
-    alias ll='ls -Ahlv --color=auto'
     alias ls='ls --color=auto'
+    alias ll='ls -Ahlv --color=auto'
     ;;
 esac
 

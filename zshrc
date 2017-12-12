@@ -26,9 +26,22 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
   source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+# General aliases.
+alias ..='cd ..'
+alias ...='cd ../..'
+
 # Setup chruby and Ruby.
 source /usr/local/share/chruby/chruby.sh
 chruby 2.4
+
+# Corrects problems with Ruby scripts that uses non-ASCII characters.
+export LC_ALL="en_US.UTF-8"
+
+# Ruby aliases.
+alias be='bundle exec'
+alias ruby_webserver='ruby -rwebrick -e \
+  "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
+alias rake='noglob rake' # Solve the problem with rake arguments.
 
 # Git aliases.
 function current_branch() {
@@ -46,16 +59,6 @@ alias gd='git diff'
 alias gb='git branch'
 alias gco='git checkout'
 alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
-
-# Ruby aliases.
-alias be='bundle exec'
-alias ruby_webserver='ruby -rwebrick -e \
-  "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
-alias rake='noglob rake' # Solve the problem with rake arguments.
-
-# General aliases.
-alias ..='cd ..'
-alias ...='cd ../..'
 
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name
@@ -81,9 +84,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
 setopt complete_in_word
 autoload -Uz compinit
 compinit
-
-# Corrects problems with Ruby scripts that uses non-ASCII characters.
-export LC_ALL="en_US.UTF-8"
 
 # Prompts. Mostly copied from Oh My ZShell.
 autoload -U colors && colors

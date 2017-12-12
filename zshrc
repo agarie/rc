@@ -18,8 +18,8 @@ case $(uname -s) in
   Linux)
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
-    alias xclip='xclip -selection c'
     alias ll='ls -Ahlv --color=auto'
+    alias ls='ls --color=auto'
     ;;
 esac
 

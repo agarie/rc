@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+## Situações que tenho de tratar:
+# Em alguns casos a data é > ano atual. O que fazer?
+# Tem casos em que a string de data é no formato %Y/%m/%d, etc, o que fazer?
+# Tem (vários) casos em que não existe CreateDate. Posso usar outra tag? O que devo fazer?
+
+while read filename; do
+  create_date=$(exiftool -m -s -t -CreateDate "$filename")
+  year=$(echo $create_date | cut -f2 | cut -d':' -f1)
+  month=$(echo $create_date | cut -f2 | cut -d':' -f2)
+  printf "%s\t%s\t%s\n" "$year" "$month" "$filename"
+done < "${1:-/dev/stdin}"

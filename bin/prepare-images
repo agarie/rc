@@ -1,17 +1,14 @@
 #!/bin/zsh
 
-## Situações que tenho de tratar:
-# Em alguns casos a data é > ano atual. O que fazer?
 # Tem (vários) casos em que não existe CreateDate. Posso usar outra tag? O que devo fazer?
 
-function generate_line() {
-  local create_date=$(exiftool -m -s -t -CreateDate "$1")
-  local year=$(echo $create_date | cut -f2 | cut -d':' -f1)
-  local month=$(echo $create_date | cut -f2 | cut -d':' -f2)
-  year_month_filename="$year\t$month\t$1\n"
-}
-
 while read filename; do
-  generate_line $filename
-  printf $year_month_filename
+  # Para manter o contexto original, crio um título com dirname + filename para o EXIF title.
+  exiftool -ImageDescription=$filename -overwrite_original_in_place $filename
+
+  # Generate a line with the keys (year and month) for later separation into dirs.
+  create_date=$(exiftool -m -s -t -CreateDate "$1")
+  year=$(echo $create_date | cut -f2 | cut -d':' -f1)
+  month=$(echo $create_date | cut -f2 | cut -d':' -f2)
+  printf "%s\t%s\t%s\n" $year $month "$1"
 done < "${1:-/dev/stdin}"

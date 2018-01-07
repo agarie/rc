@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [[ ! -d $1 ]]; then
+  echo Argument must be a directory!
+  exit 1
+fi
+
+# This sed command only matches filenames that:
+# - Don't start with a dot
+# - Have a dot in the middle, i.e. have an extension
+find $1 -type f | parallel basename {} | sed -n "s:^[^.].*[.]\([^.]*\)$:\1:p" | sort | uniq -c | sort -nk1,1

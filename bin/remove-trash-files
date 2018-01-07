@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# First argument should be a directory.
+if [ ! -d "$1" ]; then
+  echo Argument should be a directory
+  exit 1
+fi
+
+find "$1" -type f -name 'Thumbs.db' -delete
+find "$1" -type f -name '.DS_Store' -delete

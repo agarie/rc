@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Check for parallel.
+if [[ ! -x $(which parallel) ]]; then
+  echo GNU parallel not found
+  exit 1
+fi
+
+# Convert jpg filenames.
+find $1 -type f -name '*.JPG' | parallel mv {} {.}.jpg
+find $1 -type f -name '*.JPEG' | parallel mv {} {.}.jpg
+find $1 -type f -name '*.jpeg' | parallel mv {} {.}.jpg
+
+# Convert png filenames.
+find $1 -type f -name '*.PNG' | parallel mv {} {.}.png
+
+# Convert video filenames.
+find $1 -type f -name '*.MOV' | parallel mv {} {.}.mov
+find $1 -type f -name '*.MP4' | parallel mv {} {.}.mp4
+find $1 -type f -name '*.AVI' | parallel mv {} {.}.avi

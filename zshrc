@@ -29,7 +29,7 @@ alias ...='cd ../..'
 
 # Setup chruby and Ruby.
 source /usr/local/share/chruby/chruby.sh
-chruby 2.5
+chruby 2.6
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"

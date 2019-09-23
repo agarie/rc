@@ -43,3 +43,6 @@
 [submodule "vim/bundle/vim-arduino-syntax"]
 	path = vim/bundle/vim-arduino-syntax
 	url = https://github.com/sudar/vim-arduino-syntax
+[submodule "vim/bundle/vim-coffee-script"]
+	path = vim/bundle/vim-coffee-script
+	url = git@github.com:kchmck/vim-coffee-script.git

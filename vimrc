@@ -36,6 +36,10 @@ set smartcase                     " ... except when they contain at least one ca
 set splitbelow
 set splitright
 
+" Folds.
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 " Display path relative to current dir in statusline. Taken from:
 " http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
@@ -53,10 +57,6 @@ set winheight=30
 
 execute pathogen#infect()
 execute pathogen#helptags()
-
-" See Ruby autocompletion help with :help ft-ruby-omni
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
 
 " `pylint` is too slow for development.
 let g:syntastic_python_checkers = ['flake8', 'pyflake']
@@ -101,9 +101,7 @@ syntax enable
 
 " Indentation for various languages.
 autocmd Filetype python,java,scala,javascript,php,c,c++ set sw=4 sts=4 et
-autocmd FileType ruby,haml,eruby,yaml,html,jinja,sass,cucumber set sw=2 sts=2 et
-autocmd BufNewFile,BufRead *.jinja* set ft=jinja syntax=html
+autocmd FileType ruby,eruby,yaml,html,sass,cucumber set sw=2 sts=2 et
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-

@@ -65,6 +65,9 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+" Disable automatic folding in Markdown.
+let g:vim_markdown_folding_disabled = 1
+
 " Remaps.
 """""""""
 

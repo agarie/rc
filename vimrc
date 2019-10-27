@@ -5,21 +5,22 @@
 "   ryanb - https://github.com/ryanb/dotfiles/blob/master/vimrc
 "   jacob - http://www.stanford.edu/~jacobm/vim.html
 
+" General
 set nocompatible
 set hidden
 set magic                         " z0mg magic
 set backspace=indent,eol,start    " Backspace can delete stuff in insert mode.
 set clipboard=unnamedplus         " Enable system clipboard.
 set number                        " Show line numbers.
-set cursorline                    " Line cursors aren't necessary with relativenumber set.
+set nocursorline                  " Less clutter.
 set synmaxcol=200                 " Only use syntax highlighting in small lines.
-syntax sync minlines=256
+syntax sync minlines=200          " Highlight from 200 lines backwards to improve performance.
 set nobackup                      " LOL BACKUPS
 set noswapfile
 set laststatus=2                  " Show statusline in last window as well.
 
-" Soft tabs with 2 spaces.
-set autoindent                    " Copies the current line indentation when CRing or CTRL-o / CTRL-O.
+" Indentation
+set autoindent                    " Copies current line indentation when creating a new line.
 set tabstop=8                     " Hard tabs (eww) are equivalent to 8 spaces.
 set softtabstop=2                 " Tab key, 1 tab = 2 spaces.
 set shiftwidth=2                  " Autoindent, 1 tab = 2 spaces.
@@ -45,7 +46,6 @@ autocmd BufWinEnter *.* silent loadview
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
 " Color scheme.
-set background=dark
 set t_Co=256
 colorscheme lavalamp
 
@@ -64,9 +64,6 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
-" Who thought it would be a good idea to enable code folding?!
-let g:vim_markdown_folding_disabled = 1
 
 " Remaps.
 """""""""
@@ -91,6 +88,14 @@ nnoremap <C-H> <C-W><C-H>
 " Use ,- and ,= to navigate between tabs.
 noremap <Leader>- :tabprevious<CR>
 noremap <Leader>= :tabnext<CR>
+
+" "in line" (entire line sans white-space; cursor at beginning--ie, ^)
+xnoremap <silent> il :<c-u>normal! g_v^<cr>
+onoremap <silent> il :<c-u>normal! g_v^<cr>
+
+" "around line" (entire line sans trailing newline; cursor at beginning--ie, 0)
+xnoremap <silent> al :<c-u>normal! $v0<cr>
+onoremap <silent> al :<c-u>normal! $v0<cr>
 
 " Language configuration.
 """""""""""""""""""""""""

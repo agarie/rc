@@ -1,3 +1,1 @@
-nnoremap <Leader>l ^i- [ ] <ESC>
-
-inoremap --> —>
+inoremap <buffer> --> —>

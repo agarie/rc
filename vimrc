@@ -45,9 +45,8 @@ autocmd BufWinEnter *.* silent loadview
 " http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
-" Color scheme.
-set t_Co=256
-colorscheme solarized
+" https://github.com/sickill/vim-monokai
+colorscheme monokai
 
 " Window height.
 set winheight=30

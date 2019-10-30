@@ -47,7 +47,7 @@ set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,
 
 " Color scheme.
 set t_Co=256
-colorscheme lavalamp
+colorscheme solarized
 
 " Window height.
 set winheight=30

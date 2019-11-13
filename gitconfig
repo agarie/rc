@@ -2,6 +2,9 @@
   name = Carlos Agarie
   email = carlos.agarie@gmail.com
 
+[diff]
+  tool = vimdiff
+
 [color]
   ui = true
   branch = auto

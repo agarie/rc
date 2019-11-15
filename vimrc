@@ -46,7 +46,7 @@ autocmd BufWinEnter *.* silent loadview
 set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
 
 " https://github.com/sickill/vim-monokai
-colorscheme monokai
+colorscheme corvine
 
 " Window height.
 set winheight=30

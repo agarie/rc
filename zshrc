@@ -2,30 +2,10 @@
 #
 # Lots of things were copied from github.com/eevee/rc and oh-my-zsh libraries.
 
-# Configuration dependant on the OS being used.
-case $(uname -s) in
-  Darwin)
-    # Homebrew installs binaries in /usr/local/bin.
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-
-    alias ll='ls -Ahlv'
-    ;;
-  Linux)
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-
-    alias ls='ls --color=auto'
-    alias ll='ls -Ahlv --color=auto'
-    ;;
-esac
-
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-  export WORKON_HOME=$HOME/.virtualenvs
-  source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # General aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ll='ls -Ahlv'
 
 # Setup chruby and Ruby.
 source /usr/local/share/chruby/chruby.sh
@@ -35,7 +15,6 @@ chruby 2.6
 export LC_ALL="en_US.UTF-8"
 
 # Ruby aliases.
-alias be='bundle exec'
 alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
 alias rake='noglob rake' # Solve the problem with rake arguments.

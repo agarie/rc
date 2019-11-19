@@ -1,4 +1,7 @@
 path+=$HOME/rc/bin
+path+=$HOME/.local/bin
+path+=$HOME/.cabal/bin
+path+=/usr/local/sbin
 
 export EDITOR=vim
 export PAGER=less

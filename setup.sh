@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Dotfiles per operating system.
-COMMON=(ackrc gitconfig vim vimrc zprofile zshrc)
+COMMON=(gitconfig vim vimrc zprofile zshrc)
 LINUX=(i3status.conf XCompose Xdefaults tmux.conf)
 RC=$(dirname $0:A)
 

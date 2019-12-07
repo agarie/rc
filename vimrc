@@ -68,8 +68,12 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 let g:vim_markdown_folding_disabled = 0
 let g:vim_markdown_folding_level = 3
 
-" Vimwiki
-let g:vimwiki_list = [{'path': '~/Notes', 'syntax': 'markdown', 'ext': '.md'}]
+" Vimwiki configuration for my personal notes.
+let g:vimwiki_list = [{
+      \ 'path': '~/Notes',
+      \ 'syntax': 'markdown',
+      \ 'ext': '.md',
+      \ 'custom_wiki2html': 'vimwiki_markdown'}]
 
 " Remaps.
 """""""""

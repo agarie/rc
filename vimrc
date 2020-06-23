@@ -69,7 +69,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " Vimwiki configuration for my personal notes.
 let g:vimwiki_list = [{
-      \ 'path': '~/Notes',
+      \ 'path': '~/Code/Personal/notes',
       \ 'syntax': 'markdown',
       \ 'ext': '.md',
       \ 'custom_wiki2html': 'vimwiki_markdown'}]

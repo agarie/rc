@@ -2,7 +2,7 @@
 
 # Dotfiles per operating system.
 COMMON=(gitconfig vim vimrc zprofile zshrc)
-LINUX=(i3status.conf XCompose Xdefaults tmux.conf)
+LINUX=(XCompose Xdefaults tmux.conf)
 RC=$(dirname $0:A)
 
 # Backup existing dotfile, then create a symlink.
@@ -20,7 +20,7 @@ function link_dotfile {
 echo "Updating submodules..."
 git submodule update --init --recursive
 
-# Symlinks for all operating systems.
+# Create symlinks.
 for f in $COMMON; do
   link_dotfile $f
 done
@@ -34,12 +34,6 @@ case $(uname -s) in
     for f in $LINUX; do
       link_dotfile $f
     done
-
-    if [[ $(readlink -f $RC/i3_config) != $(readlink -f ~/.config/i3/config) ]]; then
-      echo ">> Linking i3 configuration..."
-      mkdir -p ~/.config/i3
-      ln -isT $RC/i3_config ~/.config/i3/config
-    fi
   ;;
 esac
 

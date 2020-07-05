@@ -1,22 +1,24 @@
 #!/usr/bin/env zsh
 
-# Dotfiles per operating system.
-COMMON=(gitconfig vim vimrc zprofile zshrc)
-LINUX=(XCompose Xdefaults tmux.conf)
+# TODO: Check if the tools I use daily are available.
+# zsh, tmux, vim, ruby, git, etc
+
+# Lists of config files for the tools I use, separated by OS.
+COMMON=(gitconfig vim vimrc zprofile zshrc tmux.conf)
+LINUX=(XCompose Xdefaults)
+
+# Location for this repository.
 RC=$(dirname $0:A)
 
 # Backup existing dotfile, then create a symlink.
 function link_dotfile {
   if [[ $(readlink -f ~/.$1) != $(readlink -f $RC/$1) ]]; then
+    mv ~/.$1 ~/.$1.backup
     echo ">> Linking $1..."
     ln -isT $RC/$1 ~/.$1
   fi
 }
 
-# TODO: Check if the tools I use daily are available.
-# vim, zsh, tmux, ruby, git
-
-# There are some vim bundles added as submodules.
 echo "Updating submodules..."
 git submodule update --init --recursive
 
@@ -25,17 +27,12 @@ for f in $COMMON; do
   link_dotfile $f
 done
 
-case $(uname -s) in
-  Darwin)
-  ;;
-
-  # TODO: Should change depending on Ubuntu or Arch Linux...
-  Linux)
-    for f in $LINUX; do
-      link_dotfile $f
-    done
-  ;;
-esac
+# Create symlinks for tools only used on Linux.
+if [[ $(uname -s) == "Linux" ]]; then
+  for f in $LINUX; do
+    link_dotfile $f
+  done
+fi
 
 # Install latest version of MRI, enable it and install basic gems.
 if (whence chruby > /dev/null) && (whence ruby-install > /dev/null); then

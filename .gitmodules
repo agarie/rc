@@ -52,3 +52,6 @@
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = git@github.com:godlygeek/tabular.git
+[submodule "vim/bundle/vim-simple-todo"]
+	path = vim/bundle/vim-simple-todo
+	url = git@github.com:vitalk/vim-simple-todo.git

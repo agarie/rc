@@ -57,6 +57,9 @@ set winheight=30
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" syntastic
+"""""""""""
+
 " `pylint` is too slow for development.
 let g:syntastic_python_checkers = ['flake8', 'pyflake']
 let g:syntastic_python_flake8_args = '--ignore=E501'
@@ -64,10 +67,16 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+" vim-markdown
+""""""""""""""
+
 " Disable automatic folding in Markdown.
 let g:vim_markdown_folding_disabled = 1
 
-" Vimwiki configuration for my personal notes.
+" vimwiki
+"""""""""
+
+" Configuration for my personal notes.
 let g:vimwiki_list = [{
       \ 'path': '~/Code/Personal/notes',
       \ 'syntax': 'markdown',
@@ -99,12 +108,12 @@ noremap <Leader>- :tabprevious<CR>
 noremap <Leader>= :tabnext<CR>
 
 " "in line" (entire line sans white-space; cursor at beginning--ie, ^)
-xnoremap <silent> il :<c-u>normal! g_v^<cr>
-onoremap <silent> il :<c-u>normal! g_v^<cr>
+xnoremap <silent> iL :<c-u>normal! g_v^<cr>
+onoremap <silent> iL :<c-u>normal! g_v^<cr>
 
 " "around line" (entire line sans trailing newline; cursor at beginning--ie, 0)
-xnoremap <silent> al :<c-u>normal! $v0<cr>
-onoremap <silent> al :<c-u>normal! $v0<cr>
+xnoremap <silent> aL :<c-u>normal! $v0<cr>
+onoremap <silent> aL :<c-u>normal! $v0<cr>
 
 " Language configuration.
 """""""""""""""""""""""""

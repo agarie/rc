@@ -22,7 +22,7 @@ function link_dotfile {
 echo "Updating submodules..."
 git submodule update --init --recursive
 
-# Create symlinks.
+# Symlinks for all operating systems.
 for f in $COMMON; do
   link_dotfile $f
 done

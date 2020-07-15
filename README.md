@@ -12,3 +12,4 @@ I got a lot of "inspiration" (shamelessly copied) from these repositories:
 - https://github.com/eevee/rc
 - https://github.com/BurntSushi/dotfiles
 - https://github.com/aihal/dotfiles
+- https://github.com/chr4/shellrc

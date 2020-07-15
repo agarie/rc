@@ -1,6 +1,4 @@
 # Carlos Agarie's zshrc.
-#
-# Lots of things were copied from github.com/eevee/rc and oh-my-zsh libraries.
 
 # General aliases.
 alias ..='cd ..'

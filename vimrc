@@ -126,5 +126,7 @@ syntax enable
 autocmd Filetype python,java,scala,javascript,php,c,c++,julia set sw=4 sts=4 et
 autocmd FileType ruby,eruby,yaml,html,sass,cucumber set sw=2 sts=2 et
 
+au BufNewFile,BufRead PKGBUILD set ft=sh
+
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif

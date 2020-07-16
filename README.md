@@ -16,3 +16,4 @@ I got a lot of "inspiration" (shamelessly copied) from these repositories:
 - https://github.com/ohmyzsh/ohmyzsh
 - https://github.com/ryanb/dotfiles
 - https://github.com/holman/dotfiles
+- https://github.com/thoughtbot/dotfiles

@@ -1,5 +1,8 @@
 # Carlos Agarie's zshrc.
 
+# See the manual page for zshoptions.
+setopt combiningchars
+
 # General aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -11,7 +14,8 @@ export LC_ALL="en_US.UTF-8"
 # Ruby aliases.
 alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
-alias rake='noglob rake' # Solve the problem with rake arguments.
+alias rake='noglob rake'
+alias ri='noglob ri'
 
 # Git aliases.
 function current_branch() {

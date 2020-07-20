@@ -86,9 +86,9 @@ let g:vimwiki_list = [{
 " Remaps.
 """""""""
 
-" Use comma as the leader key.
+" Leader is used in general remaps, localleader for filetype remaps.
 let mapleader = ","
-let g:mapleader = ","
+let maplocalleader = "\\"
 
 " Use ,k to break into a new line.
 nnoremap <Leader>k i<cr><esc>k$
@@ -128,5 +128,8 @@ autocmd FileType ruby,eruby,yaml,html,sass,cucumber set sw=2 sts=2 et
 
 au BufNewFile,BufRead PKGBUILD set ft=sh
 
-" Remove any trailing whitespace that is in the file
+" Remove any trailing whitespace that is in the file.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+" Introduce current date as yyyy-mm-dd.
+autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dt :.!today --hyphen<cr>

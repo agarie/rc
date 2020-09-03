@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+if [[ -x ffmpeg ]]; then
+  flac_fn=$1
+  ffmpeg -i $flac_fn -acodec alac ${flac_fn:r}.m4a
+else
+  echo 'ffmpeg command not found'
+  exit 1
+fi

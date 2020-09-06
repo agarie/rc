@@ -1,8 +1,7 @@
-#!/usr/bin/env zsh
+#!/usr/local/bin/zsh
 
-if [[ -x ffmpeg ]]; then
-  flac_fn=$1
-  ffmpeg -i $flac_fn -acodec alac ${flac_fn:r}.m4a
+if [[ -x "$(command -v ffmpeg)" ]]; then
+  find . -name '*.flac' -print | parallel ffmpeg -nostdin -i {} -c:a alac -c:v copy {.}.m4a
 else
   echo 'ffmpeg command not found'
   exit 1

@@ -5,7 +5,7 @@
 
 # Lists of config files for the tools I use, separated by OS.
 COMMON=(gitconfig vim vimrc zprofile zshrc tmux.conf)
-LINUX=(XCompose Xdefaults Xmodmap)
+LINUX=(XCompose Xdefaults Xkbmap)
 
 # Location for this repository.
 RC=$(dirname $0:A)

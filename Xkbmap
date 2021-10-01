@@ -1,0 +1,3 @@
+-layout br
+-option compose:ralt
+-option caps:ctrl_modifier

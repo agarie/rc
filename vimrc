@@ -88,7 +88,7 @@ let g:vimwiki_list = [{
 
 " Leader is used in general remaps, localleader for filetype remaps.
 let mapleader = ","
-let maplocalleader = "\\"
+let maplocalleader = ";"
 
 " Use ,k to break into a new line.
 nnoremap <Leader>k i<cr><esc>k$

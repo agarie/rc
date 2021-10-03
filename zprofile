@@ -1,5 +1,5 @@
 # Prepend path so my own scripts go first.
-path=('$HOME/rc/bin' '$HOME/.local/bin' '/usr/local/sbin' $path)
+path=("$HOME/rc/bin" "$HOME/.local/bin" "/usr/local/sbin" $path)
 
 export EDITOR=vim
 export PAGER=less

@@ -34,8 +34,8 @@ URxvt*color15 : #EEEEEC
 
 !urxvt fonts:
 
-URxvt*font: xft:iosevka:pixelsize=12
-URxvt*boldFont: xft:Monospace:bold:pixelsize=12
+URxvt*font: xft:source code pro:pixelsize=10
+URxvt*boldFont: xft:source code pro:bold:pixelsize=10
 
 
 !urxvt extensions:
@@ -44,7 +44,7 @@ URxvt.perl-ext-common:  default,matcher
 
 !enabling clickable links:
 
-URxvt.urlLauncher:      /usr/bin/brave
+URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.matcher.button:   1
 
 !urxvt scrolling options and cursor style:

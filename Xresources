@@ -34,7 +34,7 @@ URxvt*color15 : #EEEEEC
 
 !urxvt fonts:
 
-URxvt*font: xft:Monospace:pixelsize=12
+URxvt*font: xft:iosevka:pixelsize=12
 URxvt*boldFont: xft:Monospace:bold:pixelsize=12
 
 

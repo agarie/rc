@@ -34,15 +34,6 @@
 [submodule ".vim/bundle/vim-arduino-syntax"]
 	path = .vim/bundle/vim-arduino-syntax
 	url = https://github.com/sudar/vim-arduino-syntax
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = git@github.com:kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/scss-syntax.vim"]
-	path = .vim/bundle/scss-syntax.vim
-	url = git@github.com:cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = git@github.com:tpope/vim-rails.git
 [submodule ".vim/bundle/vimwiki"]
 	path = .vim/bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
@@ -58,3 +49,6 @@
 [submodule ".vim/bundle/haskell-vim"]
 	path = .vim/bundle/haskell-vim
 	url = git@github.com:neovimhaskell/haskell-vim.git
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git

@@ -40,8 +40,7 @@ set splitright
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" https://github.com/sickill/vim-monokai
-colorscheme corvine
+colorscheme molokai
 
 " Window height.
 set winheight=30
@@ -54,7 +53,9 @@ execute pathogen#helptags()
 
 " airline
 """""""""
+
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%%', 'linenr', ':%3v'])
+let g:airline_powerline_fonts = 0
 
 " syntastic
 """""""""""

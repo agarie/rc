@@ -54,8 +54,12 @@ execute pathogen#helptags()
 " airline
 """""""""
 
-let g:airline_section_z = airline#section#create(['windowswap', '%3p%%', 'linenr', ':%3v'])
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.colnr = " ℅:"
 
 " syntastic
 """""""""""

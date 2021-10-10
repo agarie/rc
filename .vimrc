@@ -17,7 +17,6 @@ set synmaxcol=200                 " Only use syntax highlighting in small lines.
 syntax sync minlines=200          " Highlight from 200 lines backwards to improve performance.
 set nobackup                      " LOL BACKUPS
 set noswapfile
-set laststatus=2                  " Show statusline in last window as well.
 
 " Indentation
 set autoindent                    " Copies current line indentation when creating a new line.
@@ -41,10 +40,6 @@ set splitright
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-" Display path relative to current dir in statusline. Taken from:
-" http://got-ravings.blogspot.com.br/2008/08/vim-pr0n-making-statuslines-that-own.html
-set statusline=%f\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}][%{&fo}]%h%m%r%y%=%c,%l/%L\ %P
-
 " https://github.com/sickill/vim-monokai
 colorscheme corvine
 
@@ -56,6 +51,10 @@ set winheight=30
 
 execute pathogen#infect()
 execute pathogen#helptags()
+
+" airline
+"""""""""
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%%', 'linenr', ':%3v'])
 
 " syntastic
 """""""""""

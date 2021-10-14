@@ -1,7 +1,6 @@
 Xcursor.theme:    Vanilla-DMZ-AA
 
-!urxvt color scheme:
-
+! Colorscheme
 URxvt*background: #2B2B2B
 URxvt*foreground: #DEDEDE
 
@@ -32,31 +31,40 @@ URxvt*color14 : #34E2E2
 URxvt*color7  : #D3D7CF
 URxvt*color15 : #EEEEEC
 
-!urxvt fonts:
-
-URxvt*font: xft:monospace:pixelsize=10
-URxvt*boldFont: xft:monospace:bold:pixelsize=10
-
-
-!urxvt extensions:
-
-URxvt.perl-ext-common:  default,matcher
-
-!enabling clickable links:
-
-URxvt.urlLauncher:      /usr/bin/firefox
-URxvt.matcher.button:   1
-
-!urxvt scrolling options and cursor style:
-
+! URxvt scrolling options and cursor style
 URxvt*saveLines: 12000
 URxvt*scrollstyle:plain
 URxvt*scrollBar: false
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
 
-! Kill that yellow box ffs.
+! Kill that yellow box ffs
 URxvt.iso14755 : false
 
-URxvt.keysym.Control-Shift-Insert: perl:clipboard:copy
-URxvt.keysim.M-v: perl:clipboard:paste
+! URxvt fonts
+URxvt*font: xft:monospace:style=Regular:pixelsize=10
+URxvt*boldFont: xft:monospace:style=Bold:pixelsize=10
+URxvt.italicFont: xft:monospace:style=Italic:pixelsize=10
+URXvt.boldItalicFont: xft:monospace:style=Bold Italic:size=10
+
+! Some extra keybinds
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+! URxvt extensions
+URxvt.perl-ext-common:  default,matcher,clipboard,url-select,keyboard-select
+
+! Enabling clickable links
+URxvt.url-launcher: firefox
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+
+! Copy and paste
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next

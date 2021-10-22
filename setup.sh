@@ -36,8 +36,10 @@ fi
 
 # Install latest version of MRI, enable it and install basic gems.
 if (whence chruby > /dev/null) && (whence ruby-install > /dev/null); then
-  ruby-install -L # Update Ruby versions list.
-  ruby-install ruby 2.3
-  chruby 2.3
-  gem install bundler pry
+  # Update Ruby versions list.
+  ruby-install -L
+
+  # Install latest 2.x and 3.x versions.
+  ruby-install ruby 2
+  ruby-install ruby 3
 fi

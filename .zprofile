@@ -10,3 +10,4 @@ export CLICOLOR=1
 export QUOTING_STYLE=literal
 
 source /usr/share/chruby/chruby.sh
+chruby 3

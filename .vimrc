@@ -51,6 +51,11 @@ set winheight=30
 execute pathogen#infect()
 execute pathogen#helptags()
 
+" ctrlp
+"""""""
+
+let g:ctrlp_show_hidden = 1
+
 " airline
 """""""""
 

@@ -1,9 +1,4 @@
 " Carlos Agarie's vimrc
-" Highly inspired (read: copied some parts) by these folks:
-"   eevee - https://github.com/eevee/rc/blob/master/.vimrc
-"   grb   - https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-"   ryanb - https://github.com/ryanb/dotfiles/blob/master/vimrc
-"   jacob - http://www.stanford.edu/~jacobm/vim.html
 
 " General
 set nocompatible

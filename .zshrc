@@ -7,6 +7,7 @@ setopt combiningchars
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ll='ls -Ahlv'
+alias ls='ls --color=auto'
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"

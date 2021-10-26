@@ -52,7 +52,7 @@ URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
 
 ! URxvt extensions
-URxvt.perl-ext-common:  default,matcher,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common:  default,matcher,url-select,clipboard
 
 ! Enabling clickable links
 URxvt.url-launcher: firefox
@@ -60,11 +60,9 @@ URxvt.underlineURLs: true
 URxvt.urlButton: 1
 
 ! Copy and paste
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.clipboard.autocopy: true
+URxvt.clipboard.copycommand: xclip -i -selection clipboard
+URxvt.clipboard.pastecommand: xclip -o -selection clipboard

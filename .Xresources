@@ -57,7 +57,7 @@ URxvt.perl-ext-common:  default,matcher,url-select,clipboard
 ! Enabling clickable links
 URxvt.url-launcher: firefox
 URxvt.underlineURLs: true
-URxvt.urlButton: 1
+URxvt.matcher.button: 1
 
 ! Copy and paste
 URxvt.keysym.M-c: perl:clipboard:copy

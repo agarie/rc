@@ -11,3 +11,4 @@ export QUOTING_STYLE=literal
 
 source /usr/share/chruby/chruby.sh
 chruby 3
+source /usr/share/chruby/auto.sh

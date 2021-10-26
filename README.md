@@ -20,3 +20,4 @@ I got a lot of "inspiration" (shamelessly copied) from these repositories:
 - https://github.com/ryanb/dotfiles
 - https://github.com/ryanb/dotfiles
 - https://github.com/thoughtbot/dotfiles
+- https://github.com/yashsriv/i3-config

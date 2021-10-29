@@ -40,6 +40,7 @@ URxvt*cursorUnderline: true
 
 ! Kill that yellow box ffs
 URxvt.iso14755 : false
+URxvt.iso14755_52 : false
 
 ! URxvt fonts
 URxvt*font: xft:monospace:style=Regular:pixelsize=10
@@ -60,9 +61,6 @@ URxvt.underlineURLs: true
 URxvt.matcher.button: 1
 
 ! Copy and paste
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.clipboard.autocopy: true
-URxvt.clipboard.copycommand: xclip -i -selection clipboard
-URxvt.clipboard.pastecommand: xclip -o -selection clipboard

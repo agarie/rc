@@ -36,4 +36,4 @@
 [push]
   default = matching
 [init]
-	defaultBranch = main
+  defaultBranch = main

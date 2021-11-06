@@ -8,8 +8,6 @@ set backspace=indent,eol,start    " Backspace can delete stuff in insert mode.
 set clipboard=unnamedplus         " Enable system clipboard.
 set number                        " Show line numbers.
 set cursorline                    " Highlight current line.
-set synmaxcol=200                 " Only use syntax highlighting in small lines.
-syntax sync minlines=200          " Highlight from 200 lines backwards to improve performance.
 set nobackup                      " LOL BACKUPS
 set noswapfile
 

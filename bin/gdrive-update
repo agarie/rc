@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-
-GOOGLE_DRIVE_HOME=/home/caj/GDrive
-
-grive -p $GOOGLE_DRIVE_HOME

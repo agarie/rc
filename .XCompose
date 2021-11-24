@@ -28,9 +28,7 @@ include "%L"
 <Multi_key> <minus> <less>                        : "←" U2190
 <Multi_key> <minus> <greater>                     : "→" U2192
 <Multi_key> <less> <greater>                      : "↔" U2194
-<Multi_key> <dead_circumflex> <bar>               : "↑" U2191
 <Multi_key> <bar> <dead_circumflex>               : "↑" U2191
-<Multi_key> <v> <bar>                             : "↓" U2193
 <Multi_key> <bar> <v>                             : "↓" U2193
 <Multi_key> <equal> <greater> 	                  : "⇒" U21D2 # RIGHTWARDS DOUBLE ARROW
 
@@ -110,9 +108,7 @@ include "%L"
 <Multi_key> <less> <less>        	          : "«" guillemotleft # LEFT-POINTING DOUBLE ANGLE QUOTATION MARK
 <Multi_key> <greater> <greater>  	          : "»" guillemotright # RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
 <Multi_key> <less> <apostrophe>  	          : "‘" U2018 # LEFT SINGLE QUOTATION MARK
-<Multi_key> <apostrophe> <less>  	          : "‘" U2018 # LEFT SINGLE QUOTATION MARK
 <Multi_key> <greater> <apostrophe> 	          : "’" U2019 # RIGHT SINGLE QUOTATION MARK
-<Multi_key> <apostrophe> <greater> 	          : "’" U2019 # RIGHT SINGLE QUOTATION MARK
 <Multi_key> <comma> <apostrophe> 	          : "‚" U201a # SINGLE LOW-9 QUOTATION MARK
 <Multi_key> <apostrophe> <comma> 	          : "‚" U201a # SINGLE LOW-9 QUOTATION MARK
 <Multi_key> <less> <quotedbl>    	          : "“" U201c # LEFT DOUBLE QUOTATION MARK

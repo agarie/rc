@@ -83,7 +83,7 @@ let g:vimwiki_list = [{
       \ 'path': '~/Code/Personal/notes',
       \ 'syntax': 'markdown',
       \ 'ext': '.md',
-      \ 'custom_wiki2html': 'vimwiki_markdown'}]
+      \ 'custom_wiki2html': $HOME.'/.vim/bundle/vimwiki/autoload/vimwiki/customwiki2html.sh'}]
 
 " Remaps.
 """""""""

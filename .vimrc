@@ -80,10 +80,14 @@ let g:vim_markdown_folding_disabled = 1
 
 " Configuration for my personal notes.
 let g:vimwiki_list = [{
-      \ 'path': '~/Code/Personal/notes',
+      \ 'path': $HOME . '/Code/Personal/notes',
+      \ 'path_html': $HOME . '/Code/Personal/notes/notes_html',
+      \ 'template_path': $HOME . '/Code/Personal/notes/_templates',
+      \ 'custom_wiki2html': 'vimwiki_markdown',
       \ 'syntax': 'markdown',
       \ 'ext': '.md',
-      \ 'custom_wiki2html': $HOME.'/.vim/bundle/vimwiki/autoload/vimwiki/customwiki2html.sh'}]
+      \ 'html_filename_parameterization': 1,
+      \ 'auto_diary_index': 1}]
 
 " Remaps.
 """""""""

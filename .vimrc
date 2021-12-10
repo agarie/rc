@@ -87,6 +87,7 @@ let g:vimwiki_list = [{
       \ 'syntax': 'markdown',
       \ 'ext': '.md',
       \ 'html_filename_parameterization': 1,
+      \ 'auto_generate_links': 1,
       \ 'auto_diary_index': 1}]
 
 " Remaps.

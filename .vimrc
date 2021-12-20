@@ -122,7 +122,30 @@ onoremap <silent> iL :<c-u>normal! g_v^<cr>
 xnoremap <silent> aL :<c-u>normal! $v0<cr>
 onoremap <silent> aL :<c-u>normal! $v0<cr>
 
-" Language configuration.
+" Exit insert mode.
+inoremap jk <esc>
+
+" Save file path for c/p.
+noremap \l :let @+ = expand('%')<cr>
+nnoremap <Leader>/ :Ggrep! <c-r>=expand('<cword>')<CR>
+
+noremap \\ :wa<return>
+noremap ZA :wa<cr>:qa<cr>
+noremap ZC :qa!<cr>
+
+" Highlight words without moving cursor.
+noremap <Leader><Leader>h *#
+
+" Search and replace word under cursor.
+nnoremap <Leader>sr :%s/\<<C-r><C-w>\>/
+
+" Clear highlight.
+nnoremap <Leader>n :noh<cr>
+
+" Yank until the end of line.
+noremap Y y$
+
+" " Language configuration.
 """""""""""""""""""""""""
 
 filetype plugin indent on

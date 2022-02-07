@@ -4,18 +4,18 @@
 # zsh, tmux, vim, ruby, git, etc
 
 # Lists of config files for the tools I use, separated by OS.
-COMMON=(gitconfig vim vimrc zprofile zshrc tmux.conf)
-LINUX=(XCompose Xresources Xkbmap)
+COMMON=(.gitconfig .vim .vimrc .zprofile .zshrc .tmux.conf)
+LINUX=(.XCompose .Xresources .Xkbmap)
 
 # Location for this repository.
 RC=$(dirname $0:A)
 
 # Backup existing dotfile, then create a symlink.
 function link_dotfile {
-  if [[ $(readlink -f ~/.$1) != $(readlink -f $RC/$1) ]]; then
-    mv ~/.$1 ~/.$1.backup
+  if [[ $(readlink ~/$1) != $RC/$1 ]]; then
+    mv ~/$1 ~/$1.backup
     echo ">> Linking $1..."
-    ln -isT $RC/$1 ~/.$1
+    ln -s $RC/$1 ~/$1
   fi
 }
 

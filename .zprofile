@@ -15,6 +15,13 @@ export LANGUAGE=en_US.UTF-8
 # Don't print filenames with spaces using quotation marks.
 export QUOTING_STYLE=literal
 
-source /usr/share/chruby/chruby.sh
+# hello mac
+if [[ $(uname -s) == "Linux" ]]; then
+  export CHRUBY_DIR="/usr"
+else
+  export CHRUBY_DIR="/usr/local/opt/chruby"
+fi
+
+source $CHRUBY_DIR/share/chruby/chruby.sh
 chruby 3
-source /usr/share/chruby/auto.sh
+source $CHRUBY_DIR/share/chruby/auto.sh

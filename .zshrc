@@ -7,7 +7,13 @@ setopt combiningchars
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ll='ls -Ahlv'
-alias ls='ls --color=auto'
+
+# I still have to use a mac :(
+if [[ $(uname -s) == "Linux" ]]; then
+  alias ls='ls --color=auto'
+else
+  alias ls='ls -G'
+fi
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"

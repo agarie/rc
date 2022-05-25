@@ -220,3 +220,4 @@ bindsym Print exec maim -s ~/Screenshots/$(date +%s).png
 
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
+assign [class="todoist"] workspace 9

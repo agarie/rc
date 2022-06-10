@@ -7,6 +7,7 @@ set magic                         " z0mg magic
 set backspace=indent,eol,start    " Backspace can delete stuff in insert mode.
 set clipboard=unnamedplus         " Enable system clipboard.
 set number                        " Show line numbers.
+set relativenumber
 set cursorline                    " Highlight current line.
 set nobackup                      " LOL BACKUPS
 set noswapfile

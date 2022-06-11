@@ -32,7 +32,7 @@ set splitright
 
 " Folds.
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+autocmd BufWinEnter *.* silent! loadview
 
 colorscheme molokai
 

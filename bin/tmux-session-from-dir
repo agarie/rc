@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/Code/Personal ~/Code/Mercurio -mindepth 1 -maxdepth 1 -type d,l | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $tmux_running ]]; then
+    tmux new-session -s $selected_name -c $selected
+fi
+
+# The -A flag makes new-session behave like attach-session when $selected_name
+# already exists, which means that if run outside of tmux t'll create a new
+# client in the terminal and attach it to the session mentioned previously.
+if [[ -z $TMUX ]]; then
+  tmux new-session -A -s $selected_name -c $selected
+fi
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    tmux new-session -ds $selected_name -c $selected
+fi
+
+tmux switch-client -t $selected_name

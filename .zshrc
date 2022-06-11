@@ -143,5 +143,9 @@ bindkey "^[[B" history-beginning-search-forward
 bindkey "^[OA" history-beginning-search-backward
 bindkey "^[OB" history-beginning-search-forward
 
+# Ctrl+f starts a fzf prompt inside my project directories in order to create a
+# tmux session and attach to it.
+bindkey -s "^f" "tmux-session-from-dir\n"
+
 # Machine-specific configuration.
 source ~/.zlocal

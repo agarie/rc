@@ -11,6 +11,7 @@ set relativenumber
 set cursorline                    " Highlight current line.
 set nobackup                      " LOL BACKUPS
 set noswapfile
+set foldopen-=block               " Don't open folds when moving around with paragraph text objects ({ and }).
 
 " Indentation
 set autoindent                    " Copies current line indentation when creating a new line.

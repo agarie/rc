@@ -12,6 +12,7 @@ set cursorline                    " Highlight current line.
 set nobackup                      " LOL BACKUPS
 set noswapfile
 set foldopen-=block               " Don't open folds when moving around with paragraph text objects ({ and }).
+set foldcolumn=1                  " Show fold information in the gutter.
 
 " Indentation
 set autoindent                    " Copies current line indentation when creating a new line.
@@ -30,10 +31,6 @@ set smartcase                     " ... except when they contain at least one ca
 " Open new split panes to right and bottom.
 set splitbelow
 set splitright
-
-" Folds.
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent! loadview
 
 colorscheme molokai
 
@@ -75,7 +72,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 """"""""""""""
 
 " Disable automatic folding in Markdown.
-let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_folding_disabled = 1
 
 " vimwiki
 """""""""
@@ -92,8 +89,7 @@ let g:vimwiki_list = [{
       \ 'auto_generate_links': 1,
       \ 'auto_diary_index': 1}]
 
-" Remaps.
-"""""""""
+" Remaps {{{
 
 " Leader is used in general remaps, localleader for filetype remaps.
 let mapleader = ","
@@ -147,8 +143,9 @@ nnoremap <Leader>n :noh<cr>
 " Yank until the end of line.
 noremap Y y$
 
-" " Language configuration.
-"""""""""""""""""""""""""
+" }}}
+
+"" Language configuration {{{
 
 filetype plugin indent on
 syntax on
@@ -159,6 +156,13 @@ autocmd Filetype python,java,scala,javascript,php,c,c++,julia set sw=4 sts=4 et
 autocmd FileType ruby,eruby,yaml,html,sass,cucumber set sw=2 sts=2 et
 
 au BufNewFile,BufRead PKGBUILD set ft=sh
+
+augroup vimscript
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" }}}
 
 " Remove any trailing whitespace that is in the file.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif

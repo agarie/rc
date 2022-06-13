@@ -71,8 +71,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " vim-markdown
 """"""""""""""
 
-" Disable automatic folding in Markdown.
-" let g:vim_markdown_folding_disabled = 1
+let g:markdown_folding = 1
 
 " vimwiki
 """""""""
@@ -88,6 +87,9 @@ let g:vimwiki_list = [{
       \ 'html_filename_parameterization': 1,
       \ 'auto_generate_links': 1,
       \ 'auto_diary_index': 1}]
+
+" Let folding be defined by another plugin.
+let g:vimwiki_folding = 'custom'
 
 " Remaps {{{
 

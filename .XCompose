@@ -138,7 +138,7 @@ include "%L"
 <Multi_key> <includes> <U0338> 	                  : "⊅" U2285 # NOT A SUPERSET OF
 <Multi_key> <rightshoe> <U0338> 	          : "⊅" U2285 # NOT A SUPERSET OF
 <Multi_key> <d> <i>		                  : "⌀" U2300 # DIAMETER SIGN
-<Multi_key> <asciitilde> <asciitilde>             : "≈" U2248
+<Multi_key> <asciitilde> <period>                 : "≈" U2248
 <Multi_key> <equal> <equal>                       : "≡" U2261
 <Multi_key> <asciitilde> <equal>                  : "≅" U2245
 <Multi_key> <parenleft> <minus>                   : "∈" U2208

@@ -208,18 +208,17 @@ mode "$mode_system" {
 
 bindsym $mod+BackSpace mode "$mode_system"
 
-## Volume control.
-#
+# Volume control.
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioPlay exec amixer -q set Master 0% unmute
 
-# I don't use Scroll Lock for anything, really.
-bindsym Scroll_Lock exec i3lock
+# Print screen.
+# TODO: use `scrot` instead of `maim`?
 bindsym Print exec maim -s ~/Screenshots/$(date +%s).png
 
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
-assign [class="todoist"] workspace 9
 
+# TODO: move it to correct workspace (still not sure which)
 exec --no-startup-id "DESKTOPINTEGRATION=false todoist"

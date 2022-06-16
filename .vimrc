@@ -69,8 +69,6 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 " vim-markdown
-""""""""""""""
-
 let g:markdown_folding = 1
 
 " vimwiki
@@ -162,6 +160,11 @@ au BufNewFile,BufRead PKGBUILD set ft=sh
 augroup vimscript
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup markdown
+  autocmd!
+  autocmd FileType markdown setlocal foldlevel=1
 augroup END
 
 " }}}

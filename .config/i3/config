@@ -19,6 +19,49 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
+set $bclr #2e3440
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  client.focused          #30343F #30343F #FFFFFF #30343F $bclr
+  client.focused_inactive #30343F #30343F #FFFFFF #30343F $bclr
+  client.unfocused        #30343F #30343F #FFFFFF #30343F $bclr
+  client.urgent           #30343F #30343F #FFFFFF #30343F $bclr
+  client.placeholder      #30343F #0c0c0c #FFFFFF #30343F $bclr
+
+  client.background       #30343F
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -178,8 +221,11 @@ bindsym $mod+r mode "resize"
 # It is necessary to remove window titles in order to configure gaps.
 for_window [class=".*"] border pixel 0
 
+
+
 # Gap configuration.
-gaps inner 10
+gaps inner 12
+gaps outer 0
 
 # Only enable gaps in a workspace when there is at least one container.
 smart_gaps on
@@ -211,14 +257,28 @@ bindsym $mod+BackSpace mode "$mode_system"
 # Volume control.
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
-bindsym XF86AudioPlay exec amixer -q set Master 0% unmute
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+# TODO: Use `showkey` to check what each of my media keys do—some are not being recognized as specific keysyms.
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioNext exec playerctl next
+
 
 # Print screen.
 # TODO: use `scrot` instead of `maim`?
 bindsym Print exec maim -s ~/Screenshots/$(date +%s).png
+## Screenshots
+#bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
 
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
-
+assign [class="VirtualBox Manager" instance="virtualBox Manager"] workspace 6
+assign [class="VirtualBox Machine" instance="virtualBox Machine"] workspace 6
 # TODO: move it to correct workspace (still not sure which)
-exec --no-startup-id "DESKTOPINTEGRATION=false todoist"
+exec --no-startup-id i3-msg "workspace 9; DESKTOPINTEGRATION=false exec /usr/bin/todoist"

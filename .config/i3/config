@@ -267,13 +267,11 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioNext exec playerctl next
 
 
-# Print screen.
-# TODO: use `scrot` instead of `maim`?
-bindsym Print exec maim -s ~/Screenshots/$(date +%s).png
-## Screenshots
-#bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+# Screenshots.
+# TODO: Why is `--release` necessary when using `scrot --select` but not otherwise?
+bindsym Print exec --no-startup-id scrot -F ~/Pictures/Screenshots/$(date +%s).png
+bindsym $mod+Print exec --no-startup-id scrot --focused -F ~/Pictures/Screenshots/$(date +%s).png
+bindsym --release Shift+Print exec scrot --select -F ~/Pictures/Screenshots/$(date +%s).png
 
 
 assign [class="firefox"] workspace 1

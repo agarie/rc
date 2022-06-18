@@ -273,10 +273,8 @@ bindsym Print exec --no-startup-id scrot -F ~/Pictures/Screenshots/$(date +%s).p
 bindsym $mod+Print exec --no-startup-id scrot --focused -F ~/Pictures/Screenshots/$(date +%s).png
 bindsym --release Shift+Print exec scrot --select -F ~/Pictures/Screenshots/$(date +%s).png
 
-
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
-assign [class="VirtualBox Manager" instance="virtualBox Manager"] workspace 6
-assign [class="VirtualBox Machine" instance="virtualBox Machine"] workspace 6
-# TODO: move it to correct workspace (still not sure which)
-exec --no-startup-id i3-msg "workspace 9; DESKTOPINTEGRATION=false exec /usr/bin/todoist"
+assign [class="Todoist"] workspace 8
+assign [class="VirtualBox Manager"] workspace 6
+assign [class="VirtualBoxVM"] workspace 6

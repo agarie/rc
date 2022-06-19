@@ -252,10 +252,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # XF86AudioStop, etc).
 #
 # TODO: Configure the keysym mapping to include these keycodes.
-bindcode 174 exec playerctl --player cmus stop
-bindcode 173 exec playerctl --player cmus previous
-bindcode 172 exec playerctl --player cmus play-pause
-bindcode 171 exec playerctl --player cmus next
+# TODO: Is there any way to improve these so I can contextually control tabs in firefox and cmus?
+bindcode 174 exec playerctl stop
+bindcode 173 exec playerctl previous
+bindcode 172 exec playerctl play-pause
+bindcode 171 exec playerctl next
 
 # Screenshots.
 #

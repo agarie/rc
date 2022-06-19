@@ -81,12 +81,8 @@ bindsym $mod+Shift+q kill
 # jump to urgent window
 bindsym $mod+x [urgent=latest] focus
 
-# start dmenu (a program launcher)
+# Run the `rofi` application launcher.
 bindsym $mod+d exec --no-startup-id rofi -show run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -213,8 +209,6 @@ bindsym $mod+r mode "resize"
 # It is necessary to remove window titles in order to configure gaps.
 for_window [class=".*"] border pixel 0
 
-
-
 # Gap configuration.
 gaps inner 12
 gaps outer 0
@@ -264,11 +258,13 @@ bindcode 172 exec playerctl --player cmus play-pause
 bindcode 171 exec playerctl --player cmus next
 
 # Screenshots.
+#
 # TODO: Why is `--release` necessary when using `scrot --select` but not otherwise?
 bindsym Print exec --no-startup-id scrot -F ~/Pictures/Screenshots/$(date +%s).png
 bindsym $mod+Print exec --no-startup-id scrot --focused -F ~/Pictures/Screenshots/$(date +%s).png
 bindsym --release Shift+Print exec scrot --select -F ~/Pictures/Screenshots/$(date +%s).png
 
+# Map most frequently used applications to specific workspaces.
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
 assign [class="Todoist"] workspace 8

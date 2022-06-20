@@ -5,6 +5,6 @@
 
 package_url=https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
 
-(cd ~/Downloads && curl -# "$package_url" | tar fxz - && (cd "./$1" && makepkg -i -r -s))
+(cd ~/.local/src && curl -# "$package_url" | tar fxz - && (cd "./$1" && makepkg -i -r -s))
 
 # You'll have to remove the build directory yourself!

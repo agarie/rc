@@ -112,6 +112,10 @@ nnoremap <C-H> <C-W><C-H>
 noremap <Leader>- :tabprevious<CR>
 noremap <Leader>= :tabnext<CR>
 
+" Use ,[ and ,] to navigate between buffers.
+noremap <Leader>[ :bnext<CR>
+noremap <Leader>] :blast<CR>
+
 " "in line" (entire line sans white-space; cursor at beginning--ie, ^)
 xnoremap <silent> iL :<c-u>normal! g_v^<cr>
 onoremap <silent> iL :<c-u>normal! g_v^<cr>

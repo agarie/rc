@@ -79,8 +79,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 " vim-markdown
 let g:markdown_folding = 1
 
-" vimwiki
-"""""""""
+" vimwiki {{{
 
 " Configuration for my personal notes.
 let g:vimwiki_list = [{
@@ -96,6 +95,13 @@ let g:vimwiki_list = [{
 
 " Let folding be defined by another plugin.
 let g:vimwiki_folding = 'custom'
+
+" Do not create a 'temporary wiki' whenever I open a *.md file.
+" A temporary wiki is a mechanism by which vimwiki can create an anonymous
+" wiki if it can't find one defined in your environment.
+let g:vimwiki_global_ext = 0
+
+" vimwiki }}}
 
 " Remaps {{{
 

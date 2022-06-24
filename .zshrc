@@ -23,6 +23,7 @@ alias ruby_webserver='ruby -rwebrick -e \
   "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
 alias rake='noglob rake'
 alias ri='noglob ri'
+alias be='bundle exec'
 
 # Git aliases.
 function current_branch() {

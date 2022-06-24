@@ -6,7 +6,7 @@ setopt combiningchars
 # General aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ll='ls -Ahlv'
+alias ll='ls -AhlvX'
 
 # I still have to use a mac :(
 if [[ $(uname -s) == "Linux" ]]; then

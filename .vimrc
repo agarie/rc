@@ -37,16 +37,24 @@ colorscheme molokai
 " Window height.
 set winheight=30
 
+" Plugins.
+call plug#begin()
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+call plug#end()
+
 " Pathogen and bundles.
 """""""""""""""""""""""
+" TODO: Use `vim-plug` instead of Pathogen.
 
 execute pathogen#infect()
 execute pathogen#helptags()
 
-" ctrlp
-"""""""
-
-let g:ctrlp_show_hidden = 1
+" Telescope
+nnoremap <C-P> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " airline
 """""""""

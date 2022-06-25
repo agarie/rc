@@ -91,7 +91,9 @@ let g:vimwiki_list = [{
       \ 'ext': '.md',
       \ 'html_filename_parameterization': 1,
       \ 'auto_generate_links': 1,
-      \ 'auto_diary_index': 1}]
+      \ 'auto_diary_index': 1,
+      \ 'auto_tags': 1,
+      \ 'auto_generate_tags': 1}]
 
 " Let folding be defined by another plugin.
 let g:vimwiki_folding = 'custom'
@@ -101,7 +103,7 @@ let g:vimwiki_folding = 'custom'
 " wiki if it can't find one defined in your environment.
 let g:vimwiki_global_ext = 0
 
-" vimwiki }}}
+" }}}
 
 " Remaps {{{
 

@@ -41,6 +41,7 @@ set winheight=30
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " Pathogen and bundles.
@@ -92,8 +93,7 @@ let g:vimwiki_list = [{
       \ 'html_filename_parameterization': 1,
       \ 'auto_generate_links': 1,
       \ 'auto_diary_index': 1,
-      \ 'auto_tags': 1,
-      \ 'auto_generate_tags': 1}]
+      \ 'auto_tags': 1}]
 
 " Let folding be defined by another plugin.
 let g:vimwiki_folding = 'custom'

@@ -59,6 +59,14 @@ execute pathogen#infect()
 execute pathogen#helptags()
 
 " Telescope
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    file_ignore_patterns = {".git"}
+  }
+}
+EOF
+
 nnoremap <C-P> <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -89,8 +97,6 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
-
 
 " vim-markdown
 let g:markdown_folding = 1

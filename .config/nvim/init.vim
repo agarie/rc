@@ -77,12 +77,20 @@ let g:airline_symbols.colnr = " ℅:"
 " syntastic
 """""""""""
 
+" Recommended settings.
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " `pylint` is too slow for development.
 let g:syntastic_python_checkers = ['flake8', 'pyflake']
 let g:syntastic_python_flake8_args = '--ignore=E501'
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+
 
 " vim-markdown
 let g:markdown_folding = 1

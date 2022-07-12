@@ -49,6 +49,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'stephpy/vim-php-cs-fixer'
 call plug#end()
 
 " Pathogen and bundles.
@@ -98,6 +99,9 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+" vim-php-cs-fixer
+let g:php_cs_fixer_path = "./vendor/bin/php-cs-fixer"
 
 " vim-markdown
 let g:markdown_folding = 1

@@ -1,5 +1,13 @@
 # Carlos Agarie's zshrc.
 
+# `HIST_VERIFY` disables automatically executing commands from the history.
+setopt HIST_VERIFY
+
+setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
 # See the manual page for zshoptions.
 setopt combiningchars
 
@@ -93,12 +101,6 @@ PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
-
-# History
-setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
-export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000
-export SAVEHIST=1000000
 
 # Some...  options.
 setopt autocd beep extendedglob nomatch rcquotes

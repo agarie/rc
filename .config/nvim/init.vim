@@ -17,6 +17,8 @@ set nobackup                      " LOL BACKUPS
 set noswapfile
 set foldopen-=block               " Don't open folds when moving around with paragraph text objects ({ and }).
 set foldcolumn=1                  " Show fold information in the gutter.
+set foldmethod=expr               " Use Treesitter for code folding.
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Indentation
 set autoindent                    " Copies current line indentation when creating a new line.
@@ -61,7 +63,7 @@ execute pathogen#helptags()
 
 " Telescope
 lua << EOF
-require('telescope').setup{
+require('telescope').setup {
   defaults = {
     file_ignore_patterns = {".git"}
   }
@@ -72,6 +74,18 @@ nnoremap <C-P> <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  }
+}
+EOF
 
 " airline
 """""""""

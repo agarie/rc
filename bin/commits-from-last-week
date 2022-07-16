@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+# Get the list of commits by a specific author from across a list of
+# repositories since last Friday.
+#
+# - Commits are in the `oneline` format
+# - Author can be specified in the command line with --author "First Last"
+# - Repositories are specified as directories on STDIN; prints an error if not a dir or it isn't a git repo
+# - Not sure how and if the period will be configurable
+
+

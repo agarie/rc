@@ -239,3 +239,14 @@ autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dt :.!today --h
 
 " Introduce current time as HH:MM.
 autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dh :.!now<cr>
+
+" Scratch buffer.
+" https://www.gilesorr.com/blog/vim-tips-23-scratch-buffer.html
+function Newscratch()
+    execute 'tabnew '
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal noswapfile
+endfunction
+command! Ns call Newscratch()
+

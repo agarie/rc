@@ -1,12 +1,47 @@
 # Carlos Agarie's zshrc.
 
-# `HIST_VERIFY` disables automatically executing commands from the history.
+# History {{{
+
+# Disables automatically executing commands from the history, instead expand
+# commands and reload the line for editing.
 setopt HIST_VERIFY
 
-setopt extended_history hist_no_store hist_ignore_dups hist_expire_dups_first hist_find_no_dups inc_append_history share_history hist_reduce_blanks hist_ignore_space
+# Save start time and duration of each command in the history file. This option
+# is useful for checking how slow some commands are, etc. Free data!
+setopt EXTENDED_HISTORY
+
+# Removes the `history` / `fc -l` command from the history after the next
+# command is invoked. Useful to keep the history file tidy.
+setopt HIST_NO_STORE
+
+# Commands are not inserted into history if they are duplicates of the last one.
+setopt HIST_IGNORE_DUPS
+
+# Whenever internal history needs to be saved, oldest duplicates are removed
+# before unique commands. Given how large `HISTSIZE` is, this is mostly
+# cosmetic.
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# Do not show duplicates when searching history independent of their position.
+setopt HIST_FIND_NO_DUPS
+
+# New history entries are appended incrementally to the history (after they are
+# entered), similar to what the option `INC_APPEND_HISTORY` specifies. This
+# option also imports commands from the history file, so the local history will
+# have access to the recent history of other, concurrent shells.
+setopt SHARE_HISTORY
+
+# Remove extra whitespace from commands before ading them to the history file.
+setopt HIST_REDUCE_BLANKS
+
+# Disable saving commands that begin with a space to the history file.
+setopt HIST_IGNORE_SPACE
+
 export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000
+export HISTSIZE=1001000
 export SAVEHIST=1000000
+
+# }}}
 
 # See the manual page for zshoptions.
 setopt combiningchars
@@ -152,3 +187,5 @@ bindkey -s "^f" "tmux-session-from-dir\n"
 
 # Machine-specific configuration.
 source ~/.zlocal
+
+# vim: foldmethod=marker

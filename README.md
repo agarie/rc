@@ -34,4 +34,4 @@ I got a lot of "inspiration" (shamelessly copied) from these repositories:
 - https://github.com/yashsriv/i3-config
 - https://gitlab.com/dmfay/dotfiles
 - https://mutelight.org/practical-tmux
-- https://robots.thoughtbot.com/a-tmux-crash-course
+- And many, many others

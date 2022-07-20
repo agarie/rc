@@ -98,16 +98,10 @@ EOF
 " LSP
 lua << EOF
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.cssls.setup{}
 local lspkind = require('lspkind')
 cmp = require'cmp'
 cmp.setup {
-   -- As currently, i am not using any snippet manager, thus disabled it.
-      -- snippet = {
-         --   expand = function(args)
-            --     require("luasnip").lsp_expand(args.body)
-            --   end,
-         -- },
-
       mapping = {
          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
          ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -137,6 +131,11 @@ cmp.setup {
          ghost_text = true
       }
 }
+
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 EOF
 
 " }}}
@@ -152,26 +151,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.colnr = " ℅:"
-
-" syntastic
-"""""""""""
-
-" Recommended settings.
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = { "mode": "passive" }
-
-" `pylint` is too slow for development.
-let g:syntastic_python_checkers = ['flake8', 'pyflake']
-let g:syntastic_python_flake8_args = '--ignore=E501'
-
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
-" vim-php-cs-fixer
-let g:php_cs_fixer_path = "./vendor/bin/php-cs-fixer"
 
 " vim-markdown
 let g:markdown_folding = 1

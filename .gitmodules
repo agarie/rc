@@ -19,9 +19,6 @@
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic
 [submodule ".vim/bundle/vim-css3-syntax"]
 	path = .vim/bundle/css3-syntax
 	url = https://github.com/hail2u/vim-css3-syntax

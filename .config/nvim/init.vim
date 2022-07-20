@@ -1,6 +1,6 @@
 " Carlos Agarie's vimrc
 
-" Still using old .vim directory with bunch of stuf.
+" Still using old .vim directory with bunch of stuff.
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 
@@ -45,12 +45,16 @@ set winheight=30
 
 " }}}
 
-" Plugins {{{
+" Plugins — installation {{{
 call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind.nvim'
 Plug 'stephpy/vim-php-cs-fixer'
 call plug#end()
 
@@ -60,6 +64,10 @@ call plug#end()
 
 execute pathogen#infect()
 execute pathogen#helptags()
+
+" }}}
+
+" Plugin config — Lua {{{
 
 " Telescope
 lua << EOF
@@ -86,6 +94,54 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 EOF
+
+" LSP
+lua << EOF
+require'lspconfig'.tsserver.setup{}
+local lspkind = require('lspkind')
+cmp = require'cmp'
+cmp.setup {
+   -- As currently, i am not using any snippet manager, thus disabled it.
+      -- snippet = {
+         --   expand = function(args)
+            --     require("luasnip").lsp_expand(args.body)
+            --   end,
+         -- },
+
+      mapping = {
+         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+         ["<C-e>"] = cmp.mapping.close(),
+         ["<c-y>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+         },
+      },
+      formatting = {
+         format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+               buffer   = "[buf]",
+               nvim_lsp = "[LSP]",
+               path     = "[path]",
+            },
+         },
+      },
+
+      sources = {
+         { name = "nvim_lsp"},
+         { name = "path" },
+         { name = "buffer" , keyword_length = 5},
+      },
+      experimental = {
+         ghost_text = true
+      }
+}
+EOF
+
+" }}}
+
+" Plugin config — VimScript {{{
 
 " airline
 """""""""
@@ -231,6 +287,8 @@ augroup END
 
 " }}}
 
+" Extra autocommands and functions {{{
+
 " Remove any trailing whitespace that is in the file.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
@@ -249,4 +307,6 @@ function Newscratch()
     setlocal noswapfile
 endfunction
 command! Ns call Newscratch()
+
+" }}}
 

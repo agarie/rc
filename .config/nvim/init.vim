@@ -282,6 +282,11 @@ autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dt :.!today --h
 " Introduce current time as HH:MM.
 autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dh :.!now<cr>
 
+" Remove content under current header in vimwiki.
+" This mapping is recursive as it is using the vimwiki header text-object.
+" See :help vimwiki-text-objects
+autocmd Filetype vimwiki nmap <buffer> <LocalLeader>xh [[jdih
+
 " Scratch buffer.
 " https://www.gilesorr.com/blog/vim-tips-23-scratch-buffer.html
 function Newscratch()

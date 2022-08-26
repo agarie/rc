@@ -47,9 +47,13 @@ set winheight=30
 
 " Plugins — installation {{{
 call plug#begin()
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'Raimondi/delimitMate'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'mattn/emmet-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -57,10 +61,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'onsails/lspkind.nvim'
 Plug 'stephpy/vim-php-cs-fixer'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-endwise'
-Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Pathogen and bundles.

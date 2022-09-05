@@ -150,7 +150,7 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 if [[ $(uname -s) == "Linux" ]]; then
   export CHRUBY_DIR="/usr"
 else
-  export CHRUBY_DIR="/usr/local/opt/chruby"
+  export CHRUBY_DIR="/opt/homebrew/opt/chruby"
 fi
 
 source $CHRUBY_DIR/share/chruby/chruby.sh

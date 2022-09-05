@@ -144,6 +144,20 @@ unsetopt notify
 # Don't count common path separators as word characters
 WORDCHARS=${WORDCHARS//[&.;\/]}
 
+# chruby initialization and setup. {{{
+
+# Different locations on Linux and macOS.
+if [[ $(uname -s) == "Linux" ]]; then
+  export CHRUBY_DIR="/usr"
+else
+  export CHRUBY_DIR="/usr/local/opt/chruby"
+fi
+
+source $CHRUBY_DIR/share/chruby/chruby.sh
+source $CHRUBY_DIR/share/chruby/auto.sh
+
+# }}}
+
 # Keybindings
 
 # There are some programs that set -o vi depending on the value of $EDITOR.

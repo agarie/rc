@@ -1,5 +1,5 @@
 # Prepend path so my own scripts go first.
-path=("$HOME/rc/bin" $path)
+path=("$HOME/Code/Personal/rc/bin" $path)
 
 export EDITOR=vim
 export PAGER=less
@@ -14,4 +14,3 @@ export LANGUAGE=en_US.UTF-8
 
 # Don't print filenames with spaces using quotation marks.
 export QUOTING_STYLE=literal
-

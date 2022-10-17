@@ -89,20 +89,9 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Treesitter
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true,
-  }
-}
-EOF
-
 " LSP
 lua << EOF
+require'nvim-treesitter.configs'.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.solargraph.setup{}

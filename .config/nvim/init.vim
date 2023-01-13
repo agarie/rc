@@ -96,6 +96,7 @@ require'nvim-treesitter.configs'.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.solargraph.setup{}
+
 local lspkind = require('lspkind')
 cmp = require'cmp'
 cmp.setup {
@@ -118,7 +119,6 @@ cmp.setup {
             },
          },
       },
-
       sources = {
          { name = "nvim_lsp"},
          { name = "path" },

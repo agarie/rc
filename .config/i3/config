@@ -269,5 +269,5 @@ bindsym --release Shift+Print exec scrot --select -F ~/Pictures/Screenshots/$(da
 assign [class="firefox"] workspace 1
 assign [class="discord"] workspace 4
 assign [class="Todoist"] workspace 8
-assign [class="VirtualBox Manager"] workspace 6
-assign [class="VirtualBoxVM"] workspace 6
+assign [class="VirtualBox Manager"] workspace 3
+assign [class="VirtualBoxVM"] workspace 3

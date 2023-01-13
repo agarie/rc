@@ -60,6 +60,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'onsails/lspkind.nvim'
+Plug 'rlue/vim-fold-rspec'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug 'tpope/vim-endwise'
 call plug#end()

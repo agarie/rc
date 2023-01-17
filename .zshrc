@@ -49,13 +49,13 @@ setopt combiningchars
 # General aliases.
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ll='ls -AhlvX'
+alias ls='ls --color=auto'
 
 # I still have to use a mac :(
 if [[ $(uname -s) == "Linux" ]]; then
-  alias ls='ls --color=auto'
+  alias ll='ls -AhlvX'
 else
-  alias ls='ls -G'
+  alias ll='ls -Ahlvp'
 fi
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.

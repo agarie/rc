@@ -41,33 +41,37 @@ vim.cmd([[
 -- }}}
 
 -- Plugins — installation {{{
+
+-- TODO: Use a Lua-native package manager?
 vim.cmd([[
 	call plug#begin()
 	Plug 'JuliaEditorSupport/julia-vim'
 	Plug 'LaTeX-Box-Team/LaTeX-Box'
 	Plug 'Raimondi/delimitMate'
-	Plug 'hrsh7th/nvim-cmp'
 	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/nvim-cmp'
 	Plug 'mattn/emmet-vim'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'neovimhaskell/haskell-vim'
 	Plug 'numToStr/Comment.nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'nvim-telescope/telescope.nvim'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'onsails/lspkind.nvim'
+	Plug 'pangloss/vim-javascript'
 	Plug 'rlue/vim-fold-rspec'
+	Plug 'rust-lang/rust.vim'
 	Plug 'stephpy/vim-php-cs-fixer'
-	Plug 'tpope/vim-endwise'
+        Plug 'godlygeek/tabular'
+        Plug 'hail2u/vim-css3-syntax'
+        Plug 'sudar/vim-arduino-syntax'
+        Plug 'tomtom/tcomment_vim'
+        Plug 'tpope/vim-endwise'
+        Plug 'tpope/vim-fugitive'
+        Plug 'vim-airline/vim-airline'
+        Plug 'vimwiki/vimwiki'
 	call plug#end()
 ]])
-
--- Pathogen and bundles.
--- TODO: Use `vim-plug` instead of Pathogen.
-
-vim.cmd([[
-	execute pathogen#infect()
-	execute pathogen#helptags()
-	]])
 
 -- }}}
 
@@ -267,7 +271,7 @@ vim.cmd([[au BufNewFile,BufRead PKGBUILD set ft=sh]])
 vim.cmd([[
 augroup vimscript
   autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim,lua setlocal foldmethod=marker
 augroup END
 
 augroup markdown

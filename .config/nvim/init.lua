@@ -1,5 +1,8 @@
 -- Carlos Agarie's vimrc
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = ";"
+
 -- General {{{
 vim.opt.hidden = true
 vim.opt.backspace = { "indent", "eol", "start" } -- Backspace can delete stuff in insert mode.
@@ -179,12 +182,6 @@ let g:vimwiki_global_ext = 0
 -- }}}
 
 -- Remaps {{{
-
--- Leader is used in general remaps, localleader for filetype remaps.
-vim.cmd([[
-let mapleader = ","
-let maplocalleader = ";"
-]])
 
 -- Use ,k to break into a new line.
 vim.cmd([[nnoremap <Leader>k i<cr><esc>k$]])

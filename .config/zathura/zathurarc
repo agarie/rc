@@ -1,4 +1,0 @@
-# Copy selection to the system clipboard.
-set selection-clipboard clipboard
-
-

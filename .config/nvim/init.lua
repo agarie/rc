@@ -198,17 +198,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 ]])
 
--- Use ,- and ,= to navigate between tabs.
-vim.cmd([[
-noremap <Leader>- :tabprevious<CR>
-noremap <Leader>= :tabnext<CR>
-]])
-
--- Use ,[ and ,] to navigate between buffers.
-vim.cmd([[
-noremap <Leader>[ :bnext<CR>
-noremap <Leader>] :blast<CR>
-]])
+-- Use <Leader>- and <Leader>= to navigate between tabs.
+vim.keymap.set('n', '<Leader>-', ':tabprevious<CR>')
+vim.keymap.set('n', '<Leader>=', ':tabnext<CR>')
 
 -- "in line" (entire line sans white-space; cursor at beginning--ie, ^)
 vim.cmd([[

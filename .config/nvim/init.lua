@@ -3,6 +3,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ";"
 
+-- Plugins — installation
+require('plugins')
+
 -- General {{{
 vim.opt.hidden = true
 vim.opt.backspace = { "indent", "eol", "start" } -- Backspace can delete stuff in insert mode.
@@ -43,42 +46,7 @@ vim.cmd([[
 ]])
 -- }}}
 
--- Plugins — installation {{{
-
--- TODO: Use a Lua-native package manager?
-vim.cmd([[
-	call plug#begin()
-	Plug 'JuliaEditorSupport/julia-vim'
-	Plug 'LaTeX-Box-Team/LaTeX-Box'
-	Plug 'Raimondi/delimitMate'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/nvim-cmp'
-	Plug 'mattn/emmet-vim'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'neovimhaskell/haskell-vim'
-	Plug 'numToStr/Comment.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'onsails/lspkind.nvim'
-	Plug 'pangloss/vim-javascript'
-	Plug 'rlue/vim-fold-rspec'
-	Plug 'rust-lang/rust.vim'
-	Plug 'stephpy/vim-php-cs-fixer'
-        Plug 'godlygeek/tabular'
-        Plug 'hail2u/vim-css3-syntax'
-        Plug 'sudar/vim-arduino-syntax'
-        Plug 'tomtom/tcomment_vim'
-        Plug 'tpope/vim-endwise'
-        Plug 'tpope/vim-fugitive'
-        Plug 'vim-airline/vim-airline'
-        Plug 'vimwiki/vimwiki'
-	call plug#end()
-]])
-
--- }}}
-
--- Plugin config — Lua {{{
+-- Plugin config {{{
 
 -- Telescope
 require('telescope').setup {
@@ -136,10 +104,6 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-
--- }}}
-
--- Plugin config — VimScript {{{
 
 -- airline
 vim.cmd([[

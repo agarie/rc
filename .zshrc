@@ -132,7 +132,7 @@ theme_precmd () {
 
 setopt prompt_subst
 PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%}λ '
-# RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
+RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd

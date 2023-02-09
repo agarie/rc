@@ -15,10 +15,17 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true                    -- Highlight current line.
 vim.opt.backup = false                      -- LOL BACKUPS
 vim.opt.swapfile = false
-vim.opt.foldopen:remove("block")               -- Don't open folds when moving around with paragraph text objects ({ and }).
-vim.opt.foldcolumn = "1"                  -- Show fold information in the gutter.
-vim.opt.foldmethod = "expr"               -- Use Treesitter for code folding.
-vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+
+-- Folding.
+-- Don't open folds when moving around with paragraph text objects ({ and }).
+vim.opt.foldopen:remove("block")
+
+-- Show fold information in the gutter.
+vim.opt.foldcolumn = "1"
+
+-- Use Treesitter for code folding.
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Indentation
 vim.opt.autoindent = true                    -- Copies current line indentation when creating a new line.

@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Code/Personal ~/Code/Mercurio -mindepth 1 -maxdepth 1 -type d,l | fzf)
+    # PROJECTS_DIRS should be defined in ~/.zlocal
+    selected=$(find $PROJECTS_DIRS -mindepth 1 -maxdepth 1 -type d,l | fzf)
 fi
 
 if [[ -z $selected ]]; then

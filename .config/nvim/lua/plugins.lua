@@ -28,6 +28,7 @@ packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'vim-airline/vim-airline'
   use 'vimwiki/vimwiki'
+  use 'dkarter/bullets.vim'
 
   -- Post-install/update hook with neovim command
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

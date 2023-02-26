@@ -21,7 +21,6 @@ packer.startup(function(use)
   use 'rust-lang/rust.vim'
   use 'stephpy/vim-php-cs-fixer'
   use 'godlygeek/tabular'
-  use 'hail2u/vim-css3-syntax'
   use 'sudar/vim-arduino-syntax'
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-endwise'

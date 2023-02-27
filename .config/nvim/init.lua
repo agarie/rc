@@ -127,9 +127,9 @@ let g:markdown_folding = 1
 
 -- Configuration for my personal notes.
 vim.g.vimwiki_list = {{
-  path = '/home/agarie/Code/Personal/notes',
-  path_html = '/home/agarie/Code/Personal/notes/notes_html',
-  template_path = '/home/agarie/Code/Personal/notes/_templates',
+  path = os.getenv('HOME') .. '/Code/Personal/notes',
+  path_html = os.getenv('HOME') .. '/Code/Personal/notes/notes_html',
+  template_path = os.getenv('HOME') .. '/Code/Personal/notes/_templates',
   custom_wiki2html = 'vimwiki_markdown',
   syntax = 'markdown',
   ext = '.md',

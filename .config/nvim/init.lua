@@ -139,8 +139,7 @@ vim.g.vimwiki_list = {{
   auto_tags = 1
 }}
 
--- Let folding be defined by another plugin.
-vim.g.vimwiki_folding = 'syntax'
+vim.g.vimwiki_folding = 'expr'
 
 -- Do not create a 'temporary wiki' whenever I open a *.md file.
 -- A temporary wiki is a mechanism by which vimwiki can create an anonymous
@@ -209,7 +208,7 @@ vim.cmd([[noremap Y y$]])
 
 -- }}}
 
---" Language configuration {{{
+-- Language configuration {{{
 
 vim.cmd([[
 filetype plugin indent on

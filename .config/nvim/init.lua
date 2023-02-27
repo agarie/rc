@@ -126,27 +126,27 @@ let g:markdown_folding = 1
 -- vimwiki {{{
 
 -- Configuration for my personal notes.
-vim.cmd([[
-let g:vimwiki_list = [{
-      \ 'path': $HOME . '/Code/Personal/notes',
-      \ 'path_html': $HOME . '/Code/Personal/notes/notes_html',
-      \ 'template_path': $HOME . '/Code/Personal/notes/_templates',
-      \ 'custom_wiki2html': 'vimwiki_markdown',
-      \ 'syntax': 'markdown',
-      \ 'ext': '.md',
-      \ 'html_filename_parameterization': 1,
-      \ 'auto_generate_links': 1,
-      \ 'auto_diary_index': 1,
-      \ 'auto_tags': 1}]
+vim.g.vimwiki_list = {{
+  path = '/home/agarie/Code/Personal/notes',
+  path_html = '/home/agarie/Code/Personal/notes/notes_html',
+  template_path = '/home/agarie/Code/Personal/notes/_templates',
+  custom_wiki2html = 'vimwiki_markdown',
+  syntax = 'markdown',
+  ext = '.md',
+  html_filename_parameterization = 1,
+  auto_generate_links = 1,
+  auto_diary_index = 1,
+  auto_tags = 1
+}}
 
-" Let folding be defined by another plugin.
-let g:vimwiki_folding = 'expr'
+-- Let folding be defined by another plugin.
+vim.g.vimwiki_folding = 'syntax'
 
-" Do not create a 'temporary wiki' whenever I open a *.md file.
-" A temporary wiki is a mechanism by which vimwiki can create an anonymous
-" wiki if it can't find one defined in your environment.
-let g:vimwiki_global_ext = 0
-]])
+-- Do not create a 'temporary wiki' whenever I open a *.md file.
+-- A temporary wiki is a mechanism by which vimwiki can create an anonymous
+-- wiki if it can't find one defined in your environment.
+vim.g.vimwiki_global_ext = 0
+
 -- }}}
 
 -- Remaps {{{

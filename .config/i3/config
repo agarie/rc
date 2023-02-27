@@ -54,13 +54,13 @@ set $bclr #2e3440
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #30343F #30343F #FFFFFF #30343F $bclr
-  client.focused_inactive #30343F #30343F #FFFFFF #30343F $bclr
-  client.unfocused        #30343F #30343F #FFFFFF #30343F $bclr
-  client.urgent           #30343F #30343F #FFFFFF #30343F $bclr
-  client.placeholder      #30343F #0c0c0c #FFFFFF #30343F $bclr
+client.focused          #30343F #30343F #FFFFFF #30343F $bclr
+client.focused_inactive #30343F #30343F #FFFFFF #30343F $bclr
+client.unfocused        #30343F #30343F #FFFFFF #30343F $bclr
+client.urgent           #30343F #30343F #FFFFFF #30343F $bclr
+client.placeholder      #30343F #0c0c0c #FFFFFF #30343F $bclr
 
-  client.background       #30343F
+client.background       #30343F
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -128,12 +128,6 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 # bind specific workspaces to each monitor
 # workspaces1-4 to monitor1, workspaces5-8 to monitor2
 set $monitor_one DP-2
@@ -178,30 +172,30 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -210,19 +204,14 @@ bindsym $mod+r mode "resize"
 for_window [class=".*"] border pixel 0
 
 # Gap configuration.
-gaps inner 12
+gaps inner 8
 gaps outer 0
 
 # Only enable gaps in a workspace when there is at least one container.
 smart_gaps on
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        position top
-        status_command i3status
-        tray_output primary
-}
+# Polybar.
+exec_always --no-startup-id ~/.config/polybar/start.sh
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (s) suspend, (r) reboot, (CTRL+s) shutdown

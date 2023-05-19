@@ -28,7 +28,7 @@
   untracked = cyan
 
 [merge]
-  conflictstyle = diff3
+  conflictstyle = merge
 
 [core]
   editor = /usr/bin/env nvim

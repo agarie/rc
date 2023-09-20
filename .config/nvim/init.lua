@@ -1,9 +1,10 @@
 -- Carlos Agarie's vimrc
 
+-- --
 vim.g.mapleader = " "
 vim.g.maplocalleader = ";"
 
--- Plugins — installation
+-- Plugins are stored in lua/plugins.lua.
 require('plugins')
 
 -- General {{{
@@ -53,9 +54,7 @@ vim.cmd([[
 ]])
 -- }}}
 
--- Plugin config {{{
-
--- Telescope
+-- Telescope configuration {{{
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {".git", "node_modules"}
@@ -68,8 +67,9 @@ vim.cmd([[
 	nnoremap <leader>fb <cmd>Telescope buffers<cr>
 	nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 ]])
+-- }}}
 
--- LSP
+-- LSP configuration {{{
 require'nvim-treesitter.configs'.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.cssls.setup{}
@@ -108,8 +108,9 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+--- }}}
 
--- airline
+-- airline {{{
 vim.cmd([[
 let g:airline_powerline_fonts = 1
 

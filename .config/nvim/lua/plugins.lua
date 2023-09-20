@@ -4,30 +4,48 @@ packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Telescope.
+  use 'nvim-telescope/telescope.nvim'
+
+  -- LSP.
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'onsails/lspkind.nvim'
+
+  -- Treesitter.
+
+  -- Completion.
+  use 'hrsh7th/nvim-cmp'
+
+  -- Git.
+  use 'tpope/vim-fugitive'
+
+  -- asdf
+  use 'godlygeek/tabular'
+  use 'tomtom/tcomment_vim'
+  use 'tpope/vim-endwise'
+  use 'dkarter/bullets.vim'
+  use 'Raimondi/delimitMate'
+  use 'numToStr/Comment.nvim'
+
+  -- Language-specific plugins.
   use 'JuliaEditorSupport/julia-vim'
   use 'LaTeX-Box-Team/LaTeX-Box'
-  use 'Raimondi/delimitMate'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/nvim-cmp'
+  use 'sudar/vim-arduino-syntax'
   use 'mattn/emmet-vim'
-  use 'neovim/nvim-lspconfig'
   use 'neovimhaskell/haskell-vim'
-  use 'numToStr/Comment.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'onsails/lspkind.nvim'
   use 'pangloss/vim-javascript'
   use 'rlue/vim-fold-rspec'
   use 'rust-lang/rust.vim'
   use 'stephpy/vim-php-cs-fixer'
-  use 'godlygeek/tabular'
-  use 'sudar/vim-arduino-syntax'
-  use 'tomtom/tcomment_vim'
-  use 'tpope/vim-endwise'
-  use 'tpope/vim-fugitive'
+
+  use 'nvim-lua/plenary.nvim'
+
+  -- line
   use 'vim-airline/vim-airline'
+
+  -- Personal wiki.
   use 'vimwiki/vimwiki'
-  use 'dkarter/bullets.vim'
 
   -- Post-install/update hook with neovim command
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

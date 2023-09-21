@@ -24,10 +24,6 @@ vim.opt.foldopen:remove("block")
 -- Show fold information in the gutter.
 vim.opt.foldcolumn = "1"
 
--- Use Treesitter for code folding.
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
 -- Indentation
 vim.opt.autoindent = true                    -- Copies current line indentation when creating a new line.
 vim.opt.tabstop = 8                     -- Hard tabs (eww) are equivalent to 8 spaces.
@@ -37,7 +33,7 @@ vim.opt.shiftround = true                    -- Indentation is set to multiples 
 vim.opt.expandtab = true                     -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
 
 -- Searching
-vim.opt.hlsearch = true                      -- Highlight matches.
+vim.opt.hlsearch = false                     -- Do not highlight matches.
 vim.opt.incsearch = true                     -- Incremental search.
 vim.opt.ignorecase = true                    -- Ignore case...
 vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
@@ -61,12 +57,39 @@ require('telescope').setup {
   }
 }
 
+-- Enable telescope fzf.
+pcall(require('telescope').load_extension, 'fzf')
+
+-- See `:help telescope.builtin`
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]resume' })
+
 vim.cmd([[
 	nnoremap <C-P> <cmd>Telescope find_files hidden=true<cr>
 	nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 	nnoremap <leader>fb <cmd>Telescope buffers<cr>
 	nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 ]])
+-- }}}
+
+-- Treesitter configuration {{{
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- }}}
 
 -- LSP configuration {{{
@@ -118,9 +141,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.colnr = " ℅:"
-
-" vim-markdown
-let g:markdown_folding = 1
 ]])
 -- }}}
 

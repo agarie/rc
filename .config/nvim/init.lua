@@ -161,6 +161,7 @@ vim.g.vimwiki_list = {{
 }}
 
 vim.g.vimwiki_folding = 'expr'
+vim.g.markdown_folding = 1
 
 -- Do not create a 'temporary wiki' whenever I open a *.md file.
 -- A temporary wiki is a mechanism by which vimwiki can create an anonymous

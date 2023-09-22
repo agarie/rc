@@ -88,15 +88,19 @@ vim.cmd([[
 -- }}}
 
 -- Treesitter configuration {{{
+require'nvim-treesitter.configs'.setup{}
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- }}}
 
 -- LSP configuration {{{
-require'nvim-treesitter.configs'.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.solargraph.setup{}
+require('mason').setup()
+require('mason-lspconfig').setup()
+
+require('lspconfig').marksman.setup{}
+require('lspconfig').tsserver.setup{}
+require('lspconfig').cssls.setup{}
+require('lspconfig').solargraph.setup{}
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')

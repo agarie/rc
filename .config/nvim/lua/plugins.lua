@@ -15,19 +15,26 @@ packer.startup(function(use)
 
   -- LSP.
   use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
   use 'onsails/lspkind.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
+
+  -- Completion.
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      -- Adds LSP completion capabilities
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip'
+    }
+  }
 
   -- Configure Treesitter to update its parsers automatically.
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-
-  -- Completion.
-  use 'hrsh7th/nvim-cmp'
 
   -- Git.
   use 'tpope/vim-fugitive'

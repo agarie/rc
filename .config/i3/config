@@ -130,7 +130,7 @@ workspace 4 output $monitor_one
 workspace 5 output $monitor_one
 workspace 6 output $monitor_one
 
-set $monitor_two DP-3
+set $monitor_two DP-0
 workspace 7 output $monitor_two
 workspace 8 output $monitor_two
 

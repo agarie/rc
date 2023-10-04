@@ -137,15 +137,13 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 --- }}}
 
--- airline {{{
-vim.cmd([[
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.colnr = " ℅:"
-]])
+-- lualine {{{
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'molokai'
+  }
+}
 -- }}}
 
 -- vimwiki {{{

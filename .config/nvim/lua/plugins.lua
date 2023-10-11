@@ -45,6 +45,13 @@ packer.startup(function(use)
   use 'dkarter/bullets.vim'
   use 'Raimondi/delimitMate'
 
+  use {
+    'folke/todo-comments.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
   -- Implements commenting operators: gc (line comment) and gb (block comment).
   use {
     'numToStr/Comment.nvim',

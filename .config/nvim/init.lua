@@ -135,10 +135,14 @@ cmp.setup {
   }
 }
 
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc='LSP: [G]o to [D]efinition' })
+vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc='LSP: [G]o to [R]eferences' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc='LSP: [C]ode [A]ction' })
+
+-- Diagnostics.
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc='Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc='Go to next diagnostic message' })
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc='Open diagnostic list' })
 --- }}}
 
 -- lualine {{{

@@ -240,6 +240,10 @@ vim.cmd([[noremap Y y$]])
 
 -- }}}
 
+-- todo-comments {{{
+require('todo-comments').setup()
+-- }}}
+
 -- Language configuration {{{
 
 vim.cmd([[

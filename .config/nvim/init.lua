@@ -241,7 +241,16 @@ vim.cmd([[noremap Y y$]])
 -- }}}
 
 -- todo-comments {{{
+
 require('todo-comments').setup()
+
+vim.keymap.set('n', ']t', function ()
+	require('todo-comments').jump_next()
+end, { desc = "Next TO DO comment" })
+
+vim.keymap.set('n', '[t', function ()
+	require('todo-comments').jump_prev()
+end, { desc = "Next TO DO comment" })
 -- }}}
 
 -- Language configuration {{{

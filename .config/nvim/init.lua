@@ -281,6 +281,8 @@ augroup markdown
 augroup END
 ]])
 
+vim.g.markdown_fenced_languages = {'html', 'ruby'}
+
 -- }}}
 
 -- Extra autocommands and functions {{{

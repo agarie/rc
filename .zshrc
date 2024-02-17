@@ -76,6 +76,7 @@ function current_branch() {
 }
 
 alias gst='git status -sb'
+alias gconf='git diff --check'
 alias ga='git add'
 alias gc='git commit --verbose'
 alias ggpush='git push origin $(current_branch)'

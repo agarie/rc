@@ -15,6 +15,12 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
+# Polybar.
+exec_always --no-startup-id ~/.config/polybar/start.sh
+
+# Remove mouse when idle
+exec --no-startup-id unclutter
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -196,14 +202,11 @@ bindsym $mod+r mode "resize"
 for_window [class=".*"] border pixel 0
 
 # Gap configuration.
-gaps inner 8
+gaps inner 0
 gaps outer 0
 
 # Only enable gaps in a workspace when there is at least one container.
 smart_gaps on
-
-# Polybar.
-exec_always --no-startup-id ~/.config/polybar/start.sh
 
 # shutdown / restart / suspend...
 set $mode_system System (l) lock, (s) suspend, (r) reboot, (CTRL+s) shutdown

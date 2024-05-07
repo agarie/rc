@@ -16,6 +16,5 @@ if type "xrandr"; then
 else
   polybar --reload batou &
 fi
-polybar batou &
 
 echo "Bar launched at $(date)" | tee -a /tmp/polybar.log

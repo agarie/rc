@@ -92,6 +92,7 @@ require'nvim-treesitter.configs'.setup{}
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldnestmax = 2
+vim.opt.foldlevel = 1
 -- }}}
 
 -- LSP configuration {{{

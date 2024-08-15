@@ -45,6 +45,8 @@ packer.startup(function(use)
   use 'dkarter/bullets.vim'
   use 'Raimondi/delimitMate'
 
+  use 'preservim/nerdtree'
+
   use {
     'folke/todo-comments.nvim',
     requires = {

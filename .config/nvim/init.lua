@@ -168,8 +168,7 @@ vim.g.vimwiki_list = {{
   ext = '.md',
   html_filename_parameterization = 1,
   auto_generate_links = 1,
-  auto_diary_index = 1,
-  auto_tags = 1
+  auto_diary_index = 1
 }}
 
 vim.g.vimwiki_folding = 'expr'
@@ -283,7 +282,7 @@ augroup markdown
 augroup END
 ]])
 
-vim.g.markdown_fenced_languages = {'html', 'ruby'}
+vim.g.markdown_fenced_languages = {'html', 'ruby', 'bash'}
 
 -- }}}
 

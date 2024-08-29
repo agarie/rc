@@ -38,12 +38,13 @@ vim.opt.incsearch = true                     -- Incremental search.
 vim.opt.ignorecase = true                    -- Ignore case...
 vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
 
+-- Colors
+vim.cmd.colorscheme "tokyonight"
+
 -- Open new split panes to right and bottom.
 vim.cmd([[
 	set splitbelow
 	set splitright
-
-	colorscheme molokai
 
 " Window height.
 	set winheight=30

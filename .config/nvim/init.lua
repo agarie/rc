@@ -38,14 +38,6 @@ vim.opt.incsearch = true                     -- Incremental search.
 vim.opt.ignorecase = true                    -- Ignore case...
 vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
 
--- Colorscheme. The default color for the gutter text is illegible.
-require('tokyonight').setup({
-  on_colors = function (colors)
-    colors.fg_gutter = colors.magenta
-  end
-})
-vim.cmd.colorscheme "tokyonight"
-
 -- Open new split panes to right and bottom.
 vim.cmd([[
 	set splitbelow
@@ -54,6 +46,23 @@ vim.cmd([[
 " Window height.
 	set winheight=30
 ]])
+-- }}}
+
+-- Colorscheme {{{
+require('tokyonight').setup({
+  on_colors = function (colors)
+    -- The default color for the gutter text is illegible.
+    colors.fg_gutter = colors.magenta
+  end,
+  on_highlights = function (highlights, colors)
+    -- By changing the gutter color, we end up making folded text also illegible.
+    -- TODO: It is probably better to check which highlight control the color of the line numbers on the gutter.
+    highlights.Folded = {
+      bg = require('tokyonight.util').darken(colors.purple, 0.3)
+    }
+  end
+})
+vim.cmd.colorscheme "tokyonight"
 -- }}}
 
 -- Telescope configuration {{{

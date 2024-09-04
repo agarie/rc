@@ -297,7 +297,7 @@ augroup markdown
 augroup END
 ]])
 
-vim.g.markdown_fenced_languages = {'html', 'ruby', 'bash'}
+vim.g.markdown_fenced_languages = {'html', 'ruby', 'bash', 'zsh', 'python'}
 
 -- }}}
 

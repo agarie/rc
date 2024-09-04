@@ -38,7 +38,12 @@ vim.opt.incsearch = true                     -- Incremental search.
 vim.opt.ignorecase = true                    -- Ignore case...
 vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
 
--- Colors
+-- Colorscheme. The default color for the gutter text is illegible.
+require('tokyonight').setup({
+  on_colors = function (colors)
+    colors.fg_gutter = colors.magenta
+  end
+})
 vim.cmd.colorscheme "tokyonight"
 
 -- Open new split panes to right and bottom.

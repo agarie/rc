@@ -117,7 +117,6 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 require('lspconfig').marksman.setup{}
-require('lspconfig').tsserver.setup{}
 require('lspconfig').cssls.setup{}
 require('lspconfig').solargraph.setup{}
 

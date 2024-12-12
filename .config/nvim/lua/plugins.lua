@@ -22,6 +22,14 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
+  use {
+    "elixir-tools/elixir-tools.nvim",
+    tag = "stable",
+    requires = {
+      "nvim-lua/plenary.nvim"
+    }
+  }
+
   -- Completion.
   use {
     'hrsh7th/nvim-cmp',

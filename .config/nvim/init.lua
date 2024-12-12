@@ -103,7 +103,11 @@ vim.cmd([[
 -- }}}
 
 -- Treesitter configuration {{{
-require'nvim-treesitter.configs'.setup{}
+require'nvim-treesitter.configs'.setup{
+  highlight = {
+    enable = 'elixir'
+  }
+}
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -119,6 +123,7 @@ require('mason-lspconfig').setup()
 require('lspconfig').marksman.setup{}
 require('lspconfig').cssls.setup{}
 require('lspconfig').solargraph.setup{}
+require("elixir").setup()
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')

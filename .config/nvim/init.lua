@@ -39,13 +39,9 @@ vim.opt.ignorecase = true                    -- Ignore case...
 vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
 
 -- Open new split panes to right and bottom.
-vim.cmd([[
-	set splitbelow
-	set splitright
-
-" Window height.
-	set winheight=30
-]])
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.winheight = 30
 -- }}}
 
 -- Colorscheme {{{
@@ -204,10 +200,10 @@ vim.g.vimwiki_global_ext = 0
 
 -- Remaps {{{
 
--- Use ,k to break into a new line.
+-- Use <leader>k to break into a new line.
 vim.cmd([[nnoremap <Leader>k i<cr><esc>k$]])
 
--- Use ,e to edit files in the current directory.
+-- Use <leader>e to edit files in the current directory.
 vim.cmd([[cnoremap %% <C-R>=expand('%:h').'/'<cr>]])
 vim.cmd([[map <Leader>e :edit %%<cr>]])
 

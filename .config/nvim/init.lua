@@ -190,13 +190,11 @@ vim.g.markdown_folding = 1
 -- A temporary wiki is a mechanism by which vimwiki can create an anonymous
 -- wiki if it can't find one defined in your environment.
 vim.g.vimwiki_global_ext = 0
-
 -- }}}
 
 -- Remaps {{{
 
--- Use <leader>k to break into a new line.
-vim.cmd([[nnoremap <Leader>k i<cr><esc>k$]])
+vim.keymap.set('n', '<leader>k', 'i<cr><esc>k$', { desc = 'Use <leader>k to break into a new line.'})
 
 -- Use <leader>e to edit files in the current directory.
 vim.cmd([[cnoremap %% <C-R>=expand('%:h').'/'<cr>]])
@@ -250,7 +248,6 @@ vim.cmd([[nnoremap <Leader>n :noh<cr>]])
 
 -- Yank until the end of line.
 vim.cmd([[noremap Y y$]])
-
 -- }}}
 
 -- todo-comments {{{

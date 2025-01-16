@@ -246,8 +246,7 @@ vim.cmd([[nnoremap <Leader>sr :%s/\<<C-r><C-w>\>/]])
 -- Clear highlight.
 vim.cmd([[nnoremap <Leader>n :noh<cr>]])
 
--- Yank until the end of line.
-vim.cmd([[noremap Y y$]])
+vim.keymap.set('n', 'Y', 'y$', { noremap = true, desc = 'Yank until the end of line' })
 -- }}}
 
 -- todo-comments {{{

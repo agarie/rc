@@ -4,8 +4,7 @@
 # zsh, tmux, vim, ruby, git, etc
 
 # Lists of config files for the tools I use, separated by OS.
-COMMON=(.gitconfig .vim .vimrc .zprofile .zshrc .tmux.conf)
-LINUX=(.XCompose .Xresources .Xkbmap)
+TOOLS=(.gitconfig .vim .vimrc .zprofile .zshrc .tmux.conf)
 
 # Location for this repository.
 RC=$(dirname $0:A)
@@ -23,13 +22,7 @@ echo "Updating submodules..."
 git submodule update --init --recursive
 
 # Symlinks for all operating systems.
-for f in $COMMON; do
+for f in $TOOLS; do
   link_dotfile $f
 done
 
-# Create symlinks for tools only used on Linux.
-if [[ $(uname -s) == "Linux" ]]; then
-  for f in $LINUX; do
-    link_dotfile $f
-  done
-fi

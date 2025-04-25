@@ -52,7 +52,7 @@ packer.startup(function(use)
 
   -- asdf
   use 'godlygeek/tabular'
-  use 'tpope/vim-endwise'
+  use 'RRethy/nvim-treesitter-endwise'
   use 'dkarter/bullets.vim'
   use 'Raimondi/delimitMate'
 

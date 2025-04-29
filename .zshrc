@@ -149,11 +149,10 @@ source $CHRUBY_DIR/share/chruby/auto.sh
 
 # }}}
 
-# Keybindings
+# Keybindings {{{
 
-# There are some programs that set -o vi depending on the value of $EDITOR.
-set -o emacs
-bindkey -e
+# Vim bindings.
+bindkey -v
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
@@ -182,15 +181,13 @@ autoload -Uz down-line-or-beginning-search
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-# Ubuntu.
-bindkey "^[OA" history-beginning-search-backward
-bindkey "^[OB" history-beginning-search-forward
-
 # Ctrl+f starts a fzf prompt inside my project directories in order to create a
 # tmux session and attach to it.
 bindkey -s "^f" "tmux-session-from-dir\n"
 
+# }}}
+
 # Machine-specific configuration.
 source ~/.zlocal
 
-# vim: foldmethod=marker
+# vim: foldmethod=marker foldlevel=0

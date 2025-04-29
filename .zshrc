@@ -71,17 +71,18 @@ function current_branch() {
   echo ${ref#refs/heads/}
 }
 
-alias gst='git status -sb'
-alias gconf='git diff --check'
 alias ga='git add'
+alias gb='git branch'
 alias gc='git commit --verbose'
-alias ggpush='git push origin $(current_branch)'
-alias ggforce='git push origin --force-with-lease $(current_branch)'
+alias gco='git checkout'
+alias gconf='git diff --check'
+alias gcp='git cherry-pick'
 alias gd='git diff'
 alias gf='git fetch --all'
-alias gb='git branch'
-alias gco='git checkout'
+alias ggforce='git push origin --force-with-lease $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
 alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
+alias gst='git status -sb'
 
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name

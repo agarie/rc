@@ -10,11 +10,11 @@ require('plugins')
 -- General {{{
 vim.opt.hidden = true
 vim.opt.backspace = { "indent", "eol", "start" } -- Backspace can delete stuff in insert mode.
-vim.opt.clipboard = "unnamedplus"  -- Enable system clipboard.
-vim.opt.number = true                        -- Show line numbers.
+vim.opt.clipboard = "unnamedplus" -- Enable system clipboard.
+vim.opt.number = true -- Show line numbers.
 vim.opt.relativenumber = true
-vim.opt.cursorline = true                    -- Highlight current line.
-vim.opt.backup = false                      -- LOL BACKUPS
+vim.opt.cursorline = true -- Highlight current line.
+vim.opt.backup = false -- LOL BACKUPS
 vim.opt.swapfile = false
 
 -- Folding.
@@ -25,18 +25,18 @@ vim.opt.foldopen:remove("block")
 vim.opt.foldcolumn = "1"
 
 -- Indentation
-vim.opt.autoindent = true                    -- Copies current line indentation when creating a new line.
-vim.opt.tabstop = 8                     -- Hard tabs (eww) are equivalent to 8 spaces.
-vim.opt.softtabstop = 2                 -- Tab key, 1 tab = 2 spaces.
-vim.opt.shiftwidth = 2                  -- Autoindent, 1 tab = 2 spaces.
-vim.opt.shiftround = true                    -- Indentation is set to multiples of shiftwidth.
-vim.opt.expandtab = true                     -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
+vim.opt.autoindent = true -- Copies current line indentation when creating a new line.
+vim.opt.tabstop = 8 -- Hard tabs (eww) are equivalent to 8 spaces.
+vim.opt.softtabstop = 2 -- Tab key, 1 tab = 2 spaces.
+vim.opt.shiftwidth = 2 -- Autoindent, 1 tab = 2 spaces.
+vim.opt.shiftround = true -- Indentation is set to multiples of shiftwidth.
+vim.opt.expandtab = true -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
 
 -- Searching
-vim.opt.hlsearch = false                     -- Do not highlight matches.
-vim.opt.incsearch = true                     -- Incremental search.
-vim.opt.ignorecase = true                    -- Ignore case...
-vim.opt.smartcase = true                     -- ... except when they contain at least one capital letter.
+vim.opt.hlsearch = false -- Do not highlight matches.
+vim.opt.incsearch = true -- Incremental search.
+vim.opt.ignorecase = true -- Ignore case...
+vim.opt.smartcase = true -- ... except when they contain at least one capital letter.
 
 -- Open new split panes to right and bottom.
 vim.opt.splitbelow = true

@@ -52,11 +52,7 @@ alias ...='cd ../..'
 alias ls='ls --color=auto'
 
 # I still have to use a mac :(
-if [[ $(uname -s) == "Linux" ]]; then
-  alias ll='ls -AhlvX'
-else
-  alias ll='ls -Ahlvp'
-fi
+alias ll='ls -Ahlvp'
 
 # Corrects problems with Ruby scripts that uses non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
@@ -147,13 +143,7 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 
 # chruby initialization and setup. {{{
 
-# Different locations on Linux and macOS.
-if [[ $(uname -s) == "Linux" ]]; then
-  export CHRUBY_DIR="/usr"
-else
-  export CHRUBY_DIR="/opt/homebrew/opt/chruby"
-fi
-
+export CHRUBY_DIR="/opt/homebrew/opt/chruby"
 source $CHRUBY_DIR/share/chruby/chruby.sh
 source $CHRUBY_DIR/share/chruby/auto.sh
 

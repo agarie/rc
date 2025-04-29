@@ -22,6 +22,9 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
+  -- Formatters.
+  use 'jose-elias-alvarez/null-ls.nvim'
+
   use {
     "elixir-tools/elixir-tools.nvim",
     tag = "stable",

@@ -159,6 +159,16 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc='Go to next diagnosti
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc='Open diagnostic list' })
 --- }}}
 
+-- Formatters {{{
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.rubyfmt,
+  },
+})
+-- }}}
+
 -- lualine {{{
 require('lualine').setup {
   options = {

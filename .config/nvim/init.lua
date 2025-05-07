@@ -111,8 +111,9 @@ vim.opt.foldlevel = 2
 require('mason').setup()
 require('mason-lspconfig').setup()
 
-require('lspconfig').marksman.setup{}
 require('lspconfig').cssls.setup{}
+require('lspconfig').marksman.setup{}
+require('lspconfig').pylyzer.setup{}
 require('lspconfig').solargraph.setup{}
 require("elixir").setup()
 

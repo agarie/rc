@@ -113,7 +113,7 @@ require('mason-lspconfig').setup()
 
 require('lspconfig').cssls.setup{}
 require('lspconfig').marksman.setup{}
-require('lspconfig').pylyzer.setup{}
+require('lspconfig').jedi_language_server.setup{}
 require('lspconfig').solargraph.setup{}
 require("elixir").setup()
 

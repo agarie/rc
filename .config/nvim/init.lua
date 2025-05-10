@@ -173,9 +173,9 @@ require('lualine').setup {
 
 -- Configuration for my personal notes.
 vim.g.vimwiki_list = {{
-  path = os.getenv('HOME') .. '/Code/Personal/notes',
-  path_html = os.getenv('HOME') .. '/Code/Personal/notes/notes_html',
-  template_path = os.getenv('HOME') .. '/Code/Personal/notes/_templates',
+  path = vim.env.HOME .. '/Code/Personal/notes',
+  path_html = vim.env.HOME .. '/Code/Personal/notes/notes_html',
+  template_path = vim.env.HOME .. '/Code/Personal/notes/_templates',
   custom_wiki2html = 'vimwiki_markdown',
   syntax = 'markdown',
   ext = '.md',
@@ -319,4 +319,3 @@ command! Ns call Newscratch()
 ]])
 
 -- }}}
-

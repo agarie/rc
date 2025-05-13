@@ -18,3 +18,11 @@ I started using MacOS exclusively for development recently, so I decided it was
 best to remove configuration files related to X and other software I only use
 on Linux. In case you (or myself, in the future) wants to see those files,
 check commit 81f44a7.
+
+## Installation
+
+Install a formatter for Racket so you can use the formatting command `gq` in vim:
+
+```sh
+raco pkg install fmt
+```

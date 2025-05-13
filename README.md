@@ -26,3 +26,8 @@ Install a formatter for Racket so you can use the formatting command `gq` in vim
 ```sh
 raco pkg install fmt
 ```
+
+The LSPs for nvim can be installed via
+[Mason](https://github.com/mason-org/mason.nvim) by opening the TUI with
+`:Mason` and selecting the ones being used (refer to the `LSP` section in the
+`init.lua` file).

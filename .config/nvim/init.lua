@@ -115,6 +115,7 @@ require('lspconfig').cssls.setup{}
 require('lspconfig').marksman.setup{}
 require('lspconfig').jedi_language_server.setup{}
 require('lspconfig').solargraph.setup{}
+require('lspconfig').lua_ls.setup{}
 require("elixir").setup()
 
 local lspkind = require('lspkind')
@@ -165,6 +166,25 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'molokai'
+  },
+  sections = { -- Copied from the nvim-lualine repo's README
+    lualine_a = {
+      {
+        'lsp_status',
+        icon = '', -- f013
+        symbols = {
+          -- Standard unicode symbols to cycle through for LSP progress:
+          spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+          -- Standard unicode symbol for when LSP is done:
+          done = '✓',
+          -- Delimiter inserted between LSP names:
+          separator = ' ',
+        },
+        -- List of LSP names to ignore (e.g., `null-ls`):
+        ignore_lsp = {},
+      }
+    },
+    lualine_y = {'mode'} -- vim mode is more useful than file progress IMO
   }
 }
 -- }}}
@@ -319,3 +339,5 @@ command! Ns call Newscratch()
 ]])
 
 -- }}}
+
+-- vim: foldlevel=0

@@ -246,7 +246,7 @@ onoremap <silent> aL :<c-u>normal! $v0<cr>
 ]])
 
 -- Exit insert mode.
-vim.cmd([[inoremap jk <esc>]])
+vim.keymap.set('i', 'jk', '<esc>', { noremap = true, desc = 'Exit insert mode' })
 
 -- Save file path for c/p.
 vim.cmd([[noremap \l :let @+ = expand('%')<cr>]])

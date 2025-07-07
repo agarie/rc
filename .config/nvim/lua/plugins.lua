@@ -83,4 +83,15 @@ packer.startup(function(use)
 
   -- Personal wiki.
   use 'vimwiki/vimwiki'
+
+  -- Add/delete/edit surrounding marks with ys{motion}{char}, ds{char}, cs{target}{replacement}.
+  use {
+    "kylechui/nvim-surround",
+    tag = "*",
+    config = function()
+      require("nvim-surround").setup({
+        -- Using default config.
+      })
+    end
+  }
 end)

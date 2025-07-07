@@ -88,10 +88,5 @@ packer.startup(function(use)
   use {
     "kylechui/nvim-surround",
     tag = "*",
-    config = function()
-      require("nvim-surround").setup({
-        -- Using default config.
-      })
-    end
   }
 end)

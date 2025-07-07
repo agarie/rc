@@ -278,6 +278,11 @@ vim.keymap.set('n', ']t', function () require('todo-comments').jump_next() end, 
 vim.keymap.set('n', '[t', function () require('todo-comments').jump_prev() end, { desc = "Previous TODO comment" })
 -- }}}
 
+-- nvim-surround {{{
+-- Using default config.
+require("nvim-surround").setup()
+-- }}}
+
 -- Language configuration {{{
 
 vim.cmd([[

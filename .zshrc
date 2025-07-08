@@ -186,6 +186,11 @@ bindkey "^[[B" history-beginning-search-forward
 # tmux session and attach to it.
 bindkey -s "^f" "tmux-session-from-dir\n"
 
+# Edit the current command line in $EDITOR.
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M viins '^x^e' edit-command-line
+
 # }}}
 
 # Machine-specific configuration.

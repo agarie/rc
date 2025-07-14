@@ -129,8 +129,31 @@ theme_precmd () {
 }
 
 setopt prompt_subst
+
+# Default, starting mode.
+CURRENT_KEYMAP="INSERT"
 PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%}λ '
-RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
+RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%} ($CURRENT_KEYMAP)'
+
+# The widget `zle-keymap-select` is invoked after each keymap change. This
+# function updates CURRENT_KEYMAP so it can be visualized in the PROMPT.
+# Inspired by: https://koenwoortman.com/zsh-vim-mode/
+zle-keymap-select() {
+  # NOTE: Why only these 2 keymaps show up? What about viopp, visual, etc?
+  if [ "${KEYMAP}" = 'vicmd' ]; then
+    CURRENT_KEYMAP="COMMAND"
+  else
+    CURRENT_KEYMAP="INSERT"
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+# Reset to default mode at the end of line input reading.
+zle-line-finish() {
+  CURRENT_KEYMAP="INSERT"
+}
+zle -N zle-line-finish
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
@@ -154,6 +177,10 @@ source $CHRUBY_DIR/share/chruby/auto.sh
 
 # Vim bindings.
 bindkey -v
+
+# How long zsh waits for bound multi-character sequences in 1/100s of a second,
+# so this is 10ms. The default value is far too long for my taste.
+export KEYTIMEOUT=1
 
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
@@ -192,6 +219,7 @@ zle -N edit-command-line
 bindkey -M viins '^x^e' edit-command-line
 
 # }}}
+
 
 # Machine-specific configuration.
 source ~/.zlocal

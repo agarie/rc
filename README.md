@@ -19,6 +19,11 @@ best to remove configuration files related to X and other software I only use
 on Linux. In case you (or myself, in the future) wants to see those files,
 check commit 81f44a7.
 
+I am also doing some work on Windows via the WSL. It's mostly small edits to my
+personal knowledge base and running short experiments. I'm still not sure how
+to feel about it, so there isn't anything Windows-specific here; not sure if
+that will change or not.
+
 ## Installation
 
 Install a formatter for Racket so you can use the formatting command `gq` in vim:
@@ -30,4 +35,5 @@ raco pkg install fmt
 The LSPs for nvim can be installed via
 [Mason](https://github.com/mason-org/mason.nvim) by opening the TUI with
 `:Mason` and selecting the ones being used (refer to the `LSP` section in the
-`init.lua` file).
+`init.lua` file). It's better to install `solargraph` manually if you work with
+multiple Ruby versions.

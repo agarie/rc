@@ -1,5 +1,8 @@
 # Carlos Agarie's zshrc.
 
+# Set Homebrew ENV variables.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # History {{{
 
 # Disables automatically executing commands from the history, instead expand
@@ -219,7 +222,6 @@ zle -N edit-command-line
 bindkey -M viins '^x^e' edit-command-line
 
 # }}}
-
 
 # Machine-specific configuration.
 source ~/.zlocal

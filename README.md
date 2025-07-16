@@ -37,3 +37,12 @@ The LSPs for nvim can be installed via
 `:Mason` and selecting the ones being used (refer to the `LSP` section in the
 `init.lua` file). It's better to install `solargraph` manually if you work with
 multiple Ruby versions.
+
+## Z shell
+
+I try to split my Z Shell configuration between the recommended files:
+
+* `.zshenv`: is always sourced and contains `PATH` and other variables that should be set for all types of shells.
+* `.zshrc`: is sourced in interactive shells, so scripts using a zsh shebang don't have access to anything defined here.
+
+I also keep a machine-specific `~/.zlocal` file (not on git) that is sourced at the end of `.zshrc`.

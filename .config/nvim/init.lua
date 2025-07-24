@@ -144,6 +144,7 @@ vim.lsp.config('lua_ls', {
 
 -- Disable easily-triggered linters that don't add a lot to my writing.
 vim.lsp.config('harper_ls', {
+  filetypes = { 'markdown' },
   settings = {
     ["harper-ls"] = {
       linters = {

@@ -116,6 +116,18 @@ require('lspconfig').marksman.setup{}
 require('lspconfig').jedi_language_server.setup{}
 require('lspconfig').solargraph.setup{}
 require('lspconfig').lua_ls.setup{}
+
+-- Disable easily-triggered linters that don't add a lot to my writing.
+require('lspconfig').harper_ls.setup {
+  settings = {
+    ["harper-ls"] = {
+      linters = {
+        SentenceCapitalization = false,
+        SpellCheck = false
+      }
+    }
+  }
+}
 require("elixir").setup()
 
 local lspkind = require('lspkind')

@@ -26,14 +26,14 @@ vim.opt.foldcolumn = "1"
 
 -- Indentation
 vim.opt.autoindent = true -- Copies current line indentation when creating a new line.
-vim.opt.tabstop = 8 -- Hard tabs (eww) are equivalent to 8 spaces.
+vim.opt.tabstop = 8 -- Hard tabs are equivalent to 8 spaces.
 vim.opt.softtabstop = 2 -- Tab key, 1 tab = 2 spaces.
 vim.opt.shiftwidth = 2 -- Autoindent, 1 tab = 2 spaces.
 vim.opt.shiftround = true -- Indentation is set to multiples of shiftwidth.
 vim.opt.expandtab = true -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
 
 -- Searching
-vim.opt.hlsearch = false -- Do not highlight matches.
+vim.opt.hlsearch = true -- Highlight matches, use <Leader>n to turn highlights off.
 vim.opt.incsearch = true -- Incremental search.
 vim.opt.ignorecase = true -- Ignore case...
 vim.opt.smartcase = true -- ... except when they contain at least one capital letter.

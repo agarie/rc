@@ -115,7 +115,33 @@ require('lspconfig').cssls.setup{}
 require('lspconfig').marksman.setup{}
 require('lspconfig').jedi_language_server.setup{}
 require('lspconfig').solargraph.setup{}
-require('lspconfig').lua_ls.setup{}
+
+-- This is the new form of working with lspconfig as per the documentation.
+vim.lsp.enable('lua_ls')
+vim.lsp.config('lua_ls', {
+  on_init = function(client)
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        -- Tell the language server how to find Lua modules same way as Neovim
+        -- (see `:h lua-module-load`)
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME
+        }
+      }
+    })
+  end,
+  settings = {
+    Lua = {}
+  }
+})
 
 -- Disable easily-triggered linters that don't add a lot to my writing.
 require('lspconfig').harper_ls.setup {

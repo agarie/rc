@@ -109,15 +109,14 @@ vim.opt.foldlevel = 2
 
 -- LSP configuration {{{
 require('mason').setup()
-require('mason-lspconfig').setup()
 
-require('lspconfig').cssls.setup{}
-require('lspconfig').marksman.setup{}
-require('lspconfig').jedi_language_server.setup{}
-require('lspconfig').solargraph.setup{}
-
--- This is the new form of working with lspconfig as per the documentation.
+vim.lsp.enable('cssls')
+vim.lsp.enable('marksman')
+vim.lsp.enable('jedi_language_server')
+vim.lsp.enable('solargraph')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('harper_ls')
+
 vim.lsp.config('lua_ls', {
   on_init = function(client)
     client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
@@ -144,7 +143,7 @@ vim.lsp.config('lua_ls', {
 })
 
 -- Disable easily-triggered linters that don't add a lot to my writing.
-require('lspconfig').harper_ls.setup {
+vim.lsp.config('harper_ls', {
   settings = {
     ["harper-ls"] = {
       linters = {
@@ -153,7 +152,8 @@ require('lspconfig').harper_ls.setup {
       }
     }
   }
-}
+})
+
 require("elixir").setup()
 
 local lspkind = require('lspkind')

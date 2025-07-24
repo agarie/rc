@@ -20,7 +20,6 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind.nvim'
   use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
 
   use {
     "elixir-tools/elixir-tools.nvim",

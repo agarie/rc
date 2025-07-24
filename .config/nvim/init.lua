@@ -33,7 +33,7 @@ vim.opt.shiftround = true -- Indentation is set to multiples of shiftwidth.
 vim.opt.expandtab = true -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
 
 -- Searching
-vim.opt.hlsearch = true -- Highlight matches, use <Leader>n to turn highlights off.
+vim.opt.hlsearch = false -- Use <Leader>n to toggle.
 vim.opt.incsearch = true -- Incremental search.
 vim.opt.ignorecase = true -- Ignore case...
 vim.opt.smartcase = true -- ... except when they contain at least one capital letter.
@@ -195,8 +195,6 @@ vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc='L
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc='LSP: [C]ode [A]ction' })
 
 -- Diagnostics.
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc='Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc='Go to next diagnostic message' })
 vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, { desc='Open diagnostic list' })
 --- }}}
 
@@ -303,8 +301,10 @@ vim.cmd([[noremap <Leader><Leader>h *#]])
 -- Search and replace word under cursor.
 vim.cmd([[nnoremap <Leader>sr :%s/\<<C-r><C-w>\>/]])
 
--- Clear highlight.
-vim.cmd([[nnoremap <Leader>n :noh<cr>]])
+-- Toggle highlight.
+vim.keymap.set('n', '<Leader>n', function ()
+  vim.o.hlsearch = not vim.o.hlsearch
+end, { desc = 'Toggle hlsearch' })
 
 vim.keymap.set('n', 'Y', 'y$', { noremap = true, desc = 'Yank until the end of line' })
 -- }}}

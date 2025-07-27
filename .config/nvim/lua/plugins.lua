@@ -16,10 +16,14 @@ packer.startup(function(use)
     }
   }
 
-  -- LSP.
+  -- Provides default configuration for several LSP servers.
   use 'neovim/nvim-lspconfig'
-  use 'onsails/lspkind.nvim'
+
+  -- Utility to install LSP servers and a lot of other software.
   use 'williamboman/mason.nvim'
+
+  -- Offers icons to make LSP look neater. Kinda useless, will probably remove.
+  use 'onsails/lspkind.nvim'
 
   use {
     "elixir-tools/elixir-tools.nvim",
@@ -49,11 +53,14 @@ packer.startup(function(use)
   -- Git.
   use 'tpope/vim-fugitive'
 
-  -- asdf
+  -- Reformat tabular data with :Tabularize.
   use 'godlygeek/tabular'
+
+  -- Add `end` to blocks in Ruby, Elixir, etc.
   use 'RRethy/nvim-treesitter-endwise'
+
+  -- Work with bulleted/numbered lists.
   use 'dkarter/bullets.vim'
-  use 'Raimondi/delimitMate'
 
   use 'preservim/nerdtree'
 
@@ -75,6 +82,9 @@ packer.startup(function(use)
   -- Language-specific plugins.
   use 'LaTeX-Box-Team/LaTeX-Box'
   use 'mattn/emmet-vim'
+
+  -- Enables folding of specs/contexts/etc in RSpec.
+  -- TODO: Maybe a Treesitter implementation would be faster?
   use 'rlue/vim-fold-rspec'
 
   -- statusline.

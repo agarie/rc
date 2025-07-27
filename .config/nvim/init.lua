@@ -254,8 +254,7 @@ vim.g.vimwiki_global_ext = 0
 -- Remaps {{{
 
 vim.keymap.set('n', '<leader>k', 'i<cr><esc>k$', { desc = 'Use <leader>k to break into a new line.'})
-
-vim.keymap.set('c', '%%', "<C-R>=expand('%:h').'/'<cr>", { noremap = false, desc = 'Use %% to insert current dir in commands.' })
+vim.keymap.set('c', '%%', "<C-R>=expand('%:h')<cr>", { noremap = false, desc = 'Use %% to insert current dir in commands.' })
 vim.keymap.set('', '<Leader>e', ':edit %%<cr>', { desc = 'Open current directory.' })
 
 -- Use ^J, ^K, ^L and ^H to navigate between splits.

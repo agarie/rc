@@ -190,6 +190,7 @@ cmp.setup {
   }
 }
 
+-- TODO: There are other LSP capabilities that need keymaps.
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc='LSP: [G]o to [D]efinition' })
 vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc='LSP: [G]o to [R]eferences' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc='LSP: [C]ode [A]ction' })
@@ -254,9 +255,8 @@ vim.g.vimwiki_global_ext = 0
 
 vim.keymap.set('n', '<leader>k', 'i<cr><esc>k$', { desc = 'Use <leader>k to break into a new line.'})
 
--- Use <leader>e to edit files in the current directory.
-vim.cmd([[cnoremap %% <C-R>=expand('%:h').'/'<cr>]])
-vim.cmd([[map <Leader>e :edit %%<cr>]])
+vim.keymap.set('c', '%%', "<C-R>=expand('%:h').'/'<cr>", { noremap = false, desc = 'Use %% to insert current dir in commands.' })
+vim.keymap.set('', '<Leader>e', ':edit %%<cr>', { desc = 'Open current directory.' })
 
 -- Use ^J, ^K, ^L and ^H to navigate between splits.
 vim.cmd([[

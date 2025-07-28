@@ -298,12 +298,6 @@ require("nvim-surround").setup()
 
 -- Language configuration {{{
 
-vim.cmd([[
-filetype plugin indent on
-syntax on
-syntax enable
-]])
-
 -- Indentation for various languages.
 vim.cmd([[
 autocmd Filetype python,java,scala,javascript,php,c,c++,julia set sw=4 sts=4 et

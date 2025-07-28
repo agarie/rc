@@ -251,61 +251,36 @@ vim.g.markdown_folding = 1
 vim.g.vimwiki_global_ext = 0
 -- }}}
 
--- Remaps {{{
+-- General Keymaps {{{
 
 vim.keymap.set('n', '<leader>k', 'i<cr><esc>k$', { desc = 'Use <leader>k to break into a new line.'})
-vim.keymap.set('c', '%%', "<C-R>=expand('%:h')<cr>", { noremap = false, desc = 'Use %% to insert current dir in commands.' })
-vim.keymap.set('', '<Leader>e', ':edit %%<cr>', { desc = 'Open current directory.' })
 
 -- Use ^J, ^K, ^L and ^H to navigate between splits.
-vim.cmd([[
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-]])
+vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { desc = 'Move to the split below.' })
+vim.keymap.set('n', '<C-K>', '<C-W><C-K>', { desc = 'Move to the split above.' })
+vim.keymap.set('n', '<C-L>', '<C-W><C-L>', { desc = 'Move to the split to the right.' })
+vim.keymap.set('n', '<C-H>', '<C-W><C-H>', { desc = 'Move to the split to the left.' })
 
 -- Use <Leader>- and <Leader>= to navigate between tabs.
 vim.keymap.set('n', '<Leader>-', ':tabprevious<CR>')
 vim.keymap.set('n', '<Leader>=', ':tabnext<CR>')
 
--- "in line" (entire line sans white-space; cursor at beginning--ie, ^)
-vim.cmd([[
-xnoremap <silent> iL :<c-u>normal! g_v^<cr>
-onoremap <silent> iL :<c-u>normal! g_v^<cr>
-]])
-
--- "around line" (entire line sans trailing newline; cursor at beginning--ie, 0)
-vim.cmd([[
-xnoremap <silent> aL :<c-u>normal! $v0<cr>
-onoremap <silent> aL :<c-u>normal! $v0<cr>
-]])
+-- These mapping allow iL and aL to work similar to a text-object.
+vim.keymap.set({'x', 'o'}, 'iL', ':<c-u>normal! g_v^<cr>', { desc = 'in line: entire line except whitespace (from ^)' })
+vim.keymap.set({'x', 'o'}, 'aL', ':<c-u>normal! $v0<cr>', { desc = 'around line: entire line except trailing newline (from 0)' })
 
 -- Exit insert mode.
 vim.keymap.set('i', 'jk', '<esc>', { noremap = true, desc = 'Exit insert mode' })
 
--- Save file path for c/p.
-vim.cmd([[noremap \l :let @+ = expand('%')<cr>]])
-vim.cmd([[nnoremap <Leader>/ :Ggrep! <c-r>=expand('<cword>')<CR>]])
+vim.keymap.set('n', '<Leader>/', ":Ggrep! -q <c-r>=expand('<cword>')<CR><CR>", { desc = 'Search git files for the word under the cursor.' })
 
-vim.cmd([[
-noremap \\ :wa<return>
-noremap ZA :wa<cr>:qa<cr>
-noremap ZC :qa!<cr>
-]])
-
--- Highlight words without moving cursor.
-vim.cmd([[noremap <Leader><Leader>h *#]])
-
--- Search and replace word under cursor.
-vim.cmd([[nnoremap <Leader>sr :%s/\<<C-r><C-w>\>/]])
+-- Search and replace word under cursor. See `:help c_CTRL-r_CTRL-w`.
+vim.keymap.set('n', '<Leader>sr', ":%s/\\<<C-r><C-w>\\>/")
 
 -- Toggle highlight.
 vim.keymap.set('n', '<Leader>n', function ()
   vim.o.hlsearch = not vim.o.hlsearch
 end, { desc = 'Toggle hlsearch' })
-
-vim.keymap.set('n', 'Y', 'y$', { noremap = true, desc = 'Yank until the end of line' })
 -- }}}
 
 -- todo-comments {{{

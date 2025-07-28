@@ -4,7 +4,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ";"
 
--- Plugins are stored in lua/plugins.lua.
 require('plugins')
 
 -- General {{{

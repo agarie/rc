@@ -272,8 +272,10 @@ vim.keymap.set({'x', 'o'}, 'aL', ':<c-u>normal! $v0<cr>', { desc = 'around line:
 -- Exit insert mode.
 vim.keymap.set('i', 'jk', '<esc>', { noremap = true, desc = 'Exit insert mode' })
 
+-- TODO: This conflicts with Telescope. How does it compare to Telescope's `builtin.git_files`?
 vim.keymap.set('n', '<Leader>/', ":Ggrep! -q <c-r>=expand('<cword>')<CR><CR>", { desc = 'Search git files for the word under the cursor.' })
 
+-- TODO: This conflicts with Telescope's `builtin.resume`.
 -- Search and replace word under cursor. See `:help c_CTRL-r_CTRL-w`.
 vim.keymap.set('n', '<Leader>sr', ":%s/\\<<C-r><C-w>\\>/")
 

@@ -26,7 +26,6 @@ vim.opt.foldcolumn = "1"
 -- Indentation
 vim.opt.autoindent = true -- Copies current line indentation when creating a new line.
 vim.opt.tabstop = 8 -- Hard tabs are equivalent to 8 spaces.
-vim.opt.softtabstop = 2 -- Tab key, 1 tab = 2 spaces.
 vim.opt.shiftwidth = 2 -- Autoindent, 1 tab = 2 spaces.
 vim.opt.shiftround = true -- Indentation is set to multiples of shiftwidth.
 vim.opt.expandtab = true -- Never use hard tabs. To insert one, use CTRL-V <Tab>.
@@ -100,10 +99,6 @@ require'nvim-treesitter.configs'.setup{
 }
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
--- These parameters work well with Ruby/Python files.
-vim.opt.foldnestmax = 3
-vim.opt.foldlevel = 2
 -- }}}
 
 -- LSP configuration {{{
@@ -315,32 +310,6 @@ vim.keymap.set('n', '[t', function () require('todo-comments').jump_prev() end, 
 -- nvim-surround {{{
 -- Using default config.
 require("nvim-surround").setup()
--- }}}
-
--- Language configuration {{{
-
--- Indentation for various languages.
-vim.cmd([[
-autocmd Filetype python,java,scala,javascript,php,c,c++,julia set sw=4 sts=4 et
-autocmd FileType ruby,eruby,yaml,html,sass,cucumber set sw=2 sts=2 et
-]])
-
-vim.cmd([[au BufNewFile,BufRead PKGBUILD set ft=sh]])
-
-vim.cmd([[
-augroup vimscript
-  autocmd!
-  autocmd FileType vim,lua setlocal foldmethod=marker
-augroup END
-
-augroup markdown
-  autocmd!
-  autocmd FileType markdown setlocal foldlevel=1
-augroup END
-]])
-
-vim.g.markdown_fenced_languages = {'html', 'ruby', 'bash', 'zsh', 'python'}
-
 -- }}}
 
 -- Extra autocommands and functions {{{

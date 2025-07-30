@@ -315,7 +315,9 @@ require("nvim-surround").setup()
 -- Extra autocommands and functions {{{
 
 -- Remove any trailing whitespace that is in the file.
-vim.cmd([[autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif]])
+vim.api.nvim_create_autocmd("BufWrite", {
+  command = "if ! &bin | silent! %s/\\s\\+$//ge | endif",
+})
 
 -- Introduce current date as yyyy-mm-dd.
 vim.cmd([[autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dt :.!today --hyphen<cr>]])

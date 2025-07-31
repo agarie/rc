@@ -107,9 +107,13 @@ require('mason').setup()
 vim.lsp.enable('cssls')
 vim.lsp.enable('marksman')
 vim.lsp.enable('jedi_language_server')
-vim.lsp.enable('solargraph')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('harper_ls')
+
+vim.lsp.config('solargraph', {
+  filetypes = { 'ruby', 'ruby.rspec' }
+})
+vim.lsp.enable('solargraph')
 
 vim.lsp.config('lua_ls', {
   on_init = function(client)

@@ -1,7 +1,7 @@
 # Prepend path so my own scripts go first.
 path=("$HOME/Code/Personal/rc/bin" $path)
 
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export LESS=RSM
 export CLICOLOR=1

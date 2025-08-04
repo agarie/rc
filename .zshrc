@@ -1,7 +1,13 @@
 # Carlos Agarie's zshrc.
 
+# Detect if MacOS ("Darwin") or Linux ("Linux").
+# TODO: Add check for Windows/WSL as well.
+OS="$(uname -s)"
+
 # Set Homebrew ENV variables.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ "$OS" == "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # History {{{
 
@@ -57,12 +63,10 @@ alias ls='ls --color=auto'
 # I still have to use a mac :(
 alias ll='ls -Ahlvp'
 
-# Corrects problems with Ruby scripts that uses non-ASCII characters.
+# Corrects problems with Ruby scripts that use non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
 
 # Ruby aliases.
-alias ruby_webserver='ruby -rwebrick -e \
-  "WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start"'
 alias rake='noglob rake'
 alias ri='noglob ri'
 alias be='bundle exec'
@@ -170,9 +174,21 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 
 # chruby initialization and setup. {{{
 
-export CHRUBY_DIR="/opt/homebrew/opt/chruby"
-source $CHRUBY_DIR/share/chruby/chruby.sh
-source $CHRUBY_DIR/share/chruby/auto.sh
+case "$OS" in
+Linux)
+  export CHRUBY_DIR="/usr/local/share/chruby"
+  ;;
+Darwin)
+  export CHRUBY_DIR="/opt/homebrew/opt/chruby/share/chruby"
+  ;;
+*)
+  echo "Weird OS: $OS"
+  exit 1
+  ;;
+esac
+
+source $CHRUBY_DIR/chruby.sh
+source $CHRUBY_DIR/auto.sh
 
 # }}}
 

@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'webrick'
+require 'optparse'
+
+opts = {
+  port: 3000,
+  root: Dir.pwd
+}
+
+OptionParser.new do |parser|
+  parser.banner = 'Usage: webrick-up [opts]'
+
+  parser.on('-pPORT', '--port=PORT', 'Port number') do |port|
+    opts[:port] = port
+  end
+
+  parser.on('-rROOT', '--root=ROOT', 'Root directory') do |root|
+    opts[:root] = root
+  end
+end.parse!
+
+WEBrick::HTTPServer.new(Port: opts[:port], DocumentRoot: opts[:root]).start

@@ -6,7 +6,7 @@ vim.g.maplocalleader = ";"
 
 require('plugins')
 
--- General {{{
+-- Options {{{
 vim.opt.hidden = true
 vim.opt.backspace = { "indent", "eol", "start" } -- Backspace can delete stuff in insert mode.
 vim.opt.clipboard = "unnamedplus" -- Enable system clipboard.
@@ -15,6 +15,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true -- Highlight current line.
 vim.opt.backup = false -- LOL BACKUPS
 vim.opt.swapfile = false
+vim.opt.conceallevel = 0 -- Don't hide emphasis/bold markers in markdown.
 
 -- Folding.
 -- Don't open folds when moving around with paragraph text objects ({ and }).

@@ -68,7 +68,10 @@ packer.startup(function(use)
     'folke/todo-comments.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
-    }
+    },
+    config = function()
+      require('todo-comments').setup()
+    end
   }
 
   -- Implements commenting operators: gc (line comment) and gb (block comment).
@@ -97,5 +100,13 @@ packer.startup(function(use)
   use {
     "kylechui/nvim-surround",
     tag = "*",
+  }
+
+  -- :Scratch and :ScratchSplit for creating scratch buffers.
+  use {
+    "swaits/scratch.nvim",
+    config = function()
+      require('scratch').setup()
+    end
   }
 end)

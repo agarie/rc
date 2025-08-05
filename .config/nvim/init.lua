@@ -305,10 +305,15 @@ end, { desc = 'Toggle hlsearch' })
 
 -- todo-comments {{{
 
-require('todo-comments').setup()
-
 vim.keymap.set('n', ']t', function () require('todo-comments').jump_next() end, { desc = "Next TODO comment" })
 vim.keymap.set('n', '[t', function () require('todo-comments').jump_prev() end, { desc = "Previous TODO comment" })
+
+-- }}}
+
+-- Scratch {{{
+
+vim.keymap.set('n', '<Leader>sb', function() require('scratch').split() end, { desc = "Open the scratch buffer" })
+
 -- }}}
 
 -- nvim-surround {{{
@@ -334,18 +339,6 @@ vim.cmd([[autocmd Filetype markdown,vimwiki nnoremap <buffer> <LocalLeader>dh :.
 -- See :help vimwiki-text-objects
 vim.cmd([[autocmd Filetype vimwiki nmap <buffer> <LocalLeader>xh [[jdih]])
 
--- Scratch buffer.
--- https://www.gilesorr.com/blog/vim-tips-23-scratch-buffer.html
-vim.cmd([[
-function Newscratch()
-    execute 'tabnew '
-    setlocal buftype=nofile
-    setlocal bufhidden=hide
-    setlocal noswapfile
-endfunction
-command! Ns call Newscratch()
-]])
-
 -- }}}
 
--- vim: foldlevel=0
+-- vim: foldmethod=marker foldlevel=0

@@ -1,5 +1,5 @@
-# Prepend path so my own scripts go first.
-path=("$HOME/Code/Personal/rc/bin" $path)
+# Personal and machine-specific scripts.
+path=($path "$HOME/bin")
 
 export EDITOR=nvim
 export PAGER=less

@@ -95,6 +95,9 @@ vim.keymap.set('n', '<C-p>', function() require('telescope.builtin').find_files(
 require'nvim-treesitter.configs'.setup{
   highlight = {
     enable = 'elixir'
+  },
+  indent = {
+    enable = true
   }
 }
 vim.opt.foldmethod = "expr"

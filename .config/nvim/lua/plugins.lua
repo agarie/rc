@@ -102,6 +102,15 @@ packer.startup(function(use)
     tag = "*",
   }
 
+  -- Automatically close delimiters.
+  use {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+
   -- :Scratch and :ScratchSplit for creating scratch buffers.
   use {
     "swaits/scratch.nvim",

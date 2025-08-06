@@ -91,7 +91,7 @@ vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { desc =
 vim.keymap.set('n', '<C-p>', function() require('telescope.builtin').find_files({ hidden = true }) end, { desc = 'Find files'})
 -- }}}
 
--- Treesitter configuration {{{
+-- Treesitter {{{
 require'nvim-treesitter.configs'.setup{
   highlight = {
     enable = 'elixir'

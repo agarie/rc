@@ -98,6 +98,16 @@ require'nvim-treesitter.configs'.setup{
   },
   indent = {
     enable = true
+  },
+  incremental_selection = {
+    enable = true,
+    -- keymaps from: https://www.reddit.com/r/neovim/comments/r10llx/the_most_amazing_builtin_feature_nobody_ever/
+    keymaps = {
+      init_selection = '<CR>',
+      scope_incremental = '<CR>',
+      node_incremental = '<TAB>',
+      node_decremental = '<S-TAB>',
+    }
   }
 }
 vim.opt.foldmethod = "expr"

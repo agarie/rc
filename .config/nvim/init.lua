@@ -266,6 +266,9 @@ vim.g.vimwiki_list = {{
 vim.g.vimwiki_folding = 'expr'
 vim.g.markdown_folding = 1
 
+-- vimwiki sets the conceallevel to this whenever we open a vimwiki file.
+vim.g.vimwiki_conceallevel = 0
+
 -- Do not create a 'temporary wiki' whenever I open a *.md file.
 -- A temporary wiki is a mechanism by which vimwiki can create an anonymous
 -- wiki if it can't find one defined in your environment.

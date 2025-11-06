@@ -55,13 +55,25 @@ export SAVEHIST=1000000
 # See the manual page for zshoptions.
 setopt combiningchars
 
-# General aliases.
+# Aliases {{{
+
+# Moving around.
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='ls --color=auto'
 
-# I still have to use a mac :(
-alias ll='ls -Ahlvp'
+if command -v eza &> /dev/null; then
+  # Directories first and respect .gitignore.
+  alias ls='eza --group-directories-first --git-ignore'
+else
+  alias ls='ls --color=auto'
+fi
+
+if command -v eza &> /dev/null; then
+  # Show extended details, include hidden files, directories first, respect .gitignore.
+  alias ll='eza -long -a --group-directories-first --git-ignore'
+else
+  alias ll='ls -lh --color=auto'
+fi
 
 # Corrects problems with Ruby scripts that use non-ASCII characters.
 export LC_ALL="en_US.UTF-8"
@@ -97,6 +109,8 @@ _force_rehash() {
     (( CURRENT == 1 )) && rehash
     return 1    # Because we didn't really complete anything
 }
+
+# }}}
 
 # Always use menu completion, and make the colors pretty!
 zstyle ':completion:*' menu select yes

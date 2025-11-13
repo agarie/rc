@@ -63,7 +63,7 @@ alias ...='cd ../..'
 
 if command -v eza &> /dev/null; then
   # Directories first and respect .gitignore.
-  alias ls='eza --group-directories-first --git-ignore'
+  alias ls='eza --group-directories-first'
 else
   alias ls='ls --color=auto'
 fi

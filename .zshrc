@@ -154,7 +154,7 @@ setopt prompt_subst
 
 # Default, starting mode.
 CURRENT_KEYMAP="i"
-PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%} %{$fg[gray]%}$CURRENT_KEYMAP%{$reset_color%} λ '
+PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%}%{$fg[gray]%}$CURRENT_KEYMAP%{$reset_color%} λ '
 RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 # The widget `zle-keymap-select` is invoked after each keymap change. This

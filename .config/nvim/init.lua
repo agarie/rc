@@ -289,6 +289,8 @@ vim.g.vimwiki_global_ext = 0
 
 vim.keymap.set('n', '<leader>k', 'i<cr><esc>k$', { desc = 'Use <leader>k to break into a new line.'})
 
+vim.keymap.set('n', '<leader>K', 'i<cr><cr><esc>kk^', { desc = 'Use <leader>K to break into paragraphs.'})
+
 -- Use ^J, ^K, ^L and ^H to navigate between splits.
 vim.keymap.set('n', '<C-J>', '<C-W><C-J>', { desc = 'Move to the split below.' })
 vim.keymap.set('n', '<C-K>', '<C-W><C-K>', { desc = 'Move to the split above.' })

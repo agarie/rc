@@ -149,12 +149,13 @@ theme_precmd () {
     vcs_info
 }
 
+# Prompt {{{
 setopt prompt_subst
 
 # Default, starting mode.
-CURRENT_KEYMAP="INSERT"
-PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%}λ '
-RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%} ($CURRENT_KEYMAP)'
+CURRENT_KEYMAP="i"
+PROMPT='[%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}] %{$fg_bold[magenta]%}%c%{$fg[green]%}${vcs_info_msg_0_}%{$fg_bold[magenta]%} %{$reset_color%} %{$fg[gray]%}$CURRENT_KEYMAP%{$reset_color%} λ '
+RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%}'
 
 # The widget `zle-keymap-select` is invoked after each keymap change. This
 # function updates CURRENT_KEYMAP so it can be visualized in the PROMPT.
@@ -162,9 +163,9 @@ RPROMPT='%{$fg_bold[yellow]%}[%?]%{$reset_color%} ($CURRENT_KEYMAP)'
 zle-keymap-select() {
   # NOTE: Why only these 2 keymaps show up? What about viopp, visual, etc?
   if [ "${KEYMAP}" = 'vicmd' ]; then
-    CURRENT_KEYMAP="COMMAND"
+    CURRENT_KEYMAP="c"
   else
-    CURRENT_KEYMAP="INSERT"
+    CURRENT_KEYMAP="i"
   fi
   zle reset-prompt
 }
@@ -172,12 +173,13 @@ zle -N zle-keymap-select
 
 # Reset to default mode at the end of line input reading.
 zle-line-finish() {
-  CURRENT_KEYMAP="INSERT"
+  CURRENT_KEYMAP="i"
 }
 zle -N zle-line-finish
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
+# }}}
 
 # Some...  options.
 setopt autocd beep extendedglob nomatch rcquotes

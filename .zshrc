@@ -70,7 +70,7 @@ fi
 
 if command -v eza &> /dev/null; then
   # Show extended details, include hidden files, directories first, respect .gitignore.
-  alias ll='eza -long -a --group-directories-first --git-ignore'
+  alias ll='eza -long -a --group-directories-first'
 else
   alias ll='ls -lh --color=auto'
 fi

@@ -240,11 +240,14 @@ bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 
-# Mac OS X.
+# Search.
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
+
+# ^r for incremental history search
+bindkey '^r' history-incremental-search-backward
 
 # Ctrl+f starts a fzf prompt inside my project directories in order to create a
 # tmux session and attach to it.

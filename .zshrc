@@ -226,9 +226,9 @@ bindkey "\e[2~" quoted-insert
 bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
 bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
+bindkey "\eOc" vi-forward-word
 bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
+bindkey "\eOd" vi-backward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 bindkey "\e[8~" end-of-line

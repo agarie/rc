@@ -234,7 +234,8 @@ bindkey "\e\e[D" backward-word
 bindkey "\e[8~" end-of-line
 bindkey "\e[7~" beginning-of-line
 
-bindkey "^[[Z" reverse-menu-complete # shift-tab to reverse completions.
+# shift-tab to reverse completions.
+bindkey "^[[Z" reverse-menu-complete
 
 # Bind up and down arrows to history search.
 autoload -Uz up-line-or-beginning-search

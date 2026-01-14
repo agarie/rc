@@ -112,6 +112,7 @@ _force_rehash() {
 
 # }}}
 
+# Completion {{{
 # Always use menu completion, and make the colors pretty!
 zstyle ':completion:*' menu select yes
 zstyle ':completion:*:default' list-colors ''
@@ -129,6 +130,11 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
 setopt complete_in_word
 autoload -Uz compinit
 compinit
+
+# }}}
+
+# Prompt {{{
+setopt prompt_subst
 
 # Prompts. Mostly copied from Oh My ZShell.
 autoload -U colors && colors
@@ -148,9 +154,6 @@ theme_precmd () {
 
     vcs_info
 }
-
-# Prompt {{{
-setopt prompt_subst
 
 # Default, starting mode.
 CURRENT_KEYMAP="i"

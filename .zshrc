@@ -241,8 +241,10 @@ autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 
 # Mac OS X.
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # Ctrl+f starts a fzf prompt inside my project directories in order to create a
 # tmux session and attach to it.

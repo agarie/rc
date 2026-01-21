@@ -1,5 +1,4 @@
 tap "anomalyco/tap"
-tap "heroku/brew"
 tap "unused-code/formulae"
 # General-purpose data compression with high compression ratio
 brew "xz"
@@ -91,20 +90,12 @@ brew "watch"
 brew "yt-dlp"
 # The AI coding agent built for the terminal.
 brew "anomalyco/tap/opencode"
-# Everything you need to get started with Heroku
-brew "heroku/brew/heroku"
-# Identify potentially unused code
-brew "unused-code/formulae/unused"
 # E-books management software
 cask "calibre"
 # Universal database tool and SQL client
 cask "dbeaver-community"
-# Client for the Dropbox cloud storage service
-cask "dropbox"
 cask "font-iosevka-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
-# Desktop automation application
-cask "hammerspoon"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Full TeX Live distribution without GUI applications

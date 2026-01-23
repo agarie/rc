@@ -92,13 +92,9 @@ vim.keymap.set('n', '<C-p>', function() require('telescope.builtin').find_files(
 -- }}}
 
 -- Treesitter {{{
-require'nvim-treesitter.configs'.setup{
-  highlight = {
-    enable = 'elixir'
-  },
-  indent = {
-    enable = true
-  },
+require('nvim-treesitter').setup{
+  highlight = { enable = true },
+  indent = { enable = true },
   incremental_selection = {
     enable = true,
     -- keymaps from: https://www.reddit.com/r/neovim/comments/r10llx/the_most_amazing_builtin_feature_nobody_ever/

@@ -103,6 +103,9 @@ alias ggpush='git push origin $(current_branch)'
 alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
 alias gst='git status -sb'
 
+# Docker aliases.
+alias dcr='docker compose run'
+
 # Force a reload of completion system if nothing matched; this fixes installing
 # a program and then trying to tab-complete its name
 _force_rehash() {

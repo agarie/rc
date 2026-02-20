@@ -129,6 +129,9 @@ zstyle ':completion:*' max-errors 5
 # partial word completion
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**'
 
+# Include completion functions installed locally.
+fpath+="$HOME/.config/zsh/zfunc"
+
 # Always do mid-word tab completion
 setopt complete_in_word
 autoload -Uz compinit

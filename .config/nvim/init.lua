@@ -117,7 +117,6 @@ vim.lsp.enable('cssls')
 vim.lsp.enable('marksman')
 vim.lsp.enable('jedi_language_server')
 vim.lsp.enable('lua_ls')
-vim.lsp.enable('harper_ls')
 
 vim.lsp.config('solargraph', {
   filetypes = { 'ruby', 'ruby.rspec' }
@@ -148,21 +147,6 @@ vim.lsp.config('lua_ls', {
     Lua = {}
   }
 })
-
--- Disable easily-triggered linters that don't add a lot to my writing.
-vim.lsp.config('harper_ls', {
-  filetypes = { 'markdown' },
-  settings = {
-    ["harper-ls"] = {
-      linters = {
-        SentenceCapitalization = false,
-        SpellCheck = false
-      }
-    }
-  }
-})
-
-require("elixir").setup()
 
 local lspkind = require('lspkind')
 local cmp = require('cmp')

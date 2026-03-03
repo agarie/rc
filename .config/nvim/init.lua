@@ -117,6 +117,7 @@ vim.lsp.enable('cssls')
 vim.lsp.enable('marksman')
 vim.lsp.enable('jedi_language_server')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('harper_ls')
 
 vim.lsp.config('solargraph', {
   filetypes = { 'ruby', 'ruby.rspec' }
@@ -180,6 +181,19 @@ cmp.setup {
     { name = "buffer" , keyword_length = 5},
   }
 }
+
+vim.lsp.config('harper_ls', {
+  filetypes = { 'markdown', 'vimwiki' },
+  settings = {
+    ["harper-ls"] = {
+      linters = {
+        SentenceCapitalization = false,
+        SpellCheck = true,
+        UnclosedQuotes = false
+      }
+    }
+  }
+})
 
 -- TODO: Check if there are other LSP capabilities that need keymaps.
 -- NOTE: Default keymaps in Neovim 0.11:

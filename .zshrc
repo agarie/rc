@@ -102,6 +102,7 @@ alias ggforce='git push origin --force-with-lease $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
 alias gpall='git push origin $(current_branch) && git push upstream $(current_branch)'
 alias gst='git status -sb'
+alias glo='git log --oneline'
 
 # Docker aliases.
 alias dcr='docker compose run'

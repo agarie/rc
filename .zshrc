@@ -202,7 +202,7 @@ WORDCHARS=${WORDCHARS//[&.;\/]}
 
 case "$OS" in
 Linux)
-  export CHRUBY_DIR="/usr/local/share/chruby"
+  export CHRUBY_DIR="/usr/share/chruby"
   ;;
 Darwin)
   export CHRUBY_DIR="/opt/homebrew/opt/chruby/share/chruby"

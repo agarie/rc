@@ -14,6 +14,3 @@ export LANGUAGE=en_US.UTF-8
 
 # Don't print filenames with spaces using quotation marks.
 export QUOTING_STYLE=literal
-
-# Setup Rust so we can rewrite everything in it.
-. "$HOME/.cargo/env"

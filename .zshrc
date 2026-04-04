@@ -57,6 +57,10 @@ setopt combiningchars
 
 # Aliases {{{
 
+if command -v bat &> dev/null; then
+  alias cat='bat'
+fi
+
 # Moving around.
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -72,7 +76,7 @@ if command -v eza &> /dev/null; then
   # Show extended details, include hidden files, directories first, respect .gitignore.
   alias ll='eza -long -a --group-directories-first'
 else
-  alias ll='ls -lh --color=auto'
+  alias ll='ls -lha --color=auto'
 fi
 
 # Corrects problems with Ruby scripts that use non-ASCII characters.

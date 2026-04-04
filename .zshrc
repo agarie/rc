@@ -57,7 +57,7 @@ setopt combiningchars
 
 # Aliases {{{
 
-if command -v bat &> dev/null; then
+if command -v bat &> /dev/null; then
   alias cat='bat'
 fi
 

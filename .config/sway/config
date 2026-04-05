@@ -5,31 +5,28 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
+# Logo key. Use Mod1 for LAlt.
 set $mod Mod4
 
-# Home row direction keys, like vim
+# Move like vim.
 set $left h
 set $down j
 set $up k
 set $right l
 
-# I think ghostty looks better but I still can't make Compose work there.
-# set $term ghostty
+### Terminal emulator
+# foot is snappy, configuration is easy, and Compose works.
 set $term foot
 
-# Your preferred application launcher
-# TODO: rofi
-# set $menu wmenu-run
+### Application launcher
+# TODO: This can be much better!
 set $menu rofi -show run
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+### Wallpaper
+# This wallpaper comes from the catppuccin/wallpapers repo, which seems to have been deleted. :(
+# Usage of `bg` requires installing `swaybg`.
+output * bg ~/Pictures/Wallpapers/wallpapers/minimalistic/peach-cat.png fill
 
-#
 # TODO: Configurar multihead
 # Example configuration:
 #
@@ -51,7 +48,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
-#
+# TODO: Is there anything in particular from UHK that can be useful here?
 # Example configuration:
 #
 #   input type:touchpad {
@@ -69,8 +66,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Read `man 5 sway-input` for more information about this section.
 input * xkb_numlock enabled
 
-# Set compose key as Pause
-input * xkb_options compose:paus
+# Set compose key as RAlt.
+input * xkb_options compose:ralt
 
 ### Key bindings
 #
@@ -98,20 +95,14 @@ input * xkb_options compose:paus
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-#
-# Moving around:
-#
+### Moving around
+# I removed the keybinds using arrow keys as I'm used to vim.
+
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -119,15 +110,8 @@ input * xkb_options compose:paus
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
 
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+### Workspaces
 
-#
-# Workspaces:
-#
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -154,9 +138,8 @@ input * xkb_options compose:paus
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
-#
-# Layout stuff:
-#
+### Layout
+
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.

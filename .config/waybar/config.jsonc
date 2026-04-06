@@ -1,0 +1,41 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 33,
+  "mod": "dock",
+  "reload_style_on_change": true,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window"
+  ],
+  "modules-center": [
+    "sway/mode",
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "cpu",
+    "temperature",
+    "clock",
+  ],
+
+  // sway
+  "sway/workspaces": {
+     "disable-scroll": true,
+     "all-outputs": false,
+     "current-only": false,
+     "ignore-hidden": false,
+     "on-click": "activate",
+     "on-click-right": "deactivate",
+     "base": 1
+   },
+  "sway/window": {
+    "format": "  {}",
+    "rotate": 0,
+    "separate-outputs": true,
+    "max-length": 50
+  },
+  "sway/mode": {
+      "format": "{}"
+  },
+}
+

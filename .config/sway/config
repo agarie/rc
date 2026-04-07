@@ -226,7 +226,7 @@ bar {
     #     background #323232
     #     inactive_workspace #32323200 #32323200 #5c5c5c
     # }
-    status_command waybar
+    swaybar_command waybar
 }
 
 # Visual!

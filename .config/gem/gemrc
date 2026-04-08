@@ -1,0 +1,3 @@
+rdoc: --all --ri
+install: --document rdoc,ri
+update: --document rdoc,ri

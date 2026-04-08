@@ -14,3 +14,6 @@ export LANGUAGE=en_US.UTF-8
 
 # Don't print filenames with spaces using quotation marks.
 export QUOTING_STYLE=literal
+
+# Configuration for rubygems.
+export GEMRC=$HOME/.config/gem/gemrc

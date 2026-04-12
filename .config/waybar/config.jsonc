@@ -9,14 +9,19 @@
     "sway/window"
   ],
   "modules-center": [
-    "sway/mode",
+    "sway/mode"
   ],
   "modules-right": [
     "pulseaudio",
     "cpu",
     "temperature",
-    "clock",
+    "clock"
   ],
+
+  "clock": {
+    "interval": 60,
+    "format": "{:%H:%M %Y-%m-%d}"
+  },
 
   // sway
   "sway/workspaces": {
@@ -36,6 +41,6 @@
   },
   "sway/mode": {
       "format": "{}"
-  },
+  }
 }
 

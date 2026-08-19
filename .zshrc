@@ -55,6 +55,9 @@ export SAVEHIST=1000000
 # See the manual page for zshoptions.
 setopt combiningchars
 
+# Allow pasting a combination of comments and commands.
+setopt interactive_comments
+
 # Aliases {{{
 
 if command -v bat &> /dev/null; then

@@ -1,0 +1,514 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+require 'net/http'
+require 'uri'
+require 'json'
+require 'cgi'
+require 'set'
+require 'fileutils'
+require 'nokogiri'
+
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+REFS_DIR = File.expand_path('~/Documents/Woodworking_Refs')
+
+HTTP_OPTIONS = {
+  open_timeout: 10,
+  read_timeout: 30,
+  ssl_timeout: 10,
+  use_ssl: true
+}.freeze
+
+def get_response(uri, request)
+  Net::HTTP.start(uri.hostname, uri.port, HTTP_OPTIONS) do |http|
+    http.request(request)
+  end
+end
+
+def fetch(url)
+  uri = URI.parse(url)
+  request = Net::HTTP::Get.new(uri)
+  request['User-Agent'] = USER_AGENT
+  request['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+  request['Accept-Language'] = 'en-US,en;q=0.9'
+  response = get_response(uri, request)
+
+  raise "HTTP #{response.code} for #{url}" unless response.is_a?(Net::HTTPSuccess)
+
+  response.body
+end
+
+def parse_html(html)
+  if defined?(Nokogiri::HTML5)
+    Nokogiri::HTML5(html)
+  else
+    Nokogiri::HTML(html)
+  end
+end
+
+def first_text(*candidates)
+  candidates.each do |candidate|
+    text = candidate.to_s.strip
+    return text unless text.empty?
+  end
+  nil
+end
+
+def clean_text(text)
+  CGI.unescapeHTML(text.to_s).gsub(/\s+/, ' ').strip
+end
+
+def json_ld_blocks(doc)
+  doc.css('script[type="application/ld+json"]').filter_map do |node|
+    text = node.text.strip
+    next if text.empty?
+
+    JSON.parse(text)
+  rescue JSON::ParserError
+    nil
+  end
+end
+
+def find_json_ld_value(blocks, key, type: nil)
+  blocks.each do |block|
+    objects = block.is_a?(Array) ? block : [block]
+    objects.each do |obj|
+      next unless obj.is_a?(Hash)
+      next if type && obj['@type'] != type
+
+      return obj[key] if obj[key]
+    end
+  end
+  nil
+end
+
+def extract_json_ld_images(blocks)
+  images = []
+
+  blocks.each do |block|
+    objects = block.is_a?(Array) ? block : [block]
+    objects.each do |obj|
+      next unless obj.is_a?(Hash)
+
+      extract_image_value(obj['image'], images)
+    end
+  end
+
+  images
+end
+
+def extract_image_value(value, images)
+  case value
+  when String
+    images << value
+  when Array
+    value.each { |v| extract_image_value(v, images) }
+  when Hash
+    images << value['contentUrl'] if value['contentUrl']
+    images << value['url'] if value['url']
+    extract_image_value(value['image'], images)
+  end
+end
+
+def meta_content(doc, name, property: false)
+  attr = property ? 'property' : 'name'
+  doc.at("meta[#{attr}='#{name}']")&.[]('content')
+end
+
+def first_long_paragraph(doc)
+  doc.css('p').each do |p|
+    text = clean_text(p.text)
+    return text if text.length > 80
+  end
+  nil
+end
+
+def detect_language(doc)
+  # TODO: que é isso??
+  lang = doc.at('html')&.[]('lang')&.downcase
+  return lang if lang
+
+  title = clean_text(doc.at('title')&.text || '')
+  description = clean_text(meta_content(doc, 'description') || '')
+  text = "#{title} #{description}"
+
+  # TODO: Talvez valha a pena olhar só para a descrição?
+  portuguese_markers = /\b(Descrição|Medidas|Antigo|Madeira|Cadeira|Mesa|Gaveta|Armário|Banco|Ferramenta|Leilão|Lote|Visitas|Tipo|Altura|Largura|Profundidade)\b/i
+  return 'pt' if text =~ portuguese_markers
+
+  'en'
+end
+
+def readme_headers(language)
+  if language&.start_with?('pt')
+    {
+      url: 'URL',
+      title: 'Título',
+      description: 'Descrição',
+      details: 'Detalhes'
+    }
+  else
+    {
+      url: 'URL',
+      title: 'Title',
+      description: 'Description',
+      details: 'Details'
+    }
+  end
+end
+
+def sanitize_title(title)
+  return 'untitled' if title.nil? || title.strip.empty?
+
+  name = clean_text(title)
+
+  name = name.sub(/\s+[-|—]\s+.*$/, '')
+  name = name.sub(/\s+For Sale\s+.*$/i, '')
+  name = name.sub(/\s+on\s+\S+\s*$/i, '')
+
+  name = name.gsub(%r{[/\\?%*:|"<>]}, '')
+             .gsub(/\s+/, ' ')
+             .strip
+
+  if name.length > 70
+    truncated = name[0, 70]
+    last_space = truncated.rindex(' ')
+    name = truncated[0, last_space] if last_space && last_space > 40
+  end
+
+  name.strip.empty? ? 'untitled' : name.strip
+end
+
+def next_directory_number(dir)
+  max = 0
+
+  Dir.glob(File.join(dir, '*')).each do |path|
+    next unless File.directory?(path)
+
+    basename = File.basename(path)
+    if basename =~ /^(\d{3})\s/
+      number = Regexp.last_match(1).to_i
+      max = number if number > max
+    end
+  end
+
+  max + 1
+end
+
+def extract_1stdibs_details(doc)
+  details = {}
+
+  labels = [
+    'Dimensions',
+    'Style',
+    'Materials and Techniques',
+    'Place of Origin',
+    'Period',
+    'Date of Manufacture',
+    'Condition',
+    'Seller Location',
+    'Reference Number'
+  ]
+
+  stop_markers = [
+    'About the Seller',
+    'Shipping',
+    'Return Policy',
+    'Categories',
+    'Trade Program',
+    'Seller Application',
+    'Our Company'
+  ]
+
+  text = doc.text
+  positions = []
+
+  labels.each do |label|
+    idx = text.index("#{label}:")
+    positions << [label, idx] if idx
+  end
+
+  positions.sort_by! { |_, idx| idx }
+
+  positions.each_with_index do |(label, start_idx), i|
+    value_start = start_idx + label.length + 1
+    value_end = if i + 1 < positions.length
+                  positions[i + 1][1]
+                else
+                  text.length
+                end
+
+    stop_markers.each do |marker|
+      marker_idx = text.index(marker, value_start)
+      value_end = marker_idx if marker_idx && marker_idx < value_end
+    end
+
+    value = text[value_start...value_end]
+    details[label] = clean_text(value) if value
+  end
+
+  details
+end
+
+def extract_metadata(doc, url)
+  blocks = json_ld_blocks(doc)
+
+  title = first_text(
+    find_json_ld_value(blocks, 'name', type: 'Product'),
+    find_json_ld_value(blocks, 'headline'),
+    find_json_ld_value(blocks, 'name'),
+    meta_content(doc, 'og:title', property: true),
+    meta_content(doc, 'twitter:title'),
+    doc.at('title')&.text,
+    doc.at('h1')&.text,
+    doc.at('h2')&.text
+  )
+
+  description = first_text(
+    find_json_ld_value(blocks, 'description', type: 'Product'),
+    find_json_ld_value(blocks, 'description'),
+    meta_content(doc, 'og:description', property: true),
+    meta_content(doc, 'twitter:description'),
+    meta_content(doc, 'description'),
+    first_long_paragraph(doc)
+  )
+
+  metadata = {
+    url: url,
+    title: clean_text(title),
+    description: clean_text(description)
+  }
+
+  if uri_host(url).include?('1stdibs')
+    metadata[:details] = extract_1stdibs_details(doc)
+    production_date = find_json_ld_value(blocks, 'productionDate', type: 'Product')
+    if production_date && metadata[:details]['Date of Manufacture'].nil?
+      metadata[:details]['Date of Origin'] =
+        production_date
+    end
+  else
+    metadata[:details] = {}
+  end
+
+  metadata
+end
+
+def extract_images(doc, url)
+  blocks = json_ld_blocks(doc)
+  images = extract_json_ld_images(blocks)
+
+  images << meta_content(doc, 'og:image', property: true)
+  images << meta_content(doc, 'twitter:image')
+  images << meta_content(doc, 'twitter:image:src')
+
+  unless uri_host(url).include?('1stdibs')
+    doc.css('img').each do |img|
+      src = img['src'] || img['data-src'] || img['data-original'] || img['data-lazy-src']
+      next if src.nil? || src.strip.empty?
+
+      src = CGI.unescapeHTML(src.strip)
+      next if src.start_with?('data:', 'blob:', 'javascript:')
+      if src =~ %r{/(logo|icon|sprite|avatar|badge|banner|ad|ads|tracking|pixel|spacer|button|social|share|widget|promo|loading|placeholder)}i
+        next
+      end
+      next if src =~ /\d+x\d+/ && src !~ /\d{3,}x\d{3,}/
+
+      images << src
+    end
+  end
+
+  images.compact!
+
+  images.map do |src|
+    absolute = URI.join(url, src).to_s
+    next nil if absolute.empty?
+
+    absolute = absolute.sub(/\?width=\d+/, '?width=1600') if absolute.include?('1stdibscdn')
+    absolute
+  end.compact.uniq { |u| u.sub(/\?.*$/, '') }
+end
+
+def uri_host(url)
+  URI.parse(url).hostname.to_s.downcase
+rescue URI::Error
+  ''
+end
+
+def image_filename(url, existing)
+  uri = URI.parse(url)
+  basename = File.basename(uri.path)
+
+  basename = 'image' if basename.empty? || basename == '/'
+
+  ext = File.extname(basename)
+  name = basename.sub(/#{Regexp.escape(ext)}$/, '')
+  name = 'image' if name.empty?
+
+  candidate = basename
+  counter = 1
+
+  while existing.include?(candidate)
+    candidate = "#{name}_#{counter}#{ext}"
+    counter += 1
+  end
+
+  candidate
+end
+
+def download_image(url, dest)
+  uri = URI.parse(url)
+  request = Net::HTTP::Get.new(uri)
+  request['User-Agent'] = USER_AGENT
+  request['Referer'] = uri.to_s
+
+  response = Net::HTTP.start(uri.hostname, uri.port, HTTP_OPTIONS) do |http|
+    http.request(request)
+  end
+
+  return false unless response.is_a?(Net::HTTPSuccess)
+
+  File.binwrite(dest, response.body)
+  true
+rescue StandardError => e
+  warn "  failed to download #{url}: #{e.message}"
+  false
+end
+
+def write_readme(dir, metadata)
+  language = detect_language(metadata[:doc])
+  headers = readme_headers(language)
+  title = metadata[:title]
+  description = metadata[:description]
+
+  lines = []
+  lines << "# #{title}"
+  lines << ''
+  lines << "## #{headers[:url]}"
+  lines << ''
+  lines << metadata[:url]
+  lines << ''
+  lines << "## #{headers[:title]}"
+  lines << ''
+  lines << title
+  lines << ''
+  lines << "## #{headers[:description]}"
+  lines << ''
+  lines << description if description && !description.empty?
+
+  if metadata[:details] && !metadata[:details].empty?
+    lines << ''
+    lines << "## #{headers[:details]}"
+    lines << ''
+    metadata[:details].each do |label, value|
+      next if value.nil? || value.to_s.strip.empty?
+
+      lines << "- #{label}: #{value}"
+    end
+  end
+
+  lines << ''
+  File.write(File.join(dir, 'README.md'), lines.join("\n"))
+end
+
+def run_dry_run(metadata, images, target_dir)
+  puts "Directory: #{target_dir}"
+  puts "Title: #{metadata[:title]}"
+  if metadata[:description]
+    puts "Description: #{metadata[:description][0,
+                                                100]}#{metadata[:description].length > 100 ? '...' : ''}"
+  end
+
+  if metadata[:details] && !metadata[:details].empty?
+    puts 'Details:'
+    metadata[:details].each do |label, value|
+      puts "  #{label}: #{value[0, 80]}#{value.length > 80 ? '...' : ''}"
+    end
+  end
+
+  puts 'Images to download:'
+
+  existing = Set.new
+  images.each do |url|
+    filename = image_filename(url, existing)
+    existing << filename
+    puts "  #{filename} <- #{url}"
+  end
+end
+
+def run(url, dry_run: false)
+  puts "Fetching #{url}..."
+  html = fetch(url)
+  doc = parse_html(html)
+
+  metadata = extract_metadata(doc, url)
+  metadata[:doc] = doc
+
+  metadata[:title] = 'untitled' if metadata[:title].nil? || metadata[:title].empty?
+
+  sanitized_title = sanitize_title(metadata[:title])
+  number = next_directory_number(REFS_DIR)
+  target_dir = File.join(REFS_DIR, format('%03d %s', number, sanitized_title))
+
+  images = extract_images(doc, url)
+
+  if dry_run
+    run_dry_run(metadata, images, target_dir)
+    return
+  end
+
+  FileUtils.mkdir_p(target_dir)
+
+  write_readme(target_dir, metadata)
+
+  existing = Set.new
+  images.each_with_index do |image_url, index|
+    filename = image_filename(image_url, existing)
+    existing << filename
+    dest = File.join(target_dir, filename)
+
+    print "Downloading image #{index + 1}/#{images.length}: #{filename}... "
+    if download_image(image_url, dest)
+      puts 'ok'
+    else
+      puts 'failed'
+    end
+  end
+
+  puts "Done: #{target_dir}"
+end
+
+def main(argv)
+  dry_run = false
+
+  parser = OptionParser.new do |opts|
+    opts.banner = 'Usage: download_ref [options] URL'
+    opts.separator ''
+    opts.on('--dry-run', 'Print target directory and images without downloading') do
+      dry_run = true
+    end
+    opts.on('-h', '--help', 'Show this help') do
+      puts opts
+      exit
+    end
+  end
+
+  parser.parse!(argv)
+
+  if argv.empty?
+    puts 'Error: URL is required'
+    puts parser
+    exit 1
+  end
+
+  url = argv.first
+
+  begin
+    run(url, dry_run: dry_run)
+  rescue StandardError => e
+    warn "Error: #{e.message}"
+    exit 1
+  end
+end
+
+main(ARGV)

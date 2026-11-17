@@ -20,6 +20,10 @@ HTTP_OPTIONS = {
   use_ssl: true
 }.freeze
 
+LEILOESBR_ORIGIN_HOST = 'd2khfqh5bqnqgx.cloudfront.net'
+IMAGE_VARIANT_LIMIT = 12
+IMAGE_SIZE_RANK = { 'p' => 0, 'm' => 1, 'g' => 2 }.freeze
+
 def get_response(uri, request)
   Net::HTTP.start(uri.hostname, uri.port, HTTP_OPTIONS) do |http|
     http.request(request)
@@ -294,6 +298,129 @@ def extract_metadata(doc, url)
   metadata
 end
 
+def remote_image_exists?(url)
+  uri = URI.parse(url)
+  request = Net::HTTP::Head.new(uri)
+  request['User-Agent'] = USER_AGENT
+  response = get_response(uri, request)
+
+  return true if response.is_a?(Net::HTTPSuccess)
+
+  request = Net::HTTP::Get.new(uri)
+  request['User-Agent'] = USER_AGENT
+  request['Range'] = 'bytes=0-0'
+  response = get_response(uri, request)
+
+  response.is_a?(Net::HTTPSuccess) || response.is_a?(Net::HTTPPartialContent)
+rescue StandardError
+  false
+end
+
+def gallery_variants(base_url, limit)
+  ext = File.extname(URI.parse(base_url).path)
+  stem = base_url.sub(/#{Regexp.escape(ext)}\z/, '')
+
+  [base_url] + (1..limit).map { |n| "#{stem}_#{n}#{ext}" }
+end
+
+def probe_gallery(base_url, limit = IMAGE_VARIANT_LIMIT)
+  found = []
+
+  gallery_variants(base_url, limit).each do |candidate|
+    break unless remote_image_exists?(candidate)
+
+    found << candidate
+  end
+
+  found
+end
+
+def main_gallery_image(doc)
+  node = doc.at('#mainimg img') || doc.at('.image-container img') || doc.at('img[data-zoomimage]')
+  src = node && (node['src'] || node['data-original'] || node['data-zoomimage'])
+
+  src&.strip
+end
+
+def leiloesbr_contract(doc)
+  scripts = doc.css('script').map(&:text).join("\n")
+
+  pid = scripts[/var\s+pid\s*=\s*['"]([^'"]+)['"]/, 1]
+  leilao = scripts[/var\s+idleilao\s*=\s*['"]([^'"]+)['"]/, 1]
+  base = scripts[/var\s+(?:vurl|urlimagem)\s*=\s*['"]([^'"]+)['"]/, 1]
+
+  [pid, leilao, base]
+end
+
+def leiloesbr_asset_fingerprint?(doc)
+  return true if doc.css('script[src]').any? { |s| s['src'].to_s.include?('modulos/peca/js/peca.js') }
+
+  doc.css('script[src], img[src]').any? { |n| uri_host(n['src'].to_s) == LEILOESBR_ORIGIN_HOST }
+end
+
+def page_references_image?(doc, url)
+  target = URI.parse(url).path
+
+  doc.css('img').any? do |img|
+    %w[src data-original data-zoomimage data-src].any? do |attr|
+      value = img[attr]
+      !value.nil? && value.include?(target)
+    end
+  end
+rescue URI::Error
+  false
+end
+
+def leiloesbr_page?(doc)
+  pid, leilao, base = leiloesbr_contract(doc)
+  fingerprint = leiloesbr_asset_fingerprint?(doc)
+
+  if pid && leilao && base
+    base = base.end_with?('/') ? base : "#{base}/"
+    return true if fingerprint || page_references_image?(doc, "#{base}imagens/img_g/#{leilao}/#{pid}.jpg")
+  end
+
+  fingerprint && !main_gallery_image(doc).nil?
+end
+
+def leiloesbr_gallery_images(doc, url)
+  pid, leilao, base = leiloesbr_contract(doc)
+  fingerprint = leiloesbr_asset_fingerprint?(doc)
+
+  if pid && leilao && base
+    base = base.end_with?('/') ? base : "#{base}/"
+    main = "#{base}imagens/img_g/#{leilao}/#{pid}.jpg"
+    return probe_gallery(main) if fingerprint || page_references_image?(doc, main)
+  end
+
+  return [] unless fingerprint
+
+  src = main_gallery_image(doc)
+  return [] unless src
+
+  main = URI.join(url, src).to_s
+  return [] unless main.match?(%r{/imagens/img_[a-z]+/\d+/\d+\.jpg\z}i)
+
+  largest = main.sub(%r{/imagens/img_[a-z]+/}, '/imagens/img_g/')
+  found = probe_gallery(largest)
+  found = probe_gallery(main) if found.empty? && largest != main
+  found
+end
+
+def prefer_largest_images(urls)
+  best = {}
+
+  urls.each do |url|
+    key = url.sub(%r{/img_[a-z]+/}, '/img_/').sub(/\?.*$/, '')
+    rank = url[%r{/img_([a-z]+)/}, 1]
+    score = IMAGE_SIZE_RANK.fetch(rank, -1)
+
+    best[key] = [score, url] if best[key].nil? || score > best[key][0]
+  end
+
+  best.values.map { |_, url| url }
+end
+
 def extract_images(doc, url)
   blocks = json_ld_blocks(doc)
   images = extract_json_ld_images(blocks)
@@ -302,7 +429,7 @@ def extract_images(doc, url)
   images << meta_content(doc, 'twitter:image')
   images << meta_content(doc, 'twitter:image:src')
 
-  unless uri_host(url).include?('1stdibs')
+  unless uri_host(url).include?('1stdibs') || leiloesbr_page?(doc)
     doc.css('img').each do |img|
       src = img['src'] || img['data-src'] || img['data-original'] || img['data-lazy-src']
       next if src.nil? || src.strip.empty?
@@ -318,15 +445,18 @@ def extract_images(doc, url)
     end
   end
 
+  images.concat(leiloesbr_gallery_images(doc, url))
   images.compact!
 
-  images.map do |src|
+  normalized = images.map do |src|
     absolute = URI.join(url, src).to_s
     next nil if absolute.empty?
 
     absolute = absolute.sub(/\?width=\d+/, '?width=1600') if absolute.include?('1stdibscdn')
     absolute
-  end.compact.uniq { |u| u.sub(/\?.*$/, '') }
+  end.compact
+
+  prefer_largest_images(normalized)
 end
 
 def uri_host(url)

@@ -27,43 +27,7 @@ set $menu rofi -show run
 # Usage of `bg` requires installing `swaybg`.
 output * bg ~/Pictures/Wallpapers/wallpapers/minimalistic/peach-cat.png fill
 
-# TODO: Configurar multihead
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
-# TODO: Is there anything in particular from UHK that can be useful here?
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
-# You can also configure each device individually.
-# Read `man 5 sway-input` for more information about this section.
 input * xkb_numlock enabled
 
 # Set compose key as RAlt.
@@ -217,8 +181,11 @@ bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ t
 # Use `playerctl` to toggle audio
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 
-# Special key to take a screenshot with grim
-bindsym Print exec grim
+# Screenshots.
+# TODO: grim was what I used for X11, I need something for Wayland!
+bindsym Print exec grim -o $(swaymsg -t get_outputs -p | jq -r '.[] | select(.active) | .name') -f ~/Pictures/Screenshots/$(date +%s).png
+bindsym $mod+Print exec grim -o $(swaymsg -t get_outputs -p | jq -r '.[] | select(.active) | .name') -f ~/Pictures/Screenshots/$(date +%s).png
+bindsym --release Shift+Print exec grim --select -F ~/Pictures/Screenshots/$(date +%s).png
 
 #
 # Status Bar:

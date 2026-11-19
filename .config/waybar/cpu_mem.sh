@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # CPU usage percentage
-cpu_usage=$(grep -o 'cpu [0-9.]*' /proc/stat | awk '{sum+=$5} END {printf "%.0f", 100 - sum}')
+cpu_usage=$(awk '/^cpu / {total=0; for(i=2;i<=NF;i++) total+=$i; idle=$5; printf "%.0f", 100 * (total - idle) / total}' /proc/stat)
 
 # Memory usage in GB
 mem_total_kb=$(grep '^MemTotal:' /proc/meminfo | awk '{print $2}')
